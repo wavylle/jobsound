@@ -52,7 +52,8 @@ sendEmail(
   );
 
 app.get("/", async (request, response) => {
-  response.sendFile(join(__dirname, "..", "frontend", "index.html"));
+  response.send("Hello World")
+  // response.sendFile(join(__dirname, "..", "frontend", "index.html"));
 });
 
 app.use("/accounts", userRoutes);
