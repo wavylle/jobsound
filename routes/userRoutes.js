@@ -151,10 +151,10 @@ const router = express.Router();
 
 // passport.use(User.createStrategy());
 // Serve static files from the frontend directory
-// router.use(express.static(join(__dirname, "../..", "frontend")));
+router.use(express.static(join(__dirname, "../", "frontend")));
 
 router.get("/signup", (request, response) => {
-  response.sendFile(join(__dirname, "frontend", "accounts", "signup.html"));
+  response.sendFile(join(__dirname, "../", "frontend", "accounts", "signup.html"));
 });
 
 router.get("/activation", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
@@ -175,7 +175,7 @@ router.get("/activation", connectEnsureLogin.ensureLoggedIn("/accounts/signin"),
     `Here's the code to activate your account <strong>${otp}</strong>`
     );
     
-    response.sendFile(join(__dirname, "frontend", "accounts", "activation.html"));
+    response.sendFile(join(__dirname, "../", "frontend", "accounts", "activation.html"));
   } else {
     response.redirect("/panel/home")
   }
@@ -217,7 +217,7 @@ router.get("/reset-password", async (req, res) => {
     return res.status(400).send("Invalid token");
   }
   // Render reset password html
-  res.sendFile(join(__dirname, "frontend", "accounts", "resetpassword.html"), {
+  res.sendFile(join(__dirname, "../", "frontend", "accounts", "resetpassword.html"), {
     token,
   });
 });
@@ -254,7 +254,7 @@ router.post("/reset-password", async (req, res) => {
 
 router.get("/forgot-password", (request, response) => {
   response.sendFile(
-    join(__dirname, "frontend", "accounts", "forgotpassword.html")
+    join(__dirname, "../", "frontend", "accounts", "forgotpassword.html")
   );
 });
 
@@ -315,7 +315,7 @@ router.post("/signup", async (request, response) => {
 });
 
 router.get("/signin", (request, response) => {
-  response.sendFile(join(__dirname, "frontend", "accounts", "signin.html"));
+  response.sendFile(join(__dirname, "../", "frontend", "accounts", "signin.html"));
 });
 
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/' }),  function(req, res) {
