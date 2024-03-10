@@ -53,7 +53,7 @@ const upload = multer({ storage: storage });
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const router = express.Router();
-router.use(express.static(join(__dirname, "../..", "frontend")));
+router.use(express.static(join(__dirname, "../", "frontend")));
 
 router.get(
   "/get-user-info",
@@ -73,7 +73,7 @@ router.get(
   connectEnsureLogin.ensureLoggedIn("/accounts/signin"),
   (request, response) => {
     response.sendFile(
-      join(__dirname, "../..", "frontend", "panel", "jobsound-dash-new.html")
+      join(__dirname, "../", "frontend", "panel", "jobsound-dash-new.html")
     );
   }
 );
@@ -83,7 +83,7 @@ router.get(
   connectEnsureLogin.ensureLoggedIn("/accounts/signin"),
   (request, response) => {
     response.sendFile(
-      join(__dirname, "../..", "frontend", "panel", "jobsound-dash-jobs.html")
+      join(__dirname, "../", "frontend", "panel", "jobsound-dash-jobs.html")
     );
   }
 );
@@ -95,7 +95,7 @@ router.get(
     response.sendFile(
       join(
         __dirname,
-        "../..",
+        "../",
         "frontend",
         "panel",
         "jobsound-dash-applicants.html"
@@ -143,7 +143,7 @@ router.get(
     response.sendFile(
       join(
         __dirname,
-        "../..",
+        "../",
         "frontend",
         "panel",
         "jobsound-dash-onboarding.html"
@@ -182,7 +182,7 @@ router.get(
     response.sendFile(
       join(
         __dirname,
-        "../..",
+        "../",
         "frontend",
         "panel",
         "jobsound-dash-onboarding-2.html"
@@ -198,7 +198,7 @@ router.get(
     response.sendFile(
       join(
         __dirname,
-        "../..",
+        "../",
         "frontend",
         "panel",
         "jobsound-dash-onboarding-3.html"
@@ -214,7 +214,7 @@ router.get(
     response.sendFile(
       join(
         __dirname,
-        "../..",
+        "../",
         "frontend",
         "panel",
         "jobsound-dash-onboarding-4.html"
@@ -367,7 +367,7 @@ router.get(
           job_id: refJobId,
         });
         if (getJobData) {
-          console.log("Found Job Data...");
+          console.log("Found Job Data.");
           // Define filter to find the job by its ID
           const filter = { job_id: refJobId };
 
@@ -376,7 +376,7 @@ router.get(
             $set: jobData,
           };
 
-          console.log("Updating DB...");
+          console.log("Updating DB.");
 
           // Perform the update operation
           const result = await JobDB.findOneAndUpdate(filter, updateOperation, {
@@ -432,7 +432,7 @@ router.get(
           job_id: refJobId,
         });
         if (getJobData) {
-          console.log("Found Job Data...");
+          console.log("Found Job Data.");
           // Define filter to find the job by its ID
           const filter = { job_id: refJobId };
 
@@ -441,7 +441,7 @@ router.get(
             $set: jobData,
           };
 
-          console.log("Updating DB...");
+          console.log("Updating DB.");
 
           // Perform the update operation
           const result = await JobDB.findOneAndUpdate(filter, updateOperation, {
@@ -525,14 +525,14 @@ router.get("/job", async (request, response) => {
       if (getJobData.user_id == request.user.id) {
         // load html
         response.sendFile(
-          join(__dirname, "../..", "frontend", "panel", "job-page.html")
+          join(__dirname, "../", "frontend", "panel", "job-page.html")
         );
       } else {
         response.send("You do not have access to this job post");
       }
     } else if (getJobData.publish_status == true) {
       response.sendFile(
-        join(__dirname, "../..", "frontend", "panel", "job-page.html")
+        join(__dirname, "../", "frontend", "panel", "job-page.html")
       );
     } else {
       response.send("You do not have access to this job post");
@@ -551,12 +551,12 @@ router.get("/apply", async (request, response) => {
       if (getJobData.user_id == request.user.id) {
         // load html
         response.sendFile(
-          join(__dirname, "../..", "frontend", "panel", "application-page.html")
+          join(__dirname, "../", "frontend", "panel", "application-page.html")
         );
       }
     } else if (getJobData.publish_status == true) {
       response.sendFile(
-        join(__dirname, "../..", "frontend", "panel", "application-page.html")
+        join(__dirname, "../", "frontend", "panel", "application-page.html")
       );
     } else {
       response.send("You do not have access to this job post");
@@ -678,7 +678,7 @@ router.get("/getapplicantdata", async (request, response) => {
 
 router.get("/application-successful", (request, response) => {
   response.sendFile(
-    join(__dirname, "../..", "frontend", "panel", "ty-applying.html")
+    join(__dirname, "../", "frontend", "panel", "ty-applying.html")
   );
 });
 
@@ -698,7 +698,7 @@ router.get(
           response.sendFile(
             join(
               __dirname,
-              "../..",
+              "../",
               "frontend",
               "panel",
               "jobsound-dash-applicant.html"
@@ -749,7 +749,7 @@ router.get("/meeting", async (request, response) => {
 
           if(getApplicant) {
             response.sendFile(
-              join(__dirname, "../..", "frontend", "panel", "meeting-page.html")
+              join(__dirname, "../", "frontend", "panel", "meeting-page.html")
               );
             } else {
               response.send("Seems like you have not applied for this job")
@@ -766,19 +766,19 @@ router.get("/meeting", async (request, response) => {
 
 router.get("/account-settings", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
   response.sendFile(
-    join(__dirname, "../..", "frontend", "panel", "account-settings.html")
+    join(__dirname, "../", "frontend", "panel", "account-settings.html")
   );
 })
 
 router.get("/billing-settings", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
   response.sendFile(
-    join(__dirname, "../..", "frontend", "panel", "billing-settings.html")
+    join(__dirname, "../", "frontend", "panel", "billing-settings.html")
   );
 })
 
 router.get("/teams-settings", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
   response.sendFile(
-    join(__dirname, "../..", "frontend", "panel", "teams-settings.html")
+    join(__dirname, "../", "frontend", "panel", "teams-settings.html")
   );
 })
 
