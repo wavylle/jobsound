@@ -21,7 +21,7 @@ app.use(express.json());
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Serve static files from the frontend directory
-app.use(express.static(join(__dirname)));
+app.use(express.static(join(__dirname, "static")));
 
 // Middleware for handling CORS policy
 app.use(cors()); // This will allow all origins
