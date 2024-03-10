@@ -151,7 +151,7 @@ const router = express.Router();
 
 // passport.use(User.createStrategy());
 // Serve static files from the frontend directory
-router.use(express.static(join(__dirname, "../..", "frontend")));
+// router.use(express.static(join(__dirname, "../..", "frontend")));
 
 router.get("/signup", (request, response) => {
   response.sendFile(join(__dirname, "../..", "frontend", "accounts", "signup.html"));

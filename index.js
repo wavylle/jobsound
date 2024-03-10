@@ -46,8 +46,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get("/", async (request, response) => {
-  response.send("Hello World")
-  // response.sendFile(join(__dirname, "..", "frontend", "index.html"));
+  // response.send("Hello World")
+  response.sendFile("index.html");
 });
 
 app.use("/accounts", userRoutes);
