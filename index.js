@@ -21,7 +21,7 @@ app.use(express.json());
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Serve static files from the frontend directory
-app.use(express.static(join(__dirname)));
+app.use(express.static(join(__dirname, "frontend")));
 
 // Middleware for handling CORS policy
 app.use(cors()); // This will allow all origins
@@ -47,7 +47,7 @@ app.use(passport.session());
 
 app.get("/", async (request, response) => {
   // response.send("Hello World")
-  response.sendFile(join(__dirname, "index.html"));
+  response.sendFile(join(__dirname, "frontend", "index.html"));
 });
 
 app.use("/accounts", userRoutes);
