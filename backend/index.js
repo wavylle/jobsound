@@ -24,16 +24,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 app.use(express.static(join(__dirname, "..", "frontend")));
 
 // Middleware for handling CORS policy
-// app.use(cors()); // This will allow all origins
+app.use(cors()); // This will allow all origins
 
 // Allow custom origins
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:3000",
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type"],
+//   })
+// );
 
 app.use(session({
   secret: 'r8q,+&1LM3)CD*zAGpx1xm{NeQhc;#',
