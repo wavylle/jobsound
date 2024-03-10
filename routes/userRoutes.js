@@ -17,6 +17,7 @@ import callOpenAI from "../openai.js"
 
 const ngrokUrl = "https://d648-110-227-193-66.ngrok-free.app"
 const localUrl = "http://127.0.0.1:5555"
+const siteUrl = "https://jobsound.vercel.app"
 
 function generateOTP(length) {
   const digits = '0123456789';
@@ -51,7 +52,7 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: `${localUrl}/accounts/google/callback`,
+      callbackURL: `${siteUrl}/accounts/google/callback`,
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
@@ -85,7 +86,7 @@ passport.use(
     {
       clientID: LINKEDIN_KEY,
       clientSecret: LINKEDIN_SECRET,
-      callbackURL: `${localUrl}/accounts/linkedin/callback`,
+      callbackURL: `${siteUrl}/accounts/linkedin/callback`,
       scope: ["email", "profile", "openid"],
     },
     function (accessToken, refreshToken, profile, done) {
@@ -276,7 +277,7 @@ router.post("/forgot-password", async (req, res) => {
   await sendEmail(
     "Reset Password",
     user.email,
-    `To reset your JobSound password, click <a href="${localUrl}/accounts/reset-password?token=${token}&email=${user.email}">here</a>`
+    `To reset your JobSound password, click <a href="${siteUrl}/accounts/reset-password?token=${token}&email=${user.email}">here</a>`
   );
   // sendEmail(subject, recipientEmail, content)
 
