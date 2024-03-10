@@ -10,6 +10,7 @@ import { fileURLToPath } from "url";
 import session from "express-session";
 import passport from "passport";
 import bodyParser from "body-parser";
+import sendEmail from "./sendEmails.js";
 
 const app = express();
 
@@ -44,7 +45,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/", (request, response) => {
+app.get("/", async (request, response) => {
+  // Send Email
+  await sendEmail(
+    "Hey",
+    "abhirathdubey2804@gmail.com",
+    "This is a test email"
+    );
   response.sendFile(join(__dirname, "..", "frontend", "index.html"));
 });
 
