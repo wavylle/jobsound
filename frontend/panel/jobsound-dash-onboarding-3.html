@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JobSound</title>
+
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css">
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-solid.css">
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-regular.css">
+	<link rel="stylesheet" href="./static/css/style.css" />
+	<link rel="stylesheet" href="./static/css/toasts.css" />
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<link rel="stylesheet" href="https://saasblocks-preview-tdg1-prd.fly.dev/_next/static/css/362dbacb9546c5a0.css">
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="relative bodyClass hidden">
+	<div class="notifications"></div>
+	<div class="bg-gray-900 absolute h-screen w-full z-[-99999]"></div>
+
+
+	<div class=" bg-gray-900">
+
+		<div x-data="{ open: false }" @keydown.window.escape="open = false">
+
+			<div x-show="open" class="relative z-50 xl:hidden"
+				x-description="Off-canvas menu for mobile, show/hide based on off-canvas menu state." x-ref="dialog"
+				aria-modal="true" style="display: none;">
+
+				<div x-show="open" x-transition:enter="transition-opacity ease-linear duration-300"
+					x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+					x-transition:leave="transition-opacity ease-linear duration-300"
+					x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+					class="fixed inset-0 bg-gray-900/80"
+					x-description="Off-canvas menu backdrop, show/hide based on off-canvas menu state."
+					style="display: none;"></div>
+
+
+				<div class="fixed inset-0 flex">
+
+					<div x-show="open" x-transition:enter="transition ease-in-out duration-300 transform"
+						x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+						x-transition:leave="transition ease-in-out duration-300 transform"
+						x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
+						x-description="Off-canvas menu, show/hide based on off-canvas menu state."
+						class="relative mr-16 flex w-full max-w-xs flex-1" @click.away="open = false"
+						style="display: none;">
+
+						<div x-show="open" x-transition:enter="ease-in-out duration-300"
+							x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+							x-transition:leave="ease-in-out duration-300" x-transition:leave-start="opacity-100"
+							x-transition:leave-end="opacity-0"
+							x-description="Close button, show/hide based on off-canvas menu state."
+							class="absolute left-full top-0 flex w-16 justify-center pt-5" style="display: none;">
+							<button type="button" class="-m-2.5 p-2.5" @click="open = false">
+								<span class="sr-only">Close sidebar</span>
+								<svg class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+									stroke="currentColor" aria-hidden="true">
+									<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+									</path>
+								</svg>
+							</button>
+						</div>
+
+						<!-- Sidebar component, swap this element with another sidebar if you like -->
+						<div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 ring-1 ring-white/10">
+							<div class="flex h-16 shrink-0 items-center">
+								<img class="h-8 w-auto"
+									src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500"
+									alt="Your Company">
+							</div>
+							<nav class="flex flex-1 flex-col">
+								<ul role="list" class="flex flex-1 flex-col gap-y-7">
+									<li>
+										<ul role="list" class="-mx-2 space-y-1">
+											<li>
+												<a href="#"
+													class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state:on="Current" x-state:off="Default"
+													x-state-description="Current: &quot;bg-gray-800 text-white&quot;, Default: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+														stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+														<path stroke-linecap="round" stroke-linejoin="round"
+															d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z">
+														</path>
+													</svg>
+													Projects
+												</a>
+											</li>
+											<li>
+												<a href="#"
+													class="bg-gray-800 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+														stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+														<path stroke-linecap="round" stroke-linejoin="round"
+															d="M21.75 17.25v-.228a4.5 4.5 0 00-.12-1.03l-2.268-9.64a3.375 3.375 0 00-3.285-2.602H7.923a3.375 3.375 0 00-3.285 2.602l-2.268 9.64a4.5 4.5 0 00-.12 1.03v.228m19.5 0a3 3 0 01-3 3H5.25a3 3 0 01-3-3m19.5 0a3 3 0 00-3-3H5.25a3 3 0 00-3 3m16.5 0h.008v.008h-.008v-.008zm-3 0h.008v.008h-.008v-.008z">
+														</path>
+													</svg>
+													Deployments
+												</a>
+											</li>
+											<li>
+												<a href="#"
+													class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+														stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+														<path stroke-linecap="round" stroke-linejoin="round"
+															d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z">
+														</path>
+													</svg>
+													Activity
+												</a>
+											</li>
+											<li>
+												<a href="#"
+													class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+														stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+														<path stroke-linecap="round" stroke-linejoin="round"
+															d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418">
+														</path>
+													</svg>
+													Domains
+												</a>
+											</li>
+											<li>
+												<a href="#"
+													class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+														stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+														<path stroke-linecap="round" stroke-linejoin="round"
+															d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z">
+														</path>
+													</svg>
+													Usage
+												</a>
+											</li>
+											<li>
+												<a href="#"
+													class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+														stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+														<path stroke-linecap="round" stroke-linejoin="round"
+															d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z">
+														</path>
+														<path stroke-linecap="round" stroke-linejoin="round"
+															d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+													</svg>
+													Settings
+												</a>
+											</li>
+
+										</ul>
+									</li>
+									<li>
+										<div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
+										<ul role="list" class="-mx-2 mt-2 space-y-1">
+											<li>
+												<a href="#"
+													class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state:on="Current" x-state:off="Default"
+													x-state-description="Current: &quot;bg-gray-800 text-white&quot;, Default: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<span
+														class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">P</span>
+													<span class="truncate">Planetaria</span>
+												</a>
+											</li>
+											<li>
+												<a href="#"
+													class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<span
+														class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">P</span>
+													<span class="truncate">Protocol</span>
+												</a>
+											</li>
+											<li>
+												<a href="#"
+													class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+													x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+													<span
+														class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">T</span>
+													<span class="truncate">Tailwind Labs</span>
+												</a>
+											</li>
+
+										</ul>
+									</li>
+									<li class="-mx-6 mt-auto">
+										<a href="#"
+											class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-white hover:bg-gray-800">
+											<i class="fa-solid fa-arrow-right-from-bracket"></i>
+											<span aria-hidden="true">Log out</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<!-- Static sidebar for desktop -->
+			<div class="hidden xl:fixed xl:inset-y-0 xl:z-50 xl:flex xl:w-72 xl:flex-col">
+				<!-- Sidebar component, swap this element with another sidebar if you like -->
+				<div class="flex grow flex-col gap-y-5 overflow-y-auto bg-black/10 px-6 ring-1 ring-white/5">
+					<div class="flex h-16 shrink-0 items-center">
+						<img class="h-8 w-auto"
+							src="https://tailwindui.com/img/logos/mark.svg?color=indigo&amp;shade=500"
+							alt="Your Company">
+					</div>
+					<nav class="flex flex-1 flex-col">
+						<ul role="list" class="flex flex-1 flex-col gap-y-7">
+							<li>
+								<ul role="list" class="-mx-2 space-y-1">
+									<li>
+										<a href="/panel/onboarding-basics"
+											class="ml-auto flex justify-center items-center rounded-md bg-indigo-600 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mb-6 addnewjob">
+											<svg class="-ml-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
+												aria-hidden="true">
+												<path
+													d="M10.75 6.75a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z">
+												</path>
+											</svg>
+											Add New Job
+										</a>
+									</li>
+									<div class="text-xs font-semibold leading-6 text-gray-400">Solutions</div>
+									<li>
+										<a href="/panel/home"
+											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+											x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+											<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+												stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+												<path stroke-linecap="round" stroke-linejoin="round"
+													d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z">
+												</path>
+											</svg>
+											Home
+										</a>
+									</li>
+									<li>
+										<a href="/panel/jobs"
+											class="bg-gray-800 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+											x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+											<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+												stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+												<path stroke-linecap="round" stroke-linejoin="round"
+													d="M9.348 14.651a3.75 3.75 0 010-5.303m5.304 0a3.75 3.75 0 010 5.303m-7.425 2.122a6.75 6.75 0 010-9.546m9.546 0a6.75 6.75 0 010 9.546M5.106 18.894c-3.808-3.808-3.808-9.98 0-13.789m13.788 0c3.808 3.808 3.808 9.981 0 13.79M12 12h.008v.007H12V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z">
+												</path>
+											</svg>
+											Jobs
+										</a>
+									</li>
+									<li>
+										<a href="/panel/applicants"
+											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+											x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+											<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24"
+												stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+												<path stroke-linecap="round" stroke-linejoin="round"
+													d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418">
+												</path>
+											</svg>
+											Applicants
+										</a>
+									</li>
+									<li>
+
+								</ul>
+							</li>
+							<li>
+								<div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
+								<ul role="list" class="-mx-2 mt-2 space-y-1">
+									<li>
+										<a href="#"
+											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+											x-state:on="Current" x-state:off="Default"
+											x-state-description="Current: &quot;bg-gray-800 text-white&quot;, Default: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+											<span
+												class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">P</span>
+											<span class="truncate">Planetaria</span>
+										</a>
+									</li>
+									<li>
+										<a href="#"
+											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+											x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+											<span
+												class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">P</span>
+											<span class="truncate">Protocol</span>
+										</a>
+									</li>
+									<li>
+										<a href="#"
+											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+											x-state-description="undefined: &quot;bg-gray-800 text-white&quot;, undefined: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+											<span
+												class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white">T</span>
+											<span class="truncate">Tailwind Labs</span>
+										</a>
+									</li>
+
+								</ul>
+							</li>
+							<ul class="-mx-6 mt-auto px-4">
+								<li>
+									<a href="./jobsound-dash-settings.html"
+										class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+										x-state:on="Current" x-state:off="Default"
+										x-state-description="Current: &quot;bg-gray-800 text-white&quot;, Default: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+										<svg class="h-6 w-6 shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+											stroke="currentColor" aria-hidden="true">
+											<path stroke-linecap="round" stroke-linejoin="round"
+												d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z">
+											</path>
+											<path stroke-linecap="round" stroke-linejoin="round"
+												d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+										</svg>
+										Settings
+									</a>
+								</li>
+								<li>
+									<a href="#"
+										class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
+										x-state:on="Current" x-state:off="Default"
+										x-state-description="Current: &quot;bg-gray-800 text-white&quot;, Default: &quot;text-gray-400 hover:text-white hover:bg-gray-800&quot;">
+										<i
+											class="fa-solid fa-arrow-right-from-bracket h-6 w-6 shrink-0 text-md flex items-center justify-center"></i>
+										<span aria-hidden="true">Log out</span>
+									</a>
+								</li>
+							</ul>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+			<div class="xl:pl-72">
+				<div class=" bg-gray-900">
+					<div class="">
+						<nav class="mx-auto max-w-7xl px-4lg:px-8" aria-label="Progress">
+							<ol role="list" class="overflow-hidden rounded-md lg:flex">
+								<li class="relative overflow-hidden lg:flex-1">
+									<div class="overflow-hidden">
+										<!-- Current Step -->
+										<a href="/panel/onboarding-basics" class="group jobstep">
+											<span
+												class="absolute left-0 top-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
+												aria-hidden="true"></span>
+											<span class="flex items-start px-6 py-5 text-sm font-medium lg:pl-9">
+												<span class="flex-shrink-0">
+													<span
+														class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600">
+														<svg class="h-6 w-6 text-white" viewBox="0 0 24 24"
+															fill="currentColor" aria-hidden="true">
+															<path fill-rule="evenodd"
+																d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
+																clip-rule="evenodd"></path>
+														</svg>
+													</span>
+												</span>
+												<span class="ml-4 mt-0.5 flex min-w-0 flex-col">
+													<span class="text-sm font-medium text-white">Basics</span>
+													<span class="text-sm font-medium text-gray-500">Penatibus eu quis
+														ante.</span>
+												</span>
+											</span>
+										</a>
+									</div>
+								</li>
+								<li class="relative overflow-hidden lg:flex-1">
+									<div
+										class="overflow-hidden border border-gray-200 rounded-b-md border-t-0 lg:border-0">
+										<!-- Upcoming Step -->
+										<a href="/panel/onboarding-job-details" aria-current="step" class="jobstep">
+											<span class="flex items-start px-6 py-5 text-sm font-medium lg:pl-9">
+												<span class="flex-shrink-0">
+													<span
+														class="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600">
+														<svg class="h-6 w-6 text-white" viewBox="0 0 24 24"
+															fill="currentColor" aria-hidden="true">
+															<path fill-rule="evenodd"
+																d="M19.916 4.626a.75.75 0 01.208 1.04l-9 13.5a.75.75 0 01-1.154.114l-6-6a.75.75 0 011.06-1.06l5.353 5.353 8.493-12.739a.75.75 0 011.04-.208z"
+																clip-rule="evenodd"></path>
+														</svg>
+													</span>
+												</span>
+												<span class="ml-4 mt-0.5 flex min-w-0 flex-col">
+													<span class="text-sm font-medium text-white">Job Details</span>
+													<span class="text-sm font-medium text-gray-500">Penatibus eu quis
+														ante.</span>
+												</span>
+											</span>
+										</a>
+
+										<!-- Separator -->
+										<div class="absolute inset-0 left-0 top-0 hidden w-3 lg:block"
+											aria-hidden="true">
+											<svg class="h-full w-full text-gray-300" viewBox="0 0 12 82" fill="none"
+												preserveAspectRatio="none">
+												<path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor"
+													vector-effect="non-scaling-stroke"></path>
+											</svg>
+										</div>
+									</div>
+								</li>
+								<li class="relative overflow-hidden lg:flex-1">
+									<div
+										class="overflow-hidden border border-gray-200 rounded-b-md border-t-0 lg:border-0">
+										<!-- Upcoming Step -->
+										<a href="/panel/onboarding-interview-questions" class="group jobstep">
+											<span
+												class="absolute left-0 top-0 h-full w-1 bg-indigo-600 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
+												aria-hidden="true"></span>
+											<span class="flex items-start px-6 py-5 text-sm font-medium lg:pl-9">
+												<span class="flex-shrink-0">
+													<span
+														class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-indigo-600">
+														<span class="text-gray-500">03</span>
+													</span>
+												</span>
+												<span class="ml-4 mt-0.5 flex min-w-0 flex-col">
+													<span class="text-sm font-medium text-white">Interview
+														Questions</span>
+													<span class="text-sm font-medium text-gray-500">Penatibus eu quis
+														ante.</span>
+												</span>
+											</span>
+										</a>
+										<!-- Separator -->
+										<div class="absolute inset-0 left-0 top-0 hidden w-3 lg:block"
+											aria-hidden="true">
+											<svg class="h-full w-full text-gray-300" viewBox="0 0 12 82" fill="none"
+												preserveAspectRatio="none">
+												<path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor"
+													vector-effect="non-scaling-stroke"></path>
+											</svg>
+										</div>
+									</div>
+								</li>
+								<li class="relative overflow-hidden lg:flex-1">
+									<div
+										class="overflow-hidden border border-gray-200 rounded-b-md border-t-0 lg:border-0">
+										<!-- Upcoming Step -->
+										<a href="/panel/onboarding-ai-settings" class="group jobstep">
+											<span
+												class="absolute left-0 top-0 h-full w-1 bg-transparent group-hover:bg-gray-200 lg:bottom-0 lg:top-auto lg:h-1 lg:w-full"
+												aria-hidden="true"></span>
+											<span class="flex items-start px-6 py-5 text-sm font-medium lg:pl-9">
+												<span class="flex-shrink-0">
+													<span
+														class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-gray-300">
+														<span class="text-white">04</span>
+													</span>
+												</span>
+												<span class="ml-4 mt-0.5 flex min-w-0 flex-col">
+													<span class="text-sm font-medium text-white">AI Settings</span>
+													<span class="text-sm font-medium text-gray-500">Penatibus eu quis
+														ante.</span>
+												</span>
+											</span>
+										</a>
+										<!-- Separator -->
+										<div class="absolute inset-0 left-0 top-0 hidden w-3 lg:block"
+											aria-hidden="true">
+											<svg class="h-full w-full text-gray-300" viewBox="0 0 12 82" fill="none"
+												preserveAspectRatio="none">
+												<path d="M0.5 0V31L10.5 41L0.5 51V82" stroke="currentcolor"
+													vector-effect="non-scaling-stroke"></path>
+											</svg>
+										</div>
+									</div>
+								</li>
+							</ol>
+						</nav>
+					</div>
+
+					<div class="pt-16 flex items-center justify-center flex-col">
+						<div class=" w-full p-2">
+							<div class="text-start text-white mx-auto w-full max-w-2xl">
+								<h1 class="text-3xl font-semibold">Interview Questions</h1>
+							</div>
+
+						</div>
+						<div class="flex items-center text-white mx-auto w-full max-w-2xl mt-8 justify-between">
+							<button id="" class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" onclick="addQuestion()" aria-controls="tabs-1-panel-2" role="tab" type="button">Add A Question</button>
+
+						</div>
+						<div class="w-full p-2">
+							<div class="mx-auto w-full max-w-2xl" id="question-container">
+								<!-- <div class="question-item" id="question-item-1"> -->
+								<div class="flex items-end">
+									<div class="pt-6 w-full questionInput">
+									  <label for="question" class="block text-sm font-medium leading-6 text-white">Question 1</label>
+									  <div class="mt-2 flex rounded-md shadow-sm">
+										<div class="relative flex flex-grow items-stretch focus-within:z-10">  
+										  <input type="question" name="question" class="question-input block w-full rounded-none rounded-l-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 focus:outline-none bg-gray-900 text-white" placeholder="Enter your question">
+										</div>
+										<button type="button" class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-gray-300 hover:bg-gray-50 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 aiInterviewQuestion" onclick="rewriteQuestion(this)">
+										  Rewrite with AI<i class="fa-light fa-wand-magic-sparkles"></i>
+										</button>
+									  </div>
+									</div>
+									<!-- <i class="fa-solid fa-xmark text-[#ff6666] p-2.5 cursor-pointer deleteQuestionIcon"></i> -->
+								  </div>
+								<!-- </div> -->
+
+								  <!-- <div class="flex items-end">
+									<div class="pt-6 w-full questionInput">
+									  <label for="question" class="block text-sm font-medium leading-6 text-white">Question 2</label>
+									  <div class="mt-2 flex rounded-md shadow-sm">
+										<div class="relative flex flex-grow items-stretch focus-within:z-10">  
+										  <input type="question" name="question" class="block w-full rounded-none rounded-l-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 focus:outline-none bg-gray-900 text-white" placeholder="How you see yourself in 5 years?" value="How you see yourself in 5 years?">
+										</div>
+										<button type="button" class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-gray-300 hover:bg-gray-50 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+										  Rewrite with AI<i class="fa-light fa-wand-magic-sparkles"></i>
+										</button>
+									  </div>
+									</div>
+									<i class="fa-solid fa-xmark text-[#ff6666] p-2.5 cursor-pointer deleteQuestionIcon"></i>
+								  </div> -->
+								  								  
+
+								  <!-- <div class="flex items-end">
+									<div class="pt-6 w-full questionInput">
+									  <label for="question" class="block text-sm font-medium leading-6 text-white">Question 3</label>
+									  <div class="mt-2 flex rounded-md shadow-sm">
+										<div class="relative flex flex-grow items-stretch focus-within:z-10">  
+										  <input type="question" name="question" class="block w-full rounded-none rounded-l-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 focus:outline-none bg-gray-900 text-white" placeholder="How you see yourself in 5 years?" value="How you see yourself in 5 years?">
+										</div>
+										<button type="button" class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-gray-300 hover:bg-gray-50 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+										  Rewrite with AI<i class="fa-light fa-wand-magic-sparkles"></i>
+										</button>
+									  </div>
+									</div>
+									<i class="fa-solid fa-xmark text-[#ff6666] p-2.5 cursor-pointer deleteQuestionIcon"></i>
+								  </div> -->
+							</div>
+						</div>
+
+
+					</div>
+
+
+
+				</div>
+
+
+
+				
+
+
+				<div class="w-full p-2 pt-6 pb-16">
+					<div class="mx-auto w-full max-w-2xl">
+
+						<a><button type="button"
+							class="w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 nextstepbutton">Next
+							Step</button></a>
+					</div>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+	</div>
+
+	</div>
+
+	<script>
+		let questionsDict = {0: ""}
+
+		// Get the URL parameters
+		const urlParams = new URLSearchParams(window.location.search);
+
+		// Get the value of refJobId from the query string
+		const refJobId = urlParams.get('refJobId');
+
+		let fetchUrl = `/panel/new-job-data`
+
+		if (refJobId) {
+        for (
+          let eleCount = 0;
+          eleCount < document.querySelectorAll(".jobstep").length;
+          eleCount++
+        ) {
+          var currentHref = document
+            .querySelectorAll(".jobstep")
+            [eleCount].getAttribute("href");
+          var newHref = currentHref + `?refJobId=${refJobId}`;
+          document
+            .querySelectorAll(".jobstep")
+            [eleCount].setAttribute("href", newHref);
+        }
+        fetchUrl = `/panel/new-job-data?refJobId=${refJobId}`;
+      }
+
+		document.addEventListener('DOMContentLoaded', () => {
+
+			fetch(fetchUrl).then(res => res.json()).then(data => {
+				if(data["status"] == "ok") {
+					for(const [key, value] of Object.entries(data["data"])) {
+						if(key == "questions") {
+							if(!value[0] == "") {
+								console.log(value);
+								
+								var container = document.getElementById('question-container');
+								container.innerHTML = ""
+								for(const [keyy, valuee] of Object.entries(value)) {
+									console.log(keyy)
+									console.log(valuee)
+									var questionNumber = container.querySelectorAll('.questionInput').length + 1; // Get the number of existing questions
+									// Create a new question input div
+									var questionDiv = document.createElement('div');
+									questionDiv.className = 'flex items-end';
+									var questionInput = `
+								<div class="pt-6 w-full questionInput">
+									<label for="question" class="block text-sm font-medium leading-6 text-white">Question ${questionNumber}</label>
+									<div class="mt-2 flex rounded-md shadow-sm">
+										<div class="relative flex flex-grow items-stretch focus-within:z-10">  
+											<input type="question" name="question" class="question-input block w-full rounded-none rounded-l-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 focus:outline-none bg-gray-900 text-white" placeholder="Enter your question" value="${valuee}">
+											</div>
+											<button type="button" class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-gray-300 hover:bg-gray-50 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 aiInterviewQuestion" onclick="rewriteQuestion(this)">
+												Rewrite with AI<i class="fa-light fa-wand-magic-sparkles"></i>
+												</button>
+												</div>
+												</div>
+												`;
+								questionDiv.innerHTML = questionInput;
+								
+								// Append the new question div to the container
+								container.appendChild(questionDiv);
+								
+								// Create a delete icon for the new question
+								var deleteIcon = document.createElement('i');
+								deleteIcon.className = 'fa-solid fa-xmark text-[#ff6666] p-2.5 cursor-pointer deleteQuestionIcon';
+								deleteIcon.onclick = function() { deleteQuestion(this); }; // Set onclick event for the delete icon
+								questionDiv.appendChild(deleteIcon);
+							}
+							}
+						}
+					}
+				}
+				document.querySelector('.bodyClass').classList.remove("hidden")
+			})
+
+			// fetch("/panel/get-user-info").then(res => res.json()).then(data => {
+			// 	document.getElementById("company").value = data.company
+			// })
+		});
+
+		function addQuestion() {
+			console.log("Heyy")
+    var container = document.getElementById('question-container');
+    var questionNumber = container.querySelectorAll('.questionInput').length + 1; // Get the number of existing questions
+
+    // Create a new question input div
+    var questionDiv = document.createElement('div');
+    questionDiv.className = 'flex items-end';
+    var questionInput = `
+      <div class="pt-6 w-full questionInput">
+        <label for="question" class="block text-sm font-medium leading-6 text-white">Question ${questionNumber}</label>
+        <div class="mt-2 flex rounded-md shadow-sm">
+          <div class="relative flex flex-grow items-stretch focus-within:z-10">  
+            <input type="question" name="question" class="question-input block w-full rounded-none rounded-l-md border-0 py-1.5 pl-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 focus:outline-none bg-gray-900 text-white" placeholder="Enter your question">
+          </div>
+          <button type="button" class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-gray-300 hover:bg-gray-50 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 aiInterviewQuestion" onclick="rewriteQuestion(this)">
+            Rewrite with AI<i class="fa-light fa-wand-magic-sparkles"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    questionDiv.innerHTML = questionInput;
+
+    // Append the new question div to the container
+    container.appendChild(questionDiv);
+    
+    // Create a delete icon for the new question
+    var deleteIcon = document.createElement('i');
+    deleteIcon.className = 'fa-solid fa-xmark text-[#ff6666] p-2.5 cursor-pointer deleteQuestionIcon';
+    deleteIcon.onclick = function() { deleteQuestion(this); }; // Set onclick event for the delete icon
+    questionDiv.appendChild(deleteIcon);
+
+	updateQuestionNumbers()
+  }
+
+  function deleteQuestion(icon) {
+    icon.parentElement.remove(); // Remove the parent div of the delete icon (i.e., the entire question div)
+  }
+
+  function updateQuestionNumbers() {
+    var container = document.getElementById('question-container');
+    var questions = container.querySelectorAll('.questionInput');
+    questions.forEach(function(question, index) {
+      var label = question.querySelector('label');
+      label.textContent = `Question ${index + 1}`;
+    });
+  }
+
+  function rewriteQuestion(button) {
+    var questions = document.querySelectorAll('.aiInterviewQuestion');
+    var index = Array.from(questions).indexOf(button);
+	getAIQuestions(index)
+    // console.log("Clicked on Rewrite with AI button for question:", index + 1);
+    // Call your function here passing the index
+  }
+
+
+
+		document.querySelector(".addnewjob").onclick = function () {
+			fetch("/panel/add-new-job").then(res => res.json()).then(data => {
+				console.log(data);
+			})
+		}
+
+		async function saveQuestionsDetails() {
+
+			let newQuestionsData = {"questions": {}}
+			for(let i = 0; i < document.querySelectorAll(".question-input").length; i++) {
+				newQuestionsData["questions"][i] = document.querySelectorAll(".question-input")[i].value
+			}
+
+
+
+			const postData = await axios.post("/panel/basic-job-data", newJobData)
+			.then(res => {
+				console.log(res)
+				if(res.status == 200) {
+					console.log("Data saved successfully");
+				}
+			})
+			console.log("Returning");
+			return true
+		}
+
+		document.querySelector(".nextstepbutton").onclick = function () {
+        saveQuestionsDetails();
+        if (refJobId) {
+          window.location.href = `/panel/onboarding-ai-settings?refJobId=${refJobId}`;
+        } else {
+          window.location.href = `/panel/onboarding-ai-settings`;
+        }
+      };
+
+		for(let eleCount = 0; eleCount < document.querySelectorAll(".jobstep").length; eleCount++) {
+			document.querySelectorAll(".jobstep")[eleCount].onclick = function() {
+				saveQuestionsDetails()
+			}
+		}
+
+		function deleteQuestionDiv(element) {
+            var parentDiv = element.parentNode;
+			parentDiv.remove();
+          }
+
+		// AI
+		function getAIQuestions(elementIndex) {
+			document.querySelectorAll(".aiInterviewQuestion")[elementIndex].innerHTML = `Generating...`
+			document.querySelectorAll(".aiInterviewQuestion")[elementIndex].disabled = true
+			fetch("/panel/ai_interview_questions").then(response => {
+				if (!response.ok) {
+				throw new Error('Some information is missing. Please provide it to our AI helper.');
+				}
+				document.querySelectorAll(".aiInterviewQuestion")[elementIndex].innerHTML = `Rewrite with AI<i class="fa-light fa-wand-magic-sparkles ml-2"></i>`
+				document.querySelectorAll(".aiInterviewQuestion")[elementIndex].disabled = false
+				// Continue processing the response
+				return response.json();
+			}).then(data => {
+				if("message" in data) {
+					document.querySelectorAll(".question-input")[elementIndex].value = data["message"]["content"]
+				}
+			}).catch(error => {
+				document.querySelectorAll(".aiInterviewQuestion")[elementIndex].innerHTML = `Rewrite with AI<i class="fa-light fa-wand-magic-sparkles ml-2"></i>`
+				document.querySelectorAll(".aiInterviewQuestion")[elementIndex].disabled = false
+				let type = 'error';
+				let icon = 'fa-solid fa-circle-exclamation';
+				let title = 'Error';
+				let text = "Some information is missing. Please provide it to our AI helper.";
+				createToast(type, icon, title, text, 5000);
+			})
+		}
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="./static/js/toasts.js"></script>
+    <script src="./static/js/main.js"></script>
+</body>
+
+</html>

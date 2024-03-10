@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>JobSound - New Era of Voice Interviews</title>
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-regular.css"
+    />
+
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <link rel="stylesheet" href="./static/css/toasts.css" />
+
+    <link rel="stylesheet" href="https://jobsound.ai/css/mainfront.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="relative">
+    <div class="grdbck absolute h-screen w-full z-[-99999]"></div>
+
+    <div id="message-wrap" class="absolute z-[999] grdbck h-screen w-full">
+      <div id="message"><h1>Your meeting will begin in</h1></div>
+      <!-- Move the message div outside the countdown div -->
+
+      <div id="wrap">
+        <div class="countdown">
+          <div class="c"></div>
+          <div class="o"></div>
+          <div class="u"></div>
+          <div class="n"></div>
+          <div class="t"></div>
+        </div>
+      </div>
+
+      <svg>
+        <defs>
+          <filter id="filter">
+            <feGaussianBlur
+              in="SourceGraphic"
+              stdDeviation="18"
+              result="blur"
+            />
+            <feColorMatrix
+              in="blur"
+              mode="matrix"
+              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10"
+              result="filter"
+            />
+            <feComposite in="SourceGraphic" in2="filter" operator="atop" />
+          </filter>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="grdbck">
+      <div
+        class="border-b border-gray-700 flex justify-between items-center pb-6 pt-6 px-20"
+      >
+        <div class="-mb-px flex flex-col">
+          <p class="text-xs font-medium tracking-tight text-white sm:text-md">
+            Tuesday, November 29,2024
+          </p>
+          <h1 class="text-2xl font-bold tracking-tight text-white sm:text-2xl">
+            Backend Developer Interview
+          </h1>
+        </div>
+        <div>
+          <p
+            class="text-xs font-medium tracking-tight text-white sm:text-md text-count"
+          >
+            00:00:00
+          </p>
+        </div>
+      </div>
+      <div class="py-4 flex justify-around">
+        <div
+          class="rounded-2xl bg-gray-800 px-8 py-10 w-[40%] text-center relative talking"
+        >
+          <div class="absolute top-6 right-8 leading-6 text-gray-400 voice-1">
+            <span class="width-[5px] voice-out-1 voice-in-1"></span>
+            <span class="width-[5px] voice-out-2 voice-in-2"></span>
+            <span class="width-[5px] voice-out-3 voice-in-3"></span>
+            <span class="width-[5px] voice-out-4 voice-in-4"></span>
+            <span class="width-[5px] voice-out-5 voice-in-5"></span>
+          </div>
+          <img
+            class="mx-auto h-48 w-48 rounded-full md:h-45 md:w-45"
+            src="../static/images/profile.jpg"
+            alt=""
+          />
+          <h3
+            class="mt-6 text-base font-semibold leading-7 tracking-tight text-white"
+          >
+            Jonathan Rick
+          </h3>
+          <p class="text-sm leading-6 text-gray-400">Principal AI HR</p>
+        </div>
+        <div class="rounded-2xl bg-gray-800 px-8 py-10 w-[40%] text-center">
+          <img
+            class="mx-auto h-48 w-48 rounded-full md:h-45 md:w-45"
+            src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=8&amp;w=1024&amp;h=1024&amp;q=80"
+            alt=""
+          />
+          <h3
+            class="mt-6 text-base font-semibold leading-7 tracking-tight text-white"
+          >
+            John Dewi
+          </h3>
+          <p class="text-sm leading-6 text-gray-400">Backend Developer</p>
+        </div>
+      </div>
+
+      <div class="py-4 flex justify-center">
+        <div class="rounded-2xl bg-gray-800 px-2 py-2 flex w-1/2 items-center">
+          <div class="flex text-gray-400 voice-2">
+            <span class="width-[5px] voice2-out-1 voice2-in-1"></span>
+            <span class="width-[5px] voice2-out-2 voice2-in-2"></span>
+            <span class="width-[5px] voice2-out-3 voice2-in-3"></span>
+            <span class="width-[5px] voice2-out-4 voice2-in-4"></span>
+            <span class="width-[5px] voice2-out-5 voice2-in-5"></span>
+            <span class="width-[5px] voice2-out-1 voice2-in-1"></span>
+            <span class="width-[5px] voice2-out-2 voice2-in-2"></span>
+            <span class="width-[5px] voice2-out-3 voice2-in-3"></span>
+            <span class="width-[5px] voice2-out-4 voice2-in-4"></span>
+            <span class="width-[5px] voice2-out-5 voice2-in-5"></span>
+          </div>
+          <div>
+            <h3
+              class="text-sm font-medium leading-7 tracking-tight text-white ml-4 mr-4"
+            >
+              it's been a long time since i use my toner. i want to find a new
+              product that fit with my skin type, what do you recommend?
+            </h3>
+          </div>
+        </div>
+      </div>
+
+      <div class="py-4 flex justify-center">
+        <button class="mic-on-off">
+          <i
+            id="micIcon"
+            class="text-xl rounded-2xl hover:bg-gray-700 flex justify-center items-center bg-gray-800 w-12 h-12 fa-light fa-microphone text-white"
+          ></i>
+        </button>
+        <a href="./job-page-error-meeting.html">
+          <button
+            class="leave-meeting bg-red-700 ml-4 px-8 h-12 flex justify-center items-center text-md font-bold rounded-2xl text-white hover:bg-red-600"
+          >
+            End Meeting
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="./static/js/toasts.js"></script>
+    <script src="./static/js/main.js"></script>
+  </body>
+</html>

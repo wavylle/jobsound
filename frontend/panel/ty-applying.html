@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JobSound</title>
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-regular.css"
+    />
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <link rel="stylesheet" href="./static/css/toasts.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://saasblocks-preview-tdg1-prd.fly.dev/_next/static/css/362dbacb9546c5a0.css"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="login-page">
+    <section class="login-page">
+      <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div class="notifications"></div>
+          <!-- <a href="/"><h1 class="logo">JobSound</h1></a> -->
+          <img src="../static/images/check.png" alt="">
+          <!-- <h1
+            class="mt-10 text-center leading-9 tracking-tight text-white"
+          >
+          Your application for the job has been received successfully. The link for your interview will be sent to your email.
+          </h1> -->
+          <p class="mt-1 text-center text-sm leading-6 text-white">Your application for the job has been received successfully. The link for your interview will be sent to your email.</p>
+        </div>
+
+        
+      </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./static/js/toasts.js"></script>
+    <script src="./static/js/main.js"></script>
+    <script src="./static/js/signup.js"></script>
+    <script>
+      function showPassword() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
+  </body>
+</html>

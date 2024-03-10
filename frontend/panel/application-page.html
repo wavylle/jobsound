@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>JobSound - New Era of Voice Interviews</title>
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-regular.css"
+    />
+
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <link rel="stylesheet" href="./static/css/toasts.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://jobsound.ai/css/mainfront.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-900">
+    <!-- <nav class="relative z-20 flex shrink-0 items-center space-x-2 bg-gray-900 py-3 px-4 sm:px-6"><button type="button"
+
+			class="inline-flex cursor-pointer items-center justify-center rounded-xl border-none border-transparent bg-transparent p-2.5 font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text"><svg
+
+				xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+
+				stroke="currentColor" aria-hidden="true" class="h-6 w-6">
+
+				<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"></path>
+
+			</svg></button><a href="#">
+
+			<h1 class="logo">JobSound</h1>
+
+		</a>
+
+		<div class="flex flex-1 space-x-1.5 px-4"><a href="#"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-secondary bg-secondary px-3 py-2 text-xs font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80">Home</a><a
+
+				href="#"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">Features</a><a
+
+				href="#"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">How it Works</a><a
+
+				href="#"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">Pricing</a>
+
+		</div>
+
+		<div class="flex items-center space-x-3"><a href="./signin.html"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-secondary bg-secondary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80">Sign
+
+				in</a><a href="./signup.html"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-primary-accent hover:bg-primary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-primary disabled:hover:bg-primary disabled:hover:text-white dark:focus:ring-white/80">Sign
+
+				up</a></div>
+
+	</nav> -->
+
+    <!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/forms'),
+    ],
+  }
+  ```
+-->
+    <div class="notifications"></div>
+    <form class="applicationForm" enctype="multipart/form-data">
+      <div class="space-y-12">
+        <div
+          class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-300/10 pb-12 md:grid-cols-3 p-20"
+        >
+          <div>
+            <h2 class="text-base font-semibold leading-7 text-white">
+              Personal Information
+            </h2>
+            <p class="mt-1 text-sm leading-6 text-gray-400">
+              Use a permanent address where you can receive mail.
+            </p>
+          </div>
+
+          <div
+            class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2"
+          >
+            <div class="sm:col-span-3">
+              <label
+                for="first-name"
+                class="block text-sm font-medium leading-6 text-white"
+                >First name</label
+              >
+              <div class="mt-2">
+                <input
+                  placeholder="Your Name"
+                  type="text"
+                  name="first-name"
+                  id="first-name"
+                  autocomplete="given-name"
+                  class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-900"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label
+                for="last-name"
+                class="block text-sm font-medium leading-6 text-white"
+                >Last name</label
+              >
+              <div class="mt-2">
+                <input
+                  placeholder="Your Last Name"
+                  type="text"
+                  name="last-name"
+                  id="last-name"
+                  autocomplete="family-name"
+                  class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-900"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-4">
+              <label
+                for="email"
+                class="block text-sm font-medium leading-6 text-white"
+                >Email address</label
+              >
+              <div class="mt-2">
+                <input
+                  placeholder="Your Email Address"
+                  id="email"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-900"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-2">
+              <label
+                for="country"
+                class="block text-sm font-medium leading-6 text-white"
+                >Country</label
+              >
+              <div class="mt-2">
+                <select
+                  id="country"
+                  required
+                  name="country"
+                  autocomplete="country-name"
+                  class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6 bg-gray-900 pl-2 pr-2"
+                >
+                  <option value="Afghanistan">Afghanistan</option>
+                  <option value="Åland Islands">Åland Islands</option>
+                  <option value="Albania">Albania</option>
+                  <option value="Algeria">Algeria</option>
+                  <option value="American Samoa">American Samoa</option>
+                  <option value="Andorra">Andorra</option>
+                  <option value="Angola">Angola</option>
+                  <option value="Anguilla">Anguilla</option>
+                  <option value="Antarctica">Antarctica</option>
+                  <option value="Antigua and Barbuda">
+                    Antigua and Barbuda
+                  </option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Armenia">Armenia</option>
+                  <option value="Aruba">Aruba</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Austria">Austria</option>
+                  <option value="Azerbaijan">Azerbaijan</option>
+                  <option value="Bahamas">Bahamas</option>
+                  <option value="Bahrain">Bahrain</option>
+                  <option value="Bangladesh">Bangladesh</option>
+                  <option value="Barbados">Barbados</option>
+                  <option value="Belarus">Belarus</option>
+                  <option value="Belgium">Belgium</option>
+                  <option value="Belize">Belize</option>
+                  <option value="Benin">Benin</option>
+                  <option value="Bermuda">Bermuda</option>
+                  <option value="Bhutan">Bhutan</option>
+                  <option value="Bolivia">Bolivia</option>
+                  <option value="Bosnia and Herzegovina">
+                    Bosnia and Herzegovina
+                  </option>
+                  <option value="Botswana">Botswana</option>
+                  <option value="Bouvet Island">Bouvet Island</option>
+                  <option value="Brazil">Brazil</option>
+                  <option value="British Indian Ocean Territory">
+                    British Indian Ocean Territory
+                  </option>
+                  <option value="Brunei Darussalam">Brunei Darussalam</option>
+                  <option value="Bulgaria">Bulgaria</option>
+                  <option value="Burkina Faso">Burkina Faso</option>
+                  <option value="Burundi">Burundi</option>
+                  <option value="Cambodia">Cambodia</option>
+                  <option value="Cameroon">Cameroon</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Cape Verde">Cape Verde</option>
+                  <option value="Cayman Islands">Cayman Islands</option>
+                  <option value="Central African Republic">
+                    Central African Republic
+                  </option>
+                  <option value="Chad">Chad</option>
+                  <option value="Chile">Chile</option>
+                  <option value="China">China</option>
+                  <option value="Christmas Island">Christmas Island</option>
+                  <option value="Cocos (Keeling) Islands">
+                    Cocos (Keeling) Islands
+                  </option>
+                  <option value="Colombia">Colombia</option>
+                  <option value="Comoros">Comoros</option>
+                  <option value="Congo">Congo</option>
+                  <option value="Congo, The Democratic Republic of The">
+                    Congo, The Democratic Republic of The
+                  </option>
+                  <option value="Cook Islands">Cook Islands</option>
+                  <option value="Costa Rica">Costa Rica</option>
+                  <option value="Cote D'ivoire">Cote D'ivoire</option>
+                  <option value="Croatia">Croatia</option>
+                  <option value="Cuba">Cuba</option>
+                  <option value="Cyprus">Cyprus</option>
+                  <option value="Czech Republic">Czech Republic</option>
+                  <option value="Denmark">Denmark</option>
+                  <option value="Djibouti">Djibouti</option>
+                  <option value="Dominica">Dominica</option>
+                  <option value="Dominican Republic">Dominican Republic</option>
+                  <option value="Ecuador">Ecuador</option>
+                  <option value="Egypt">Egypt</option>
+                  <option value="El Salvador">El Salvador</option>
+                  <option value="Equatorial Guinea">Equatorial Guinea</option>
+                  <option value="Eritrea">Eritrea</option>
+                  <option value="Estonia">Estonia</option>
+                  <option value="Ethiopia">Ethiopia</option>
+                  <option value="Falkland Islands (Malvinas)">
+                    Falkland Islands (Malvinas)
+                  </option>
+                  <option value="Faroe Islands">Faroe Islands</option>
+                  <option value="Fiji">Fiji</option>
+                  <option value="Finland">Finland</option>
+                  <option value="France">France</option>
+                  <option value="French Guiana">French Guiana</option>
+                  <option value="French Polynesia">French Polynesia</option>
+                  <option value="French Southern Territories">
+                    French Southern Territories
+                  </option>
+                  <option value="Gabon">Gabon</option>
+                  <option value="Gambia">Gambia</option>
+                  <option value="Georgia">Georgia</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Ghana">Ghana</option>
+                  <option value="Gibraltar">Gibraltar</option>
+                  <option value="Greece">Greece</option>
+                  <option value="Greenland">Greenland</option>
+                  <option value="Grenada">Grenada</option>
+                  <option value="Guadeloupe">Guadeloupe</option>
+                  <option value="Guam">Guam</option>
+                  <option value="Guatemala">Guatemala</option>
+                  <option value="Guernsey">Guernsey</option>
+                  <option value="Guinea">Guinea</option>
+                  <option value="Guinea-bissau">Guinea-bissau</option>
+                  <option value="Guyana">Guyana</option>
+                  <option value="Haiti">Haiti</option>
+                  <option value="Heard Island and Mcdonald Islands">
+                    Heard Island and Mcdonald Islands
+                  </option>
+                  <option value="Holy See (Vatican City State)">
+                    Holy See (Vatican City State)
+                  </option>
+                  <option value="Honduras">Honduras</option>
+                  <option value="Hong Kong">Hong Kong</option>
+                  <option value="Hungary">Hungary</option>
+                  <option value="Iceland">Iceland</option>
+                  <option value="India">India</option>
+                  <option value="Indonesia">Indonesia</option>
+                  <option value="Iran, Islamic Republic of">
+                    Iran, Islamic Republic of
+                  </option>
+                  <option value="Iraq">Iraq</option>
+                  <option value="Ireland">Ireland</option>
+                  <option value="Isle of Man">Isle of Man</option>
+                  <option value="Israel">Israel</option>
+                  <option value="Italy">Italy</option>
+                  <option value="Jamaica">Jamaica</option>
+                  <option value="Japan">Japan</option>
+                  <option value="Jersey">Jersey</option>
+                  <option value="Jordan">Jordan</option>
+                  <option value="Kazakhstan">Kazakhstan</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Kiribati">Kiribati</option>
+                  <option value="Korea, Democratic People's Republic of">
+                    Korea, Democratic People's Republic of
+                  </option>
+                  <option value="Korea, Republic of">Korea, Republic of</option>
+                  <option value="Kuwait">Kuwait</option>
+                  <option value="Kyrgyzstan">Kyrgyzstan</option>
+                  <option value="Lao People's Democratic Republic">
+                    Lao People's Democratic Republic
+                  </option>
+                  <option value="Latvia">Latvia</option>
+                  <option value="Lebanon">Lebanon</option>
+                  <option value="Lesotho">Lesotho</option>
+                  <option value="Liberia">Liberia</option>
+                  <option value="Libyan Arab Jamahiriya">
+                    Libyan Arab Jamahiriya
+                  </option>
+                  <option value="Liechtenstein">Liechtenstein</option>
+                  <option value="Lithuania">Lithuania</option>
+                  <option value="Luxembourg">Luxembourg</option>
+                  <option value="Macao">Macao</option>
+                  <option value="Macedonia, The Former Yugoslav Republic of">
+                    Macedonia, The Former Yugoslav Republic of
+                  </option>
+                  <option value="Madagascar">Madagascar</option>
+                  <option value="Malawi">Malawi</option>
+                  <option value="Malaysia">Malaysia</option>
+                  <option value="Maldives">Maldives</option>
+                  <option value="Mali">Mali</option>
+                  <option value="Malta">Malta</option>
+                  <option value="Marshall Islands">Marshall Islands</option>
+                  <option value="Martinique">Martinique</option>
+                  <option value="Mauritania">Mauritania</option>
+                  <option value="Mauritius">Mauritius</option>
+                  <option value="Mayotte">Mayotte</option>
+                  <option value="Mexico">Mexico</option>
+                  <option value="Micronesia, Federated States of">
+                    Micronesia, Federated States of
+                  </option>
+                  <option value="Moldova, Republic of">
+                    Moldova, Republic of
+                  </option>
+                  <option value="Monaco">Monaco</option>
+                  <option value="Mongolia">Mongolia</option>
+                  <option value="Montenegro">Montenegro</option>
+                  <option value="Montserrat">Montserrat</option>
+                  <option value="Morocco">Morocco</option>
+                  <option value="Mozambique">Mozambique</option>
+                  <option value="Myanmar">Myanmar</option>
+                  <option value="Namibia">Namibia</option>
+                  <option value="Nauru">Nauru</option>
+                  <option value="Nepal">Nepal</option>
+                  <option value="Netherlands">Netherlands</option>
+                  <option value="Netherlands Antilles">
+                    Netherlands Antilles
+                  </option>
+                  <option value="New Caledonia">New Caledonia</option>
+                  <option value="New Zealand">New Zealand</option>
+                  <option value="Nicaragua">Nicaragua</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="Niue">Niue</option>
+                  <option value="Norfolk Island">Norfolk Island</option>
+                  <option value="Northern Mariana Islands">
+                    Northern Mariana Islands
+                  </option>
+                  <option value="Norway">Norway</option>
+                  <option value="Oman">Oman</option>
+                  <option value="Pakistan">Pakistan</option>
+                  <option value="Palau">Palau</option>
+                  <option value="Palestinian Territory, Occupied">
+                    Palestinian Territory, Occupied
+                  </option>
+                  <option value="Panama">Panama</option>
+                  <option value="Papua New Guinea">Papua New Guinea</option>
+                  <option value="Paraguay">Paraguay</option>
+                  <option value="Peru">Peru</option>
+                  <option value="Philippines">Philippines</option>
+                  <option value="Pitcairn">Pitcairn</option>
+                  <option value="Poland">Poland</option>
+                  <option value="Portugal">Portugal</option>
+                  <option value="Puerto Rico">Puerto Rico</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Reunion">Reunion</option>
+                  <option value="Romania">Romania</option>
+                  <option value="Russian Federation">Russian Federation</option>
+                  <option value="Rwanda">Rwanda</option>
+                  <option value="Saint Helena">Saint Helena</option>
+                  <option value="Saint Kitts and Nevis">
+                    Saint Kitts and Nevis
+                  </option>
+                  <option value="Saint Lucia">Saint Lucia</option>
+                  <option value="Saint Pierre and Miquelon">
+                    Saint Pierre and Miquelon
+                  </option>
+                  <option value="Saint Vincent and The Grenadines">
+                    Saint Vincent and The Grenadines
+                  </option>
+                  <option value="Samoa">Samoa</option>
+                  <option value="San Marino">San Marino</option>
+                  <option value="Sao Tome and Principe">
+                    Sao Tome and Principe
+                  </option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="Senegal">Senegal</option>
+                  <option value="Serbia">Serbia</option>
+                  <option value="Seychelles">Seychelles</option>
+                  <option value="Sierra Leone">Sierra Leone</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Slovakia">Slovakia</option>
+                  <option value="Slovenia">Slovenia</option>
+                  <option value="Solomon Islands">Solomon Islands</option>
+                  <option value="Somalia">Somalia</option>
+                  <option value="South Africa">South Africa</option>
+                  <option value="South Georgia and The South Sandwich Islands">
+                    South Georgia and The South Sandwich Islands
+                  </option>
+                  <option value="Spain">Spain</option>
+                  <option value="Sri Lanka">Sri Lanka</option>
+                  <option value="Sudan">Sudan</option>
+                  <option value="Suriname">Suriname</option>
+                  <option value="Svalbard and Jan Mayen">
+                    Svalbard and Jan Mayen
+                  </option>
+                  <option value="Swaziland">Swaziland</option>
+                  <option value="Sweden">Sweden</option>
+                  <option value="Switzerland">Switzerland</option>
+                  <option value="Syrian Arab Republic">
+                    Syrian Arab Republic
+                  </option>
+                  <option value="Taiwan">Taiwan</option>
+                  <option value="Tajikistan">Tajikistan</option>
+                  <option value="Tanzania, United Republic of">
+                    Tanzania, United Republic of
+                  </option>
+                  <option value="Thailand">Thailand</option>
+                  <option value="Timor-leste">Timor-leste</option>
+                  <option value="Togo">Togo</option>
+                  <option value="Tokelau">Tokelau</option>
+                  <option value="Tonga">Tonga</option>
+                  <option value="Trinidad and Tobago">
+                    Trinidad and Tobago
+                  </option>
+                  <option value="Tunisia">Tunisia</option>
+                  <option value="Turkey">Turkey</option>
+                  <option value="Turkmenistan">Turkmenistan</option>
+                  <option value="Turks and Caicos Islands">
+                    Turks and Caicos Islands
+                  </option>
+                  <option value="Tuvalu">Tuvalu</option>
+                  <option value="Uganda">Uganda</option>
+                  <option value="Ukraine">Ukraine</option>
+                  <option value="United Arab Emirates">
+                    United Arab Emirates
+                  </option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="United States">United States</option>
+                  <option value="United States Minor Outlying Islands">
+                    United States Minor Outlying Islands
+                  </option>
+                  <option value="Uruguay">Uruguay</option>
+                  <option value="Uzbekistan">Uzbekistan</option>
+                  <option value="Vanuatu">Vanuatu</option>
+                  <option value="Venezuela">Venezuela</option>
+                  <option value="Viet Nam">Viet Nam</option>
+                  <option value="Virgin Islands, British">
+                    Virgin Islands, British
+                  </option>
+                  <option value="Virgin Islands, U.S.">
+                    Virgin Islands, U.S.
+                  </option>
+                  <option value="Wallis and Futuna">Wallis and Futuna</option>
+                  <option value="Western Sahara">Western Sahara</option>
+                  <option value="Yemen">Yemen</option>
+                  <option value="Zambia">Zambia</option>
+                  <option value="Zimbabwe">Zimbabwe</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="phonenumber"
+                class="block text-sm font-semibold leading-6 text-white"
+                >Phone number</label
+              >
+              <div class="relative mt-2.5">
+                <div class="absolute inset-y-0 left-0 flex items-center">
+                  <label for="countrycode" class="sr-only">Countrycode</label>
+                  <select
+                    id="countrycode"
+                    name="countrycode"
+                    class="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-5 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                  >
+                    <option data-countryCode="DZ" value="213">213</option>
+                    <option data-countryCode="AD" value="376">376</option>
+                    <option data-countryCode="AO" value="244">244</option>
+                    <option data-countryCode="AI" value="1264">1264</option>
+                    <option data-countryCode="AG" value="1268">1268</option>
+                    <option data-countryCode="AR" value="54">54</option>
+                    <option data-countryCode="AM" value="374">374</option>
+                    <option data-countryCode="AW" value="297">297</option>
+                    <option data-countryCode="AU" value="61">61</option>
+                    <option data-countryCode="AT" value="43">43</option>
+                    <option data-countryCode="AZ" value="994">994</option>
+                    <option data-countryCode="BS" value="1242">1242</option>
+                    <option data-countryCode="BH" value="973">973</option>
+                    <option data-countryCode="BD" value="880">880</option>
+                    <option data-countryCode="BB" value="1246">1246</option>
+                    <option data-countryCode="BY" value="375">375</option>
+                    <option data-countryCode="BE" value="32">32</option>
+                    <option data-countryCode="BZ" value="501">501</option>
+                    <option data-countryCode="BJ" value="229">229</option>
+                    <option data-countryCode="BM" value="1441">1441</option>
+                    <option data-countryCode="BT" value="975">975</option>
+                    <option data-countryCode="BO" value="591">591</option>
+                    <option data-countryCode="BA" value="387">387</option>
+                    <option data-countryCode="BW" value="267">267</option>
+                    <option data-countryCode="BR" value="55">55</option>
+                    <option data-countryCode="BN" value="673">673</option>
+                    <option data-countryCode="BG" value="359">359</option>
+                    <option data-countryCode="BF" value="226">226</option>
+                    <option data-countryCode="BI" value="257">257</option>
+                    <option data-countryCode="KH" value="855">855</option>
+                    <option data-countryCode="CM" value="237">237</option>
+                    <option data-countryCode="CA" value="1">1</option>
+                    <option data-countryCode="CV" value="238">238</option>
+                    <option data-countryCode="KY" value="1345">1345</option>
+                    <option data-countryCode="CF" value="236">236</option>
+                    <option data-countryCode="CL" value="56">56</option>
+                    <option data-countryCode="CN" value="86">86</option>
+                    <option data-countryCode="CO" value="57">57</option>
+                    <option data-countryCode="KM" value="269">269</option>
+                    <option data-countryCode="CG" value="242">242</option>
+                    <option data-countryCode="CK" value="682">682</option>
+                    <option data-countryCode="CR" value="506">506</option>
+                    <option data-countryCode="HR" value="385">385</option>
+                    <option data-countryCode="CU" value="53">53</option>
+                    <option data-countryCode="CY" value="90392">90392</option>
+                    <option data-countryCode="CY" value="357">357</option>
+                    <option data-countryCode="CZ" value="42">42</option>
+                    <option data-countryCode="DK" value="45">45</option>
+                    <option data-countryCode="DJ" value="253">253</option>
+                    <option data-countryCode="DM" value="1809">1809</option>
+                    <option data-countryCode="DO" value="1809">1809</option>
+                    <option data-countryCode="EC" value="593">593</option>
+                    <option data-countryCode="EG" value="20">20</option>
+                    <option data-countryCode="SV" value="503">503</option>
+                    <option data-countryCode="GQ" value="240">240</option>
+                    <option data-countryCode="ER" value="291">291</option>
+                    <option data-countryCode="EE" value="372">372</option>
+                    <option data-countryCode="ET" value="251">251</option>
+                    <option data-countryCode="FK" value="500">500</option>
+                    <option data-countryCode="FO" value="298">298</option>
+                    <option data-countryCode="FJ" value="679">679</option>
+                    <option data-countryCode="FI" value="358">358</option>
+                    <option data-countryCode="FR" value="33">33</option>
+                    <option data-countryCode="GF" value="594">594</option>
+                    <option data-countryCode="PF" value="689">689</option>
+                    <option data-countryCode="GA" value="241">241</option>
+                    <option data-countryCode="GM" value="220">220</option>
+                    <option data-countryCode="GE" value="7880">7880</option>
+                    <option data-countryCode="DE" value="49">49</option>
+                    <option data-countryCode="GH" value="233">233</option>
+                    <option data-countryCode="GI" value="350">350</option>
+                    <option data-countryCode="GR" value="30">30</option>
+                    <option data-countryCode="GL" value="299">299</option>
+                    <option data-countryCode="GD" value="1473">1473</option>
+                    <option data-countryCode="GP" value="590">590</option>
+                    <option data-countryCode="GU" value="671">671</option>
+                    <option data-countryCode="GT" value="502">502</option>
+                    <option data-countryCode="GN" value="224">224</option>
+                    <option data-countryCode="GW" value="245">245</option>
+                    <option data-countryCode="GY" value="592">592</option>
+                    <option data-countryCode="HT" value="509">509</option>
+                    <option data-countryCode="HN" value="504">504</option>
+                    <option data-countryCode="HK" value="852">852</option>
+                    <option data-countryCode="HU" value="36">36</option>
+                    <option data-countryCode="IS" value="354">354</option>
+                    <option data-countryCode="IN" value="91">91</option>
+                    <option data-countryCode="ID" value="62">62</option>
+                    <option data-countryCode="IR" value="98">98</option>
+                    <option data-countryCode="IQ" value="964">964</option>
+                    <option data-countryCode="IE" value="353">353</option>
+                    <option data-countryCode="IL" value="972">972</option>
+                    <option data-countryCode="IT" value="39">39</option>
+                    <option data-countryCode="JM" value="1876">1876</option>
+                    <option data-countryCode="JP" value="81">81</option>
+                    <option data-countryCode="JO" value="962">962</option>
+                    <option data-countryCode="KZ" value="7">7</option>
+                    <option data-countryCode="KE" value="254">254</option>
+                    <option data-countryCode="KI" value="686">686</option>
+                    <option data-countryCode="KP" value="850">850</option>
+                    <option data-countryCode="KR" value="82">82</option>
+                    <option data-countryCode="KW" value="965">965</option>
+                    <option data-countryCode="KG" value="996">996</option>
+                    <option data-countryCode="LA" value="856">856</option>
+                    <option data-countryCode="LV" value="371">371</option>
+                    <option data-countryCode="LB" value="961">961</option>
+                    <option data-countryCode="LS" value="266">266</option>
+                    <option data-countryCode="LR" value="231">231</option>
+                    <option data-countryCode="LY" value="218">218</option>
+                    <option data-countryCode="LI" value="417">417</option>
+                    <option data-countryCode="LT" value="370">370</option>
+                    <option data-countryCode="LU" value="352">352</option>
+                    <option data-countryCode="MO" value="853">853</option>
+                    <option data-countryCode="MK" value="389">389</option>
+                    <option data-countryCode="MG" value="261">261</option>
+                    <option data-countryCode="MW" value="265">265</option>
+                    <option data-countryCode="MY" value="60">60</option>
+                    <option data-countryCode="MV" value="960">960</option>
+                    <option data-countryCode="ML" value="223">223</option>
+                    <option data-countryCode="MT" value="356">356</option>
+                    <option data-countryCode="MH" value="692">692</option>
+                    <option data-countryCode="MQ" value="596">596</option>
+                    <option data-countryCode="MR" value="222">222</option>
+                    <option data-countryCode="YT" value="269">269</option>
+                    <option data-countryCode="MX" value="52">52</option>
+                    <option data-countryCode="FM" value="691">691</option>
+                    <option data-countryCode="MD" value="373">373</option>
+                    <option data-countryCode="MC" value="377">377</option>
+                    <option data-countryCode="MN" value="976">976</option>
+                    <option data-countryCode="MS" value="1664">1664</option>
+                    <option data-countryCode="MA" value="212">212</option>
+                    <option data-countryCode="MZ" value="258">258</option>
+                    <option data-countryCode="MN" value="95">95</option>
+                    <option data-countryCode="NA" value="264">264</option>
+                    <option data-countryCode="NR" value="674">674</option>
+                    <option data-countryCode="NP" value="977">977</option>
+                    <option data-countryCode="NL" value="31">31</option>
+                    <option data-countryCode="NC" value="687">687</option>
+                    <option data-countryCode="NZ" value="64">64</option>
+                    <option data-countryCode="NI" value="505">505</option>
+                    <option data-countryCode="NE" value="227">227</option>
+                    <option data-countryCode="NG" value="234">234</option>
+                    <option data-countryCode="NU" value="683">683</option>
+                    <option data-countryCode="NF" value="672">672</option>
+                    <option data-countryCode="NP" value="670">670</option>
+                    <option data-countryCode="NO" value="47">47</option>
+                    <option data-countryCode="OM" value="968">968</option>
+                    <option data-countryCode="PW" value="680">680</option>
+                    <option data-countryCode="PA" value="507">507</option>
+                    <option data-countryCode="PG" value="675">675</option>
+                    <option data-countryCode="PY" value="595">595</option>
+                    <option data-countryCode="PE" value="51">51</option>
+                    <option data-countryCode="PH" value="63">63</option>
+                    <option data-countryCode="PL" value="48">48</option>
+                    <option data-countryCode="PT" value="351">351</option>
+                    <option data-countryCode="PR" value="1787">1787</option>
+                    <option data-countryCode="QA" value="974">974</option>
+                    <option data-countryCode="RE" value="262">262</option>
+                    <option data-countryCode="RO" value="40">40</option>
+                    <option data-countryCode="RU" value="7">7</option>
+                    <option data-countryCode="RW" value="250">250</option>
+                    <option data-countryCode="SM" value="378">378</option>
+                    <option data-countryCode="ST" value="239">239</option>
+                    <option data-countryCode="SA" value="966">966</option>
+                    <option data-countryCode="SN" value="221">221</option>
+                    <option data-countryCode="CS" value="381">381</option>
+                    <option data-countryCode="SC" value="248">248</option>
+                    <option data-countryCode="SL" value="232">232</option>
+                    <option data-countryCode="SG" value="65">65</option>
+                    <option data-countryCode="SK" value="421">421</option>
+                    <option data-countryCode="SI" value="386">386</option>
+                    <option data-countryCode="SB" value="677">677</option>
+                    <option data-countryCode="SO" value="252">252</option>
+                    <option data-countryCode="ZA" value="27">27</option>
+                    <option data-countryCode="ES" value="34">34</option>
+                    <option data-countryCode="LK" value="94">94</option>
+                    <option data-countryCode="SH" value="290">290</option>
+                    <option data-countryCode="KN" value="1869">1869</option>
+                    <option data-countryCode="SC" value="1758">1758</option>
+                    <option data-countryCode="SD" value="249">249</option>
+                    <option data-countryCode="SR" value="597">597</option>
+                    <option data-countryCode="SZ" value="268">268</option>
+                    <option data-countryCode="SE" value="46">46</option>
+                    <option data-countryCode="CH" value="41">41</option>
+                    <option data-countryCode="SI" value="963">963</option>
+                    <option data-countryCode="TW" value="886">886</option>
+                    <option data-countryCode="TJ" value="7">7</option>
+                    <option data-countryCode="TH" value="66">66</option>
+                    <option data-countryCode="TG" value="228">228</option>
+                    <option data-countryCode="TO" value="676">676</option>
+                    <option data-countryCode="TT" value="1868">1868</option>
+                    <option data-countryCode="TN" value="216">216</option>
+                    <option data-countryCode="TR" value="90">90</option>
+                    <option data-countryCode="TM" value="7">7</option>
+                    <option data-countryCode="TM" value="993">993</option>
+                    <option data-countryCode="TC" value="1649">1649</option>
+                    <option data-countryCode="TV" value="688">688</option>
+                    <option data-countryCode="UG" value="256">256</option>
+                    <option data-countryCode="GB" value="44">44</option>
+                    <option data-countryCode="UA" value="380">380</option>
+                    <option data-countryCode="AE" value="971">971</option>
+                    <option data-countryCode="UY" value="598">598</option>
+                    <option data-countryCode="US" value="1">1</option>
+                    <option data-countryCode="UZ" value="7">7</option>
+                    <option data-countryCode="VU" value="678">678</option>
+                    <option data-countryCode="VA" value="379">379</option>
+                    <option data-countryCode="VE" value="58">58</option>
+                    <option data-countryCode="VN" value="84">84</option>
+                    <option data-countryCode="VG" value="84">1284</option>
+                    <option data-countryCode="VI" value="84">1340</option>
+                    <option data-countryCode="WF" value="681">681</option>
+                    <option data-countryCode="YE" value="969">969</option>
+                    <option data-countryCode="YE" value="967">967</option>
+                    <option data-countryCode="ZM" value="260">260</option>
+                    <option data-countryCode="ZW" value="263">263</option>
+                  </select>
+                  <svg
+                    class="pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                </div>
+                <input
+                  type="tel"
+                  name="phonenumber"
+                  id="phonenumber"
+                  autocomplete="tel"
+                  class="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-white shadow-sm ring-1 ring-inset bg-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-gray-300/10 pb-12 md:grid-cols-3 p-20"
+        >
+          <div>
+            <h2 class="text-base font-semibold leading-7 text-white">
+              Profile
+            </h2>
+            <p class="mt-1 text-sm leading-6 text-gray-400">
+              This information will be displayed publicly so be careful what you
+              share.
+            </p>
+          </div>
+
+          <div
+            class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 md:col-span-2"
+          >
+            <div class="sm:col-span-4">
+              <label
+                for="website"
+                class="block text-sm font-medium leading-6 text-white"
+                >Profile</label
+              >
+              <div class="mt-2">
+                <div
+                  class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md"
+                >
+                  <span
+                    class="flex select-none items-center pl-3 text-gray-400 sm:text-sm"
+                    >https://</span
+                  >
+                  <input
+                    type="text"
+                    required
+                    name="website"
+                    id="website"
+                    class="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    placeholder="www.example.com"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="experience"
+                class="block text-sm font-medium leading-6 text-white"
+                >Years of Experience</label
+              >
+              <div class="mt-2 w-full">
+                <div
+                  class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-full"
+                >
+                  <input
+                    type="text"
+                    name="experience"
+                    id="experience"
+                    class="pl-3 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    placeholder="3 years"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="salary_expectation"
+                class="block text-sm font-medium leading-6 text-white"
+                >Salary Expectation (USD)</label
+              >
+              <div class="mt-2 w-full">
+                <div
+                  class="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-full"
+                >
+                  <input
+                    type="number"
+                    name="salary_expectation"
+                    id="salary_expectation"
+                    class="pl-3 block flex-1 border-0 bg-transparent py-1.5 pl-1 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                    placeholder="30000"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="about"
+                class="block text-sm font-medium leading-6 text-white"
+                >About</label
+              >
+              <div class="mt-2">
+                <textarea
+                  required
+                  placeholder="Tell us about yourself"
+                  id="about"
+                  name="about"
+                  rows="3"
+                  class="pl-2 pr-2 bg-gray-900 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                ></textarea>
+              </div>
+              <p class="mt-3 text-sm leading-6 text-gray-400">
+                Write a few sentences about yourself.
+              </p>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="photo"
+                class="block text-sm font-medium leading-6 text-white"
+                >Photo</label
+              >
+              <div class="mt-2 flex items-center gap-x-3">
+                <!-- <svg class="h-12 w-12 text-gray-400" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+				<path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" clip-rule="evenodd" />
+			  </svg> -->
+                <img
+                  src="../static/images/profile.jpg"
+                  alt="Profile Image"
+                  id="profileImage"
+                  style="border-radius: 50%; width: 60px; height: 60px"
+                />
+                <input
+                  style="display: none"
+                  type="file"
+                  name="profile-upload"
+                  id="profileUpload"
+                  accept="image/*"
+                  onchange="displayProfileImage(this)"
+                />
+                <button
+                  type="button"
+                  class="rounded-md bg-gray-900 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-indigo-600 hover:ring-indigo-600"
+                  onclick="document.getElementById('profileUpload').click()"
+                >
+                  Upload
+                </button>
+              </div>
+            </div>
+
+            <div class="col-span-full">
+              <label
+                for="cover-photo"
+                class="block text-sm font-medium leading-6 text-white"
+                >Your CV</label
+              >
+              <div
+                class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-300/25 px-6 py-10"
+                id="dropArea"
+              >
+                <div class="text-center">
+                  <svg
+                    class="mx-auto h-12 w-12 text-gray-400"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  <div class="mt-4 flex text-sm leading-6 text-gray-400">
+                    <label
+                      for="file-upload"
+                      class="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                    >
+                      <span>Upload a file</span>
+                      <input
+                        id="file-upload"
+                        name="cv-upload"
+                        required
+                        type="file"
+                        class="sr-only"
+                        accept=".pdf,.doc,.docx"
+                        onchange="displayDocumentInfo(this)"
+                      />
+                    </label>
+                    <p class="pl-1">or drag and drop (.pdf, .doc, .docx)</p>
+                  </div>
+                  <p
+                    class="text-xs leading-5 text-gray-400"
+                    id="documentName"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex items-center justify-end gap-x-6 pb-6 pr-12 pl-12">
+        <button
+          type="button"
+          class="text-sm font-semibold leading-6 text-white"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+
+    <section class="hero-container">
+      <footer class="px-4 pt-10 pb-18">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between space-y-4 lg:flex-row lg:space-y-0"
+        >
+          <div
+            class="flex flex-col items-center space-x-0 space-y-4 lg:flex-row lg:space-x-14 lg:space-y-0"
+          >
+            <a href="#">
+              <h1 class="logo">JobSound</h1>
+            </a>
+
+            <div
+              class="flex flex-col space-y-2 text-center text-sm font-semibold lg:flex-row lg:space-x-6 lg:space-y-0 lg:text-left"
+            >
+              <span>Copyright 2024</span
+              ><a href="#" class="font-semibold text-text hover:text-heading"
+                >Jobs Directory</a
+              ><a href="#" class="font-semibold text-text hover:text-heading"
+                >Terms of Service</a
+              ><a href="#" class="font-semibold text-text hover:text-heading"
+                >Privacy Policy</a
+              >
+            </div>
+          </div>
+
+          <div class="flex space-x-4">
+            <a href="#"
+              ><svg viewBox="0 0 32 32" class="h-8 w-8">
+                <circle cx="16" cy="16" r="16" fill="white"></circle>
+
+                <g clip-path="url(#slack_color)">
+                  <path
+                    d="M10.4381 18.499C10.4381 19.6114 9.53905 20.5105 8.42665 20.5105C7.31425 20.5105 6.41522 19.6114 6.41522 18.499C6.41522 17.3867 7.31425 16.4876 8.42672 16.4876H10.438V18.4991L10.4381 18.499ZM11.4438 18.499C11.4438 17.3867 12.3428 16.4876 13.4552 16.4876C14.5676 16.4876 15.4667 17.3867 15.4667 18.4991V23.5276C15.4667 24.64 14.5676 25.5391 13.4552 25.5391C12.3429 25.5391 11.4438 24.64 11.4438 23.5276V18.4991V18.499Z"
+                    fill="#E01E5A"
+                  ></path>
+
+                  <path
+                    d="M13.4552 10.4228C12.3428 10.4228 11.4437 9.52382 11.4437 8.41142C11.4437 7.29902 12.3429 6.39999 13.4552 6.39999C14.5676 6.39999 15.4667 7.29902 15.4667 8.41142V10.4229H13.4552L13.4552 10.4228ZM13.4552 11.4438C14.5676 11.4438 15.4667 12.3428 15.4667 13.4552C15.4667 14.5676 14.5676 15.4667 13.4552 15.4667H8.41149C7.29902 15.4667 6.39999 14.5676 6.39999 13.4552C6.39999 12.3429 7.29902 11.4438 8.41142 11.4438H13.4552H13.4552Z"
+                    fill="#36C5F0"
+                  ></path>
+
+                  <path
+                    d="M21.5162 13.4552C21.5162 12.3428 22.4153 11.4437 23.5276 11.4437C24.64 11.4437 25.5391 12.3428 25.5391 13.4552C25.5391 14.5676 24.64 15.4667 23.5276 15.4667H21.5162V13.4552V13.4552ZM20.5105 13.4552C20.5105 14.5676 19.6114 15.4667 18.499 15.4667C17.3867 15.4667 16.4876 14.5676 16.4876 13.4552V8.41149C16.4876 7.29902 17.3867 6.39999 18.499 6.39999C19.6113 6.39999 20.5104 7.29902 20.5104 8.41142V13.4552L20.5105 13.4552Z"
+                    fill="#2EB67D"
+                  ></path>
+
+                  <path
+                    d="M18.499 21.5162C19.6114 21.5162 20.5105 22.4153 20.5105 23.5276C20.5105 24.64 19.6114 25.5391 18.499 25.5391C17.3867 25.5391 16.4876 24.64 16.4876 23.5276V21.5162H18.4991H18.499ZM18.499 20.5105C17.3867 20.5105 16.4876 19.6114 16.4876 18.499C16.4876 17.3867 17.3867 16.4876 18.4991 16.4876H23.5428C24.6552 16.4876 25.5543 17.3867 25.5543 18.4991C25.5543 19.6114 24.6552 20.5105 23.5428 20.5105H18.4991H18.499Z"
+                    fill="#ECB22E"
+                  ></path>
+                </g>
+
+                <defs>
+                  <clipPath id="slack_color">
+                    <rect
+                      width="19.2"
+                      height="19.2"
+                      fill="white"
+                      transform="translate(6.39999 6.39999)"
+                    ></rect>
+                  </clipPath>
+                </defs></svg></a
+            ><a href="#"
+              ><svg viewBox="0 0 32 32" class="h-8 w-8">
+                <path
+                  d="M0 16C0 7.16344 7.16344 0 16 0V0C24.8366 0 32 7.16344 32 16V16C32 24.8366 24.8366 32 16 32V32C7.16344 32 0 24.8366 0 16V16Z"
+                  fill="#1D9BF0"
+                ></path>
+
+                <path
+                  d="M13.072 24.44C20.168 24.44 24.048 18.56 24.048 13.464C24.048 13.296 24.048 13.128 24.04 12.968C24.792 12.424 25.448 11.744 25.968 10.968C25.28 11.272 24.536 11.48 23.752 11.576C24.552 11.096 25.16 10.344 25.448 9.44C24.704 9.88 23.88 10.2 23 10.376C22.296 9.624 21.296 9.16 20.184 9.16C18.056 9.16 16.328 10.888 16.328 13.016C16.328 13.32 16.36 13.616 16.432 13.896C13.224 13.736 10.384 12.2 8.48003 9.864C8.15203 10.432 7.96003 11.096 7.96003 11.8C7.96003 13.136 8.64003 14.32 9.68003 15.008C9.04803 14.992 8.45603 14.816 7.93603 14.528C7.93603 14.544 7.93603 14.56 7.93603 14.576C7.93603 16.448 9.26403 18 11.032 18.36C10.712 18.448 10.368 18.496 10.016 18.496C9.76803 18.496 9.52803 18.472 9.28803 18.424C9.77603 19.96 11.2 21.072 12.888 21.104C11.568 22.136 9.90403 22.752 8.09603 22.752C7.78403 22.752 7.48003 22.736 7.17603 22.696C8.86403 23.8 10.896 24.44 13.072 24.44Z"
+                  fill="white"
+                ></path></svg
+            ></a>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <script>
+      function displayProfileImage(input) {
+        const file = input.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("profileImage").src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+
+      function displayDocumentInfo(input) {
+        const file = input.files[0];
+        if (file) {
+          document.getElementById("documentName").textContent = file.name;
+        }
+      }
+
+      const dropArea = document.getElementById("dropArea");
+
+      dropArea.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropArea.classList.add("highlight");
+      });
+
+      dropArea.addEventListener("dragleave", () => {
+        dropArea.classList.remove("highlight");
+      });
+
+      dropArea.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropArea.classList.remove("highlight");
+
+        const files = e.dataTransfer.files;
+        handleFiles(files);
+      });
+
+      dropArea.addEventListener("click", () => {
+        document.getElementById("file-upload").click();
+      });
+
+      function handleFiles(files) {
+        for (const file of files) {
+          console.log("File:", file);
+          // You can handle the file here, for example, upload it to a server
+          document.getElementById("documentName").textContent = file.name;
+        }
+      }
+
+      // Get the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+
+      // Get the value of jobId from the query string
+      const jobId = urlParams.get("jobId");
+
+      document
+        .querySelector(".applicationForm")
+        .addEventListener("submit", function (event) {
+          if (jobId) {
+            event.preventDefault();
+            const formData = new FormData(this);
+
+            console.log(formData);
+
+            fetch(`/panel/apply?jobId=${jobId}`, {
+              method: "POST",
+              body: formData, // Payload is formData object
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data["status"] == true) {
+                  window.location.href = "/panel/application-successful";
+                  // let type = 'success';
+                  // let icon = 'fa-solid fa-circle-exclamation';
+                  // let title = 'Success';
+                  // let text = "You have successfully applied to this job.";
+                  // createToast(type, icon, title, text, 5000);
+                } else {
+                  let type = "error";
+                  let icon = "fa-solid fa-circle-exclamation";
+                  let title = "Error";
+                  let text = data["message"];
+                  createToast(type, icon, title, text, 5000);
+                }
+              });
+          }
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="./static/js/toasts.js"></script>
+    <script src="./static/js/main.js"></script>
+  </body>
+</html>

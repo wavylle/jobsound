@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>JobSound - New Era of Voice Interviews</title>
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-regular.css"
+    />
+
+    <link rel="stylesheet" href="./static/css/style.css" />
+    <link rel="stylesheet" href="./static/css/toasts.css" />
+
+    <link rel="stylesheet" href="https://jobsound.ai/css/mainfront.css" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      .pids-wrapper {
+        width: 100%;
+      }
+      .pid {
+        width: calc(10% - -15px);
+        height: 10px;
+        display: inline-block;
+        margin: 5px;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      /* Style for the audio player */
+      audio {
+        width: 100%;
+        display: block;
+        margin: 10px 0;
+        border-radius: 5px;
+        background-color: #b0bbc3;
+      }
+
+      /* Style for the audio controls */
+      audio::-webkit-media-controls-panel {
+        background-color: #b0bbc3;
+        border-radius: 5px;
+      }
+
+      /* Style for the audio controls buttons */
+      audio::-webkit-media-controls-play-button {
+        background-color: rgba(10, 14, 225, 0.62); /* Change the color here */
+        border-radius: 50%;
+        /* width: 25px;
+        height: 29px; */
+        /* margin: 0 5px; */
+      }
+
+      /* Style for the audio controls pause button */
+      audio::-webkit-media-controls-pause-button {
+        background-color: #555;
+        border-radius: 50%;
+        /* width: 25px;
+        height: 25px; */
+        margin: 0 5px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-900 bodyClass hidden">
+    <div class="notifications"></div>
+    <div
+      class="relative z-[999999] id-ps-popup"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"
+      ></div>
+      <form class="submitCandidateForm">
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div
+        class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+        >
+        <div
+              class="ring-1 ring-inset ring-gray-300 relative transform overflow-hidden rounded-lg bg-gray-900 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
+            >
+              <div>
+                <div class="">
+                  <div class="">
+                    <div class="mx-auto w-full max-w-2xl">
+                      <div class="mt-4 grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="first_name" class="block text-sm font-medium leading-6 text-white">First Name</label>
+                            <input type="text" name="first_name" id="first_name" class="bg-gray-900 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ps-4 pe-4 focus:outline-none" placeholder="Marcos" required autocomplete="given-name" />
+                        </div>
+                        <div>
+                            <label for="last_name" class="block text-sm font-medium leading-6 text-white">Last Name</label>
+                            <input type="text" name="last_name" id="last_name" class="bg-gray-900 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ps-4 pe-4 focus:outline-none" placeholder="Lazious" required autocomplete="family-name" />
+                        </div>
+                    </div>
+                    
+                      <div class="mt-4">
+                        <label
+                          for="email"
+                          class="block text-sm font-medium leading-6 text-white"
+                          >Email</label
+                        >
+                        <div class="mt-2">
+                          <input
+                            type="email"
+                            email="email"
+                            name="email"
+                            id="email"
+                            class="bg-gray-900 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ps-4 pe-4 focus:outline-none"
+                            placeholder="Marcos@gmail.com"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="mt-4">
+                        <label
+                          for="profile"
+                          class="block text-sm font-medium leading-6 text-white"
+                          >Profile Link</label
+                        >
+                        <div class="mt-2">
+                          <input
+                            type="profile"
+                            profile="profile"
+                            id="profile"
+                            class="bg-gray-900 block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ps-4 pe-4 focus:outline-none"
+                            placeholder="https://Marcoslazious.com"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="mt-4">
+                        <label
+                          for="phone-number"
+                          class="block text-sm font-semibold leading-6 text-white"
+                          >Phone number</label
+                        >
+                        <div class="relative mt-2.5">
+                          <div
+                            class="absolute inset-y-0 left-0 flex items-center"
+                          >
+                            <label for="country" class="sr-only">Country</label>
+                            <select
+                              id="countrycode"
+                              name="countrycode"
+                              class="h-full rounded-md border-0 bg-transparent bg-none py-0 pl-4 pr-5 text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm"
+                            >
+                              <option data-countryCode="DZ" value="213">
+                                213
+                              </option>
+                              <option data-countryCode="AD" value="376">
+                                376
+                              </option>
+                              <option data-countryCode="AO" value="244">
+                                244
+                              </option>
+                              <option data-countryCode="AI" value="1264">
+                                1264
+                              </option>
+                              <option data-countryCode="AG" value="1268">
+                                1268
+                              </option>
+                              <option data-countryCode="AR" value="54">
+                                54
+                              </option>
+                              <option data-countryCode="AM" value="374">
+                                374
+                              </option>
+                              <option data-countryCode="AW" value="297">
+                                297
+                              </option>
+                              <option data-countryCode="AU" value="61">
+                                61
+                              </option>
+                              <option data-countryCode="AT" value="43">
+                                43
+                              </option>
+                              <option data-countryCode="AZ" value="994">
+                                994
+                              </option>
+                              <option data-countryCode="BS" value="1242">
+                                1242
+                              </option>
+                              <option data-countryCode="BH" value="973">
+                                973
+                              </option>
+                              <option data-countryCode="BD" value="880">
+                                880
+                              </option>
+                              <option data-countryCode="BB" value="1246">
+                                1246
+                              </option>
+                              <option data-countryCode="BY" value="375">
+                                375
+                              </option>
+                              <option data-countryCode="BE" value="32">
+                                32
+                              </option>
+                              <option data-countryCode="BZ" value="501">
+                                501
+                              </option>
+                              <option data-countryCode="BJ" value="229">
+                                229
+                              </option>
+                              <option data-countryCode="BM" value="1441">
+                                1441
+                              </option>
+                              <option data-countryCode="BT" value="975">
+                                975
+                              </option>
+                              <option data-countryCode="BO" value="591">
+                                591
+                              </option>
+                              <option data-countryCode="BA" value="387">
+                                387
+                              </option>
+                              <option data-countryCode="BW" value="267">
+                                267
+                              </option>
+                              <option data-countryCode="BR" value="55">
+                                55
+                              </option>
+                              <option data-countryCode="BN" value="673">
+                                673
+                              </option>
+                              <option data-countryCode="BG" value="359">
+                                359
+                              </option>
+                              <option data-countryCode="BF" value="226">
+                                226
+                              </option>
+                              <option data-countryCode="BI" value="257">
+                                257
+                              </option>
+                              <option data-countryCode="KH" value="855">
+                                855
+                              </option>
+                              <option data-countryCode="CM" value="237">
+                                237
+                              </option>
+                              <option data-countryCode="CA" value="1">1</option>
+                              <option data-countryCode="CV" value="238">
+                                238
+                              </option>
+                              <option data-countryCode="KY" value="1345">
+                                1345
+                              </option>
+                              <option data-countryCode="CF" value="236">
+                                236
+                              </option>
+                              <option data-countryCode="CL" value="56">
+                                56
+                              </option>
+                              <option data-countryCode="CN" value="86">
+                                86
+                              </option>
+                              <option data-countryCode="CO" value="57">
+                                57
+                              </option>
+                              <option data-countryCode="KM" value="269">
+                                269
+                              </option>
+                              <option data-countryCode="CG" value="242">
+                                242
+                              </option>
+                              <option data-countryCode="CK" value="682">
+                                682
+                              </option>
+                              <option data-countryCode="CR" value="506">
+                                506
+                              </option>
+                              <option data-countryCode="HR" value="385">
+                                385
+                              </option>
+                              <option data-countryCode="CU" value="53">
+                                53
+                              </option>
+                              <option data-countryCode="CY" value="90392">
+                                90392
+                              </option>
+                              <option data-countryCode="CY" value="357">
+                                357
+                              </option>
+                              <option data-countryCode="CZ" value="42">
+                                42
+                              </option>
+                              <option data-countryCode="DK" value="45">
+                                45
+                              </option>
+                              <option data-countryCode="DJ" value="253">
+                                253
+                              </option>
+                              <option data-countryCode="DM" value="1809">
+                                1809
+                              </option>
+                              <option data-countryCode="DO" value="1809">
+                                1809
+                              </option>
+                              <option data-countryCode="EC" value="593">
+                                593
+                              </option>
+                              <option data-countryCode="EG" value="20">
+                                20
+                              </option>
+                              <option data-countryCode="SV" value="503">
+                                503
+                              </option>
+                              <option data-countryCode="GQ" value="240">
+                                240
+                              </option>
+                              <option data-countryCode="ER" value="291">
+                                291
+                              </option>
+                              <option data-countryCode="EE" value="372">
+                                372
+                              </option>
+                              <option data-countryCode="ET" value="251">
+                                251
+                              </option>
+                              <option data-countryCode="FK" value="500">
+                                500
+                              </option>
+                              <option data-countryCode="FO" value="298">
+                                298
+                              </option>
+                              <option data-countryCode="FJ" value="679">
+                                679
+                              </option>
+                              <option data-countryCode="FI" value="358">
+                                358
+                              </option>
+                              <option data-countryCode="FR" value="33">
+                                33
+                              </option>
+                              <option data-countryCode="GF" value="594">
+                                594
+                              </option>
+                              <option data-countryCode="PF" value="689">
+                                689
+                              </option>
+                              <option data-countryCode="GA" value="241">
+                                241
+                              </option>
+                              <option data-countryCode="GM" value="220">
+                                220
+                              </option>
+                              <option data-countryCode="GE" value="7880">
+                                7880
+                              </option>
+                              <option data-countryCode="DE" value="49">
+                                49
+                              </option>
+                              <option data-countryCode="GH" value="233">
+                                233
+                              </option>
+                              <option data-countryCode="GI" value="350">
+                                350
+                              </option>
+                              <option data-countryCode="GR" value="30">
+                                30
+                              </option>
+                              <option data-countryCode="GL" value="299">
+                                299
+                              </option>
+                              <option data-countryCode="GD" value="1473">
+                                1473
+                              </option>
+                              <option data-countryCode="GP" value="590">
+                                590
+                              </option>
+                              <option data-countryCode="GU" value="671">
+                                671
+                              </option>
+                              <option data-countryCode="GT" value="502">
+                                502
+                              </option>
+                              <option data-countryCode="GN" value="224">
+                                224
+                              </option>
+                              <option data-countryCode="GW" value="245">
+                                245
+                              </option>
+                              <option data-countryCode="GY" value="592">
+                                592
+                              </option>
+                              <option data-countryCode="HT" value="509">
+                                509
+                              </option>
+                              <option data-countryCode="HN" value="504">
+                                504
+                              </option>
+                              <option data-countryCode="HK" value="852">
+                                852
+                              </option>
+                              <option data-countryCode="HU" value="36">
+                                36
+                              </option>
+                              <option data-countryCode="IS" value="354">
+                                354
+                              </option>
+                              <option data-countryCode="IN" value="91">
+                                91
+                              </option>
+                              <option data-countryCode="ID" value="62">
+                                62
+                              </option>
+                              <option data-countryCode="IR" value="98">
+                                98
+                              </option>
+                              <option data-countryCode="IQ" value="964">
+                                964
+                              </option>
+                              <option data-countryCode="IE" value="353">
+                                353
+                              </option>
+                              <option data-countryCode="IL" value="972">
+                                972
+                              </option>
+                              <option data-countryCode="IT" value="39">
+                                39
+                              </option>
+                              <option data-countryCode="JM" value="1876">
+                                1876
+                              </option>
+                              <option data-countryCode="JP" value="81">
+                                81
+                              </option>
+                              <option data-countryCode="JO" value="962">
+                                962
+                              </option>
+                              <option data-countryCode="KZ" value="7">7</option>
+                              <option data-countryCode="KE" value="254">
+                                254
+                              </option>
+                              <option data-countryCode="KI" value="686">
+                                686
+                              </option>
+                              <option data-countryCode="KP" value="850">
+                                850
+                              </option>
+                              <option data-countryCode="KR" value="82">
+                                82
+                              </option>
+                              <option data-countryCode="KW" value="965">
+                                965
+                              </option>
+                              <option data-countryCode="KG" value="996">
+                                996
+                              </option>
+                              <option data-countryCode="LA" value="856">
+                                856
+                              </option>
+                              <option data-countryCode="LV" value="371">
+                                371
+                              </option>
+                              <option data-countryCode="LB" value="961">
+                                961
+                              </option>
+                              <option data-countryCode="LS" value="266">
+                                266
+                              </option>
+                              <option data-countryCode="LR" value="231">
+                                231
+                              </option>
+                              <option data-countryCode="LY" value="218">
+                                218
+                              </option>
+                              <option data-countryCode="LI" value="417">
+                                417
+                              </option>
+                              <option data-countryCode="LT" value="370">
+                                370
+                              </option>
+                              <option data-countryCode="LU" value="352">
+                                352
+                              </option>
+                              <option data-countryCode="MO" value="853">
+                                853
+                              </option>
+                              <option data-countryCode="MK" value="389">
+                                389
+                              </option>
+                              <option data-countryCode="MG" value="261">
+                                261
+                              </option>
+                              <option data-countryCode="MW" value="265">
+                                265
+                              </option>
+                              <option data-countryCode="MY" value="60">
+                                60
+                              </option>
+                              <option data-countryCode="MV" value="960">
+                                960
+                              </option>
+                              <option data-countryCode="ML" value="223">
+                                223
+                              </option>
+                              <option data-countryCode="MT" value="356">
+                                356
+                              </option>
+                              <option data-countryCode="MH" value="692">
+                                692
+                              </option>
+                              <option data-countryCode="MQ" value="596">
+                                596
+                              </option>
+                              <option data-countryCode="MR" value="222">
+                                222
+                              </option>
+                              <option data-countryCode="YT" value="269">
+                                269
+                              </option>
+                              <option data-countryCode="MX" value="52">
+                                52
+                              </option>
+                              <option data-countryCode="FM" value="691">
+                                691
+                              </option>
+                              <option data-countryCode="MD" value="373">
+                                373
+                              </option>
+                              <option data-countryCode="MC" value="377">
+                                377
+                              </option>
+                              <option data-countryCode="MN" value="976">
+                                976
+                              </option>
+                              <option data-countryCode="MS" value="1664">
+                                1664
+                              </option>
+                              <option data-countryCode="MA" value="212">
+                                212
+                              </option>
+                              <option data-countryCode="MZ" value="258">
+                                258
+                              </option>
+                              <option data-countryCode="MN" value="95">
+                                95
+                              </option>
+                              <option data-countryCode="NA" value="264">
+                                264
+                              </option>
+                              <option data-countryCode="NR" value="674">
+                                674
+                              </option>
+                              <option data-countryCode="NP" value="977">
+                                977
+                              </option>
+                              <option data-countryCode="NL" value="31">
+                                31
+                              </option>
+                              <option data-countryCode="NC" value="687">
+                                687
+                              </option>
+                              <option data-countryCode="NZ" value="64">
+                                64
+                              </option>
+                              <option data-countryCode="NI" value="505">
+                                505
+                              </option>
+                              <option data-countryCode="NE" value="227">
+                                227
+                              </option>
+                              <option data-countryCode="NG" value="234">
+                                234
+                              </option>
+                              <option data-countryCode="NU" value="683">
+                                683
+                              </option>
+                              <option data-countryCode="NF" value="672">
+                                672
+                              </option>
+                              <option data-countryCode="NP" value="670">
+                                670
+                              </option>
+                              <option data-countryCode="NO" value="47">
+                                47
+                              </option>
+                              <option data-countryCode="OM" value="968">
+                                968
+                              </option>
+                              <option data-countryCode="PW" value="680">
+                                680
+                              </option>
+                              <option data-countryCode="PA" value="507">
+                                507
+                              </option>
+                              <option data-countryCode="PG" value="675">
+                                675
+                              </option>
+                              <option data-countryCode="PY" value="595">
+                                595
+                              </option>
+                              <option data-countryCode="PE" value="51">
+                                51
+                              </option>
+                              <option data-countryCode="PH" value="63">
+                                63
+                              </option>
+                              <option data-countryCode="PL" value="48">
+                                48
+                              </option>
+                              <option data-countryCode="PT" value="351">
+                                351
+                              </option>
+                              <option data-countryCode="PR" value="1787">
+                                1787
+                              </option>
+                              <option data-countryCode="QA" value="974">
+                                974
+                              </option>
+                              <option data-countryCode="RE" value="262">
+                                262
+                              </option>
+                              <option data-countryCode="RO" value="40">
+                                40
+                              </option>
+                              <option data-countryCode="RU" value="7">7</option>
+                              <option data-countryCode="RW" value="250">
+                                250
+                              </option>
+                              <option data-countryCode="SM" value="378">
+                                378
+                              </option>
+                              <option data-countryCode="ST" value="239">
+                                239
+                              </option>
+                              <option data-countryCode="SA" value="966">
+                                966
+                              </option>
+                              <option data-countryCode="SN" value="221">
+                                221
+                              </option>
+                              <option data-countryCode="CS" value="381">
+                                381
+                              </option>
+                              <option data-countryCode="SC" value="248">
+                                248
+                              </option>
+                              <option data-countryCode="SL" value="232">
+                                232
+                              </option>
+                              <option data-countryCode="SG" value="65">
+                                65
+                              </option>
+                              <option data-countryCode="SK" value="421">
+                                421
+                              </option>
+                              <option data-countryCode="SI" value="386">
+                                386
+                              </option>
+                              <option data-countryCode="SB" value="677">
+                                677
+                              </option>
+                              <option data-countryCode="SO" value="252">
+                                252
+                              </option>
+                              <option data-countryCode="ZA" value="27">
+                                27
+                              </option>
+                              <option data-countryCode="ES" value="34">
+                                34
+                              </option>
+                              <option data-countryCode="LK" value="94">
+                                94
+                              </option>
+                              <option data-countryCode="SH" value="290">
+                                290
+                              </option>
+                              <option data-countryCode="KN" value="1869">
+                                1869
+                              </option>
+                              <option data-countryCode="SC" value="1758">
+                                1758
+                              </option>
+                              <option data-countryCode="SD" value="249">
+                                249
+                              </option>
+                              <option data-countryCode="SR" value="597">
+                                597
+                              </option>
+                              <option data-countryCode="SZ" value="268">
+                                268
+                              </option>
+                              <option data-countryCode="SE" value="46">
+                                46
+                              </option>
+                              <option data-countryCode="CH" value="41">
+                                41
+                              </option>
+                              <option data-countryCode="SI" value="963">
+                                963
+                              </option>
+                              <option data-countryCode="TW" value="886">
+                                886
+                              </option>
+                              <option data-countryCode="TJ" value="7">7</option>
+                              <option data-countryCode="TH" value="66">
+                                66
+                              </option>
+                              <option data-countryCode="TG" value="228">
+                                228
+                              </option>
+                              <option data-countryCode="TO" value="676">
+                                676
+                              </option>
+                              <option data-countryCode="TT" value="1868">
+                                1868
+                              </option>
+                              <option data-countryCode="TN" value="216">
+                                216
+                              </option>
+                              <option data-countryCode="TR" value="90">
+                                90
+                              </option>
+                              <option data-countryCode="TM" value="7">7</option>
+                              <option data-countryCode="TM" value="993">
+                                993
+                              </option>
+                              <option data-countryCode="TC" value="1649">
+                                1649
+                              </option>
+                              <option data-countryCode="TV" value="688">
+                                688
+                              </option>
+                              <option data-countryCode="UG" value="256">
+                                256
+                              </option>
+                              <option data-countryCode="GB" value="44">
+                                44
+                              </option>
+                              <option data-countryCode="UA" value="380">
+                                380
+                              </option>
+                              <option data-countryCode="AE" value="971">
+                                971
+                              </option>
+                              <option data-countryCode="UY" value="598">
+                                598
+                              </option>
+                              <option data-countryCode="US" value="1">1</option>
+                              <option data-countryCode="UZ" value="7">7</option>
+                              <option data-countryCode="VU" value="678">
+                                678
+                              </option>
+                              <option data-countryCode="VA" value="379">
+                                379
+                              </option>
+                              <option data-countryCode="VE" value="58">
+                                58
+                              </option>
+                              <option data-countryCode="VN" value="84">
+                                84
+                              </option>
+                              <option data-countryCode="VG" value="84">
+                                1284
+                              </option>
+                              <option data-countryCode="VI" value="84">
+                                1340
+                              </option>
+                              <option data-countryCode="WF" value="681">
+                                681
+                              </option>
+                              <option data-countryCode="YE" value="969">
+                                969
+                              </option>
+                              <option data-countryCode="YE" value="967">
+                                967
+                              </option>
+                              <option data-countryCode="ZM" value="260">
+                                260
+                              </option>
+                              <option data-countryCode="ZW" value="263">
+                                263
+                              </option>
+                            </select>
+                            <svg
+                              class="pointer-events-none absolute right-3 top-0 h-full w-5 text-gray-400"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                clip-rule="evenodd"
+                              ></path>
+                            </svg>
+                          </div>
+                          <input
+                            type="tel"
+                            name="phonenumber"
+                            id="phonenumber"
+                            autocomplete="tel"
+                            class="block w-full rounded-md border-0 px-3.5 py-2 pl-20 text-white shadow-sm ring-1 ring-inset bg-gray-900 ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3"
+              >
+                <button
+                  type="submit"
+                  class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2 submitCandidateFormButton"
+                >
+                  Start AI Interview
+                </button>
+                <button
+                  type="button"
+                  class="mt-3 inline-flex w-full justify-center rounded-md bg-gray-900 px-3 py-2 text-sm font-semibold text-white hover:text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0 cncl-popup"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      class="relative z-[99999999] id-ps-popup-test"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"
+      ></div>
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div
+          class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+        >
+          <div
+            class="ring-1 ring-inset ring-gray-300 relative transform overflow-hidden rounded-lg bg-gray-900 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
+          >
+            <div class="mx-auto w-full max-w-2xl">
+              <div class="flex items-center justify-center mb-4">
+                <i
+                  class="fa-solid fa-volume text-3xl rounded-full bg-indigo-600 p-4 text-white"
+                ></i>
+              </div>
+
+              <h1 class="text-3xl text-center text-white font-bold mb-6">
+                Test Your Sound
+              </h1>
+
+              <div class="mt-4">
+                <label
+                  for="mic"
+                  class="block text-sm font-medium leading-6 text-white"
+                  >Choose Microphone</label
+                >
+                <div class="mt-2 flex items-center">
+                  <select
+                    id="audioDevicesDropdown"
+                    name="audioDevicesDropdown"
+                    autocomplete="mic-name"
+                    class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-900 pl-2 pr-2"
+                  ></select>
+                  <button
+                    id="recordButton"
+                    class="ml-2 px-4 py-1 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2"
+                    title="Click to record audio"
+                  >
+                    <i class="fa fa-microphone" aria-hidden="true"></i>
+                  </button>
+                  <button
+                    id="playButton"
+                    disabled
+                    class="ml-2 px-4 py-1 bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2 hidden"
+                  >
+                    <i class="fa fa-volume-up" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-4 mb-4">
+                <label
+                  for="mic"
+                  class="block text-sm font-medium leading-6 text-white"
+                  >Choose Speaker</label
+                >
+                <div class="mt-2">
+                  <select
+                    id="audioOutputDevicesDropdown"
+                    name="audioOutputDevicesDropdown"
+                    autocomplete="mic-name"
+                    class="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 bg-gray-900 pl-2 pr-2"
+                  ></select>
+                </div>
+              </div>
+
+              <div class="mt-4 mb-6">
+                <label
+                  for="mic"
+                  class="block text-sm font-medium leading-6 text-white"
+                  >Play Recorded Audio</label
+                >
+                <div class="mt-2">
+                  <audio id="audioPlayer" controls></audio>
+                </div>
+              </div>
+
+              <!-- <div class="flex justify-center">
+                <div
+                  class="rounded-2xl bg-gray-800 px-2 py-2 flex w-full items-center"
+                >
+                  <div class="flex text-gray-400 voice-2">
+                    <span class="width-[5px] voice2-out-1 voice2-in-1"></span>
+                    <span class="width-[5px] voice2-out-2 voice2-in-2"></span>
+                    <span class="width-[5px] voice2-out-3 voice2-in-3"></span>
+                    <span class="width-[5px] voice2-out-4 voice2-in-4"></span>
+                    <span class="width-[5px] voice2-out-5 voice2-in-5"></span>
+                    <span class="width-[5px] voice2-out-1 voice2-in-1"></span>
+                    <span class="width-[5px] voice2-out-2 voice2-in-2"></span>
+                    <span class="width-[5px] voice2-out-3 voice2-in-3"></span>
+                    <span class="width-[5px] voice2-out-4 voice2-in-4"></span>
+                    <span class="width-[5px] voice2-out-5 voice2-in-5"></span>
+                  </div>
+                  <div>
+                    <h3
+                      class="text-sm font-medium leading-7 tracking-tight text-white ml-4 mr-4"
+                    >
+                      Speak Now
+                    </h3>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- <div class="flex justify-center">
+                <div
+                  class="rounded-2xl bg-gray-800 px-2 py-2 flex w-full items-center"
+                >
+                  <div class="pids-wrapper">
+                    <div class="pid"></div>
+                    <div class="pid"></div>
+                    <div class="pid"></div>
+                    <div class="pid"></div>
+                    <div class="pid"></div>
+                  </div>
+                  <h3
+                    class="text-sm font-medium leading-7 tracking-tight text-white ml-4 mr-4 speakerTestValue"
+                  ></h3>
+                </div>
+              </div> -->
+
+              <div class="mt-5 flex justify-between">
+                <button
+                  type="button"
+                  class="w-[48%] mt-3 inline-flex justify-center rounded-md bg-gray-900 px-3 py-2 text-sm font-semibold text-white hover:text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0 cncl-popup-test"
+                >
+                  Cancel
+                </button>
+                <a class="w-[48%] meetingRedirect"
+                  ><button
+                    type="button"
+                    class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2"
+                  >
+                    Start AI Interview
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <nav class="relative z-20 flex shrink-0 items-center space-x-2 bg-gray-900 py-3 px-4 sm:px-6"><button type="button"
+
+			class="inline-flex cursor-pointer items-center justify-center rounded-xl border-none border-transparent bg-transparent p-2.5 font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text"><svg
+
+				xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+
+				stroke="currentColor" aria-hidden="true" class="h-6 w-6">
+
+				<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"></path>
+
+			</svg></button><a href="#">
+
+			<h1 class="logo">JobSound</h1>
+
+		</a>
+
+		<div class="flex flex-1 space-x-1.5 px-4"><a href="#"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-secondary bg-secondary px-3 py-2 text-xs font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80">Home</a><a
+
+				href="#"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">Features</a><a
+
+				href="#"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">How it Works</a><a
+
+				href="#"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">Pricing</a>
+
+		</div>
+
+		<div class="flex items-center space-x-3"><a href="./signin.html"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-secondary bg-secondary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80">Sign
+
+				in</a><a href="./signup.html"
+
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-primary-accent hover:bg-primary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-primary disabled:hover:bg-primary disabled:hover:text-white dark:focus:ring-white/80">Sign
+
+				up</a></div>
+
+	</nav> -->
+
+    <div class="bg-gray-900">
+      <div class="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+        <!-- Product -->
+        <div
+          class="lg:grid lg:grid-cols-7 lg:grid-rows-1 lg:gap-x-8 lg:gap-y-10 xl:gap-x-16"
+        >
+          <!-- Product image -->
+
+          <!-- Product details -->
+          <div
+            class="mx-auto mt-14 max-w-2xl sm:mt-16 lg:col-span-3 lg:row-span-2 lg:row-end-2 lg:mt-0 lg:max-w-none"
+          >
+            <div class="flex flex-col-reverse">
+              <div class="mt-4">
+                <h1
+                  class="text-2xl font-bold tracking-tight text-white sm:text-3xl title"
+                >
+                  Angular Developer
+                </h1>
+
+                <p class="mt-2 text-sm text-gray-300">
+                  Posted <time class="createdAt">12 February</time>
+                </p>
+              </div>
+            </div>
+
+            <!-- <p class="mt-6 text-gray-300">The successful candidate will be responsible for developing and maintaining web applications, working with other developers to create a robust and secure system. You should have a strong knowledge of Angular and be able to work in a fast-paced environment.</p> -->
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+              <button
+                type="button"
+                class="start-interview-button flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+              >
+                Start AI Interview<i class="fa-regular fa-microphone ml-2"></i>
+              </button>
+              <button
+                type="button"
+                class="applyButton flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+              >
+                Apply to job
+              </button>
+            </div>
+
+            <div class="mt-10">
+              <p class="mt-4 text-sm text-gray-300 infoText">
+                <i class="fa-light fa-circle-exclamation mr-2"></i>If you are
+                interested in this opportunity, please join the AI Meeting now
+                for immediate consideration.
+                <a
+                  href="./jobsound-meet.html"
+                  class="font-medium text-indigo-600 hover:text-indigo-500"
+                  >Read about our tool</a
+                >
+              </p>
+            </div>
+
+            <div class="mt-10 border-t border-gray-200 pt-10">
+              <h3 class="text-sm font-medium text-white">Skills</h3>
+              <div class="prose prose-sm mt-4 text-gray-300">
+                <ul role="list" class="skill">
+                  <!-- <li>Proficiency in HTML/CSS/JavaScript</li>
+					<li>Experience with Angular</li>
+					<li>Knowledge of web development frameworks</li>
+					<li>Knowledge of web security and performance standards</li>
+					<li>Ability to troubleshoot and debug any issues</li>
+					<li>Ability to work in a fast-paced environment</li> -->
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="mt-10 border-t border-gray-200 pt-10 flex justify-between"
+            >
+              <div>
+                <h3 class="text-sm font-medium text-white">Share</h3>
+                <ul role="list" class="mt-4 flex items-center space-x-6">
+                  <li>
+                    <a
+                      href="#"
+                      class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-gray-300"
+                    >
+                      <span class="sr-only">Share on Facebook</span>
+                      <svg
+                        class="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-gray-300"
+                    >
+                      <span class="sr-only">Share on Instagram</span>
+                      <svg
+                        class="h-6 w-6"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="#"
+                      class="flex h-6 w-6 items-center justify-center text-gray-400 hover:text-gray-300"
+                    >
+                      <span class="sr-only">Share on X</span>
+                      <svg
+                        class="h-5 w-5"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M11.4678 8.77491L17.2961 2H15.915L10.8543 7.88256L6.81232 2H2.15039L8.26263 10.8955L2.15039 18H3.53159L8.87581 11.7878L13.1444 18H17.8063L11.4675 8.77491H11.4678ZM9.57608 10.9738L8.95678 10.0881L4.02925 3.03974H6.15068L10.1273 8.72795L10.7466 9.61374L15.9156 17.0075H13.7942L9.57608 10.9742V10.9738Z"
+                        ></path>
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <label
+                  for="job-link"
+                  class="block text-sm font-medium leading-6 text-white"
+                  >Job Link</label
+                >
+                <div class="mt-2 flex rounded-md shadow-sm">
+                  <div
+                    class="relative flex flex-grow items-stretch focus-within:z-10"
+                  >
+                    <div
+                      class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
+                    ></div>
+                    <input
+                      type="email"
+                      name="job-link"
+                      id="job-link-input"
+                      class="bg-gray-900 w-full rounded-none rounded-l-md border-0 py-1.5 pl-3 text-white ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 copyLink"
+                      value="https://jobsound.ai/staging/job-page.html"
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    id="copy-link-button"
+                    class="relative -ml-px inline-flex items-center gap-x-1.5 rounded-r-md px-3 py-2 text-sm font-semibold text-white ring-1 ring-inset ring-gray-300 hover:bg-indigo-600"
+                  >
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none"
+          >
+            <div
+              x-data="Components.tabs()"
+              @tab-click.window="onTabClick"
+              @tab-keydown.window="onTabKeydown"
+            >
+              <div class="border-b border-gray-200">
+                <div
+                  class="-mb-px flex space-x-8"
+                  aria-orientation="horizontal"
+                  role="tablist"
+                >
+                  <h1
+                    class="text-2xl font-bold tracking-tight text-white sm:text-xl mb-4"
+                  >
+                    Job Description
+                  </h1>
+                </div>
+              </div>
+
+              <div
+                id="tab-panel-faq"
+                class="text-sm text-gray-300"
+                x-description="'FAQ' panel, show/hide based on tab state"
+                x-data="Components.tabPanel(0)"
+                aria-labelledby="tab-faq"
+                x-init="init()"
+                x-show="selected"
+                @tab-select.window="onTabSelect"
+                role="tabpanel"
+                tabindex="0"
+              >
+                <dl>
+                  <dd class="prose prose-sm mt-6 max-w-none text-gray-300">
+                    <p class="jobdescription">
+                      We are currently looking for an experienced and talented
+                      Angular Developer to join an innovative energy company
+                      based in Manchester. The successful candidate will be able
+                      to demonstrate a proven ability to develop end-to-end web
+                      applications using Angular and have a strong understanding
+                      of modern web development frameworks.
+                    </p>
+                  </dd>
+                  <!-- <dt class="mt-10 font-medium text-white">Job Responsibilities:</dt>
+					  <div class="prose prose-sm mt-4 text-gray-300">
+						<ul role="list">
+						  <li>Developing and maintaining web applications using Angular</li>
+						  <li>Developing user interfaces and components</li>
+						  <li>Working with other developers to create a robust and secure system</li>
+						  <li>Working with a team to develop and improve the web application</li>
+						  <li>Ensuring the application meets all security and performance standards</li>
+						  <li>Troubleshooting and debugging any issues</li>
+						</ul>
+					  </div> -->
+                </dl>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none"
+          >
+            <div
+              x-data="Components.tabs()"
+              @tab-click.window="onTabClick"
+              @tab-keydown.window="onTabKeydown"
+            >
+              <div class="border-b border-gray-200">
+                <div
+                  class="-mb-px flex space-x-8"
+                  aria-orientation="horizontal"
+                  role="tablist"
+                ></div>
+              </div>
+              <h1
+                class="text-2xl font-bold tracking-tight text-white sm:text-xl mt-4 mb-4"
+              >
+                Salary: <span class="salary">£40,000 - £60,000</span>
+              </h1>
+              <div class="mt-4 border-t border-gray-200 pt-10">
+                <a href="#"
+                  ><h3
+                    class="text-sm font-medium text-white hover:text-gray-300"
+                  >
+                    Report this job <i class="fa-regular fa-flag ml-1"></i></h3
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+
+      // Get the value of jobId from the query string
+      const jobId = urlParams.get("jobId");
+
+      if (jobId) {
+        // Now you can fetch job data using the jobId
+        fetchJobData(jobId);
+      } else {
+        console.error("Job ID not found in the query string.");
+      }
+
+
+      function fetchJobData(jobId) {
+        // Perform your fetch operation here
+        // For example:
+        fetch(`/panel/getjobdata?jobId=${jobId}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Failed to fetch job data");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            // Handle the job data
+            console.log("Job data:", data);
+            if (data["status"] == true) {
+              for (const [key, value] of Object.entries(data["data"])) {
+                if (key == "createdAt") {
+                  const createdDate = new Date(value).toLocaleDateString(
+                    "en-US",
+                    { day: "2-digit", month: "short", year: "numeric" }
+                  );
+                  console.log(createdDate);
+                  document.querySelector(".createdAt").textContent =
+                    createdDate;
+                } else if (key == "salary") {
+                  if (data["data"]["salary_hide"] == false) {
+                    document.querySelector(
+                      ".salary"
+                    ).innerHTML = `${data["data"]["currency"]} ${value}`;
+                  } else {
+                    document.querySelector(".salary").innerHTML = `Undisclosed`;
+                  }
+                } else if (key == "skill") {
+                  if (Array.isArray(value)) {
+                    for (let skill in value) {
+                      document.querySelector(
+                        ".skill"
+                      ).innerHTML += `<li>${value[skill]}</li>`;
+                    }
+                  }
+                } else {
+                  if (document.querySelector(`.${key}`)) {
+                    console.log(value);
+                    try {
+                      document.querySelector(`.${key}`).innerHTML =
+                        value.replace(/\n/g, "<br>");
+                    } catch (error) {
+                      console.log(error);
+                    }
+                  }
+                }
+              }
+              if (!data["data"]["publish_status"] == true) {
+                document.querySelector(
+                  ".infoText"
+                ).innerHTML = `<i class="fa-light fa-circle-exclamation mr-2"></i>You have not published this job. Please publish this job to make this job accessible by your applicants. <a href="/panel/jobs" class="font-medium text-indigo-600 hover:text-indigo-500">Publish from here</a>`;
+              }
+              document.querySelector(".applyButton").onclick = function () {
+                window.open(`/panel/apply?jobId=${jobId}`, "_blank");
+              };
+              document.querySelector(".copyLink").value = window.location.href;
+              document.querySelector(".bodyClass").classList.remove("hidden");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching job data:", error);
+          });
+      }
+
+      const audioDevicesDropdown = document.getElementById(
+        "audioDevicesDropdown"
+      );
+      const audioOutputDevicesDropdown = document.getElementById(
+        "audioOutputDevicesDropdown"
+      );
+      const recordButton = document.getElementById("recordButton");
+      const playButton = document.getElementById("playButton");
+      const audioPlayer = document.getElementById("audioPlayer");
+      let mediaRecorder;
+      let chunks = [];
+
+      // Function to initialize the audio devices dropdown
+      async function initializeDropdown() {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        console.log(devices);
+        const audioInputDevices = devices.filter(
+          (device) => device.kind === "audioinput"
+        );
+
+        const audioOutputDevices = devices.filter(
+          (device) => device.kind === "audiooutput"
+        );
+
+        audioInputDevices.forEach((device) => {
+          const option = document.createElement("option");
+          option.value = device.deviceId;
+          option.text =
+            device.label ||
+            `Microphone ${audioDevicesDropdown.options.length + 1}`;
+          audioDevicesDropdown.appendChild(option);
+        });
+
+        audioOutputDevices.forEach((device) => {
+          const option = document.createElement("option");
+          option.value = device.deviceId;
+          option.text =
+            device.label || `${audioOutputDevicesDropdown.options.length + 1}`;
+          audioOutputDevicesDropdown.appendChild(option);
+        });
+      }
+
+      // Function to start recording
+      function startRecording() {
+        const selectedDeviceId = audioDevicesDropdown.value;
+        const constraints = { audio: { deviceId: selectedDeviceId } };
+
+        chunks = []; // Reset chunks array
+
+        navigator.mediaDevices
+          .getUserMedia(constraints)
+          .then((stream) => {
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.ondataavailable = (e) => {
+              chunks.push(e.data);
+            };
+            mediaRecorder.onstop = async () => {
+              const blob = new Blob(chunks, { type: "audio/wav" });
+              const audioURL = URL.createObjectURL(blob);
+              audioPlayer.src = audioURL;
+              const selectedDeviceId = audioOutputDevicesDropdown.value;
+              await audioPlayer.setSinkId(selectedDeviceId);
+              playButton.disabled = false;
+              //   audioPlayer.classList.remove("hidden");
+            };
+            mediaRecorder.start();
+          })
+          .catch((error) => {
+            console.error("Error accessing microphone:", error);
+          });
+      }
+
+      // Function to stop recording
+      function stopRecording() {
+        if (mediaRecorder && mediaRecorder.state !== "inactive") {
+          mediaRecorder.stop();
+        }
+      }
+
+      // Event listener for record button
+      recordButton.addEventListener("click", () => {
+        // audioPlayer.classList.add("hidden");
+        if (
+          recordButton.innerHTML ===
+          `<i class="fa fa-microphone" aria-hidden="true"></i>`
+        ) {
+          startRecording();
+          recordButton.innerHTML = `<i class="fa fa-stop" aria-hidden="true"></i>`;
+        } else {
+          stopRecording();
+          recordButton.innerHTML = `<i class="fa fa-microphone" aria-hidden="true"></i>`;
+        }
+      });
+
+      // Event listener for play button
+      playButton.addEventListener("click", async () => {
+        audioPlayer.play();
+      });
+
+      audioOutputDevicesDropdown.onchange = async function () {
+        const selectedDeviceId = audioOutputDevicesDropdown.value;
+        await audioPlayer.setSinkId(selectedDeviceId);
+      };
+
+      // Initialize dropdown when the page loads
+      initializeDropdown();
+
+      // Handle Forms
+      document
+        .querySelector(".submitCandidateForm")
+        .addEventListener("submit", (event) => {
+          event.preventDefault();
+
+          if (jobId) {
+            console.log(document.querySelector(".submitCandidateForm"))
+            const formData = new FormData(document.querySelector(".submitCandidateForm"));
+
+            console.log(formData)
+            
+            fetch(`/panel/apply?jobId=${jobId}`, {
+              method: "POST",
+              body: formData, // Payload is formData object
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data["status"] == true) {
+                  // window.location.href = "/panel/application-successful";
+
+                  const popup = document.querySelector(".id-ps-popup");
+                  const popupTest = document.querySelector(".id-ps-popup-test");
+                  popupTest.style.display = "block";
+                  popup.style.display = "none";
+                  document
+                    .querySelector(".submitCandidateFormButton")
+                    .classList.add("start-test");
+                  handlePopups();
+
+                  document.querySelector(".meetingRedirect").setAttribute("href", `/panel/meeting?jobId=${jobId}&applicantId=${data["applicant_id"]}`)
+
+                  // document.querySelector(".submitCandidateFormButton").click();
+                  // let type = 'success';
+                  // let icon = 'fa-solid fa-circle-exclamation';
+                  // let title = 'Success';
+                  // let text = "You have successfully applied to this job.";
+                  // createToast(type, icon, title, text, 5000);
+                } else {
+                  let type = "error";
+                  let icon = "fa-solid fa-circle-exclamation";
+                  let title = "Error";
+                  let text = data["message"];
+                  createToast(type, icon, title, text, 5000);
+                }
+              });
+          }
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="./static/js/toasts.js"></script>
+    <script src="./static/js/main.js"></script>
+  </body>
+</html>

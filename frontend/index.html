@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    
+    
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JobSound - New Era of Voice Interviews</title>
+	
+	  <link rel="icon" type="image/x-icon" href="/images/favicon.png">
+
+
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.3.0/css/all.css">
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-solid.css">
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.3.0/css/sharp-regular.css">
+	<link rel="stylesheet" href="./static/css/style.css" />
+	<link rel="stylesheet" href="./static/css/toasts.css" />
+	<link rel="stylesheet" href="https://jobsound.ai/css/mainfront.css">
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+	<nav class="relative z-20 flex shrink-0 items-center space-x-2 bg-layer-2 py-3 px-4 sm:px-6"><button type="button"
+			class="inline-flex cursor-pointer items-center justify-center rounded-xl border-none border-transparent bg-transparent p-2.5 font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text"><svg
+				xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+				stroke="currentColor" aria-hidden="true" class="h-6 w-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16"></path>
+			</svg></button><a href="#">
+			<h1 class="logo">JobSound</h1>
+		</a>
+		<div class="flex flex-1 space-x-1.5 px-4"><a href="#"
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-secondary bg-secondary px-3 py-2 text-xs font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80">Home</a><a
+				href="#"
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">Features</a><a
+				href="#"
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">How it Works</a><a
+				href="#"
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-transparent bg-transparent px-3 py-2 text-xs font-semibold text-text hover:bg-heading/5 hover:text-heading focus:bg-heading/5 focus:outline-none focus:ring-2 focus:ring-heading/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-text">Pricing</a>
+		</div>
+		<div class="flex items-center space-x-3"><a href="/accounts/signin"
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-secondary bg-secondary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80">Sign
+				in</a><a href="/accounts/signup"
+				class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-primary-accent hover:bg-primary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-primary disabled:hover:bg-primary disabled:hover:text-white dark:focus:ring-white/80">Sign
+				up</a></div>
+	</nav>
+	<section class="py-12 px-8 md:py-36 xl:px-0 hero-container">
+		<div class="mx-auto flex max-w-6xl flex-col items-center gap-6 md:flex-row">
+			<div class="w-full max-w-md shrink-0 space-y-6 text-center md:text-left">
+				<h1 class="text-3xl font-semibold text-heading md:text-5xl">
+					Hire The Best People Fast With AI Voice Interviews
+				</h1>
+				<p class="text-lg font-medium md:max-w-sm">
+					Easily screen hundreds of applicants with our powerful voice interviewing AI.
+				</p>
+				<form class="flex flex-col gap-2 md:flex-row">
+					<div>
+						<label for="email" class="sr-only block text-sm font-semibold text-heading">
+							Add your email address
+						</label>
+						<input id="email" name="email" type="email" placeholder="Email Address"
+							class="block w-full rounded-xl border-2 border-layer-3 bg-muted-1 px-4 py-2.5 font-semibold text-heading placeholder:text-text/50 focus:border-primary focus:outline-none focus:ring-0 sm:text-sm" />
+					</div>
+					<button type="submit"
+						class="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-primary-accent hover:bg-primary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-primary disabled:hover:bg-primary disabled:hover:text-white dark:focus:ring-white/80">
+						Get Started
+					</button>
+				</form>
+				<div class="flex flex-col items-center md:items-start">
+					<div class="flex -space-x-4">
+						<img src="https://saasblocks-preview-tdg1-prd.fly.dev/assets/avatars/randy-warren.png"
+							alt="avatar" class="h-14 w-14 rounded-full" />
+						<img src="https://saasblocks-preview-tdg1-prd.fly.dev/assets/avatars/irina-zaytesev.png"
+							alt="avatar" class="h-14 w-14 rounded-full" />
+						<img src="https://saasblocks-preview-tdg1-prd.fly.dev/assets/avatars/pasquale-blanco.png"
+							alt="avatar" class="h-14 w-14 rounded-full" />
+						<img src="https://saasblocks-preview-tdg1-prd.fly.dev/assets/avatars/nicholas-turner.png"
+							alt="avatar" class="h-14 w-14 rounded-full" />
+						<img src="https://saasblocks-preview-tdg1-prd.fly.dev/assets/avatars/dianne-russell.png"
+							alt="avatar" class="h-14 w-14 rounded-full" />
+						<div
+							class="grid h-14 w-14 place-content-center rounded-full bg-layer-2 font-medium dark:bg-layer-3">
+							+145
+						</div>
+					</div>
+					<p class="mt-2 text-sm font-medium">Trusted by over 150 companies worldwide.</p>
+				</div>
+			</div>
+
+			<div class="flex-1">
+				<img src="./static/images/herosection.png" alt=""
+					class="w-full rounded-3xl" />
+			</div>
+		</div>
+	</section>
+
+
+	<div class="hero-container">
+		<section class="p-6 text-center md:p-10">
+			<div class="mx-auto w-full max-w-6xl">
+				<div class="flex w-full flex-col md:flex-row">
+					<div class="w-full p-5 text-center md:w-4/12 md:p-8">
+						<ul class="flex justify-center pb-3">
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+						</ul>
+						<p class="pl-0 pr-0 pt-0 text-center text-base text-heading">JobSound has transformed the way we approach recruitment. The AI voice interviews are not just efficient, they also give us deeper insights into our candidates' communication skills. It's a game-changer for our hiring process!</p><img
+							src="https://saasblocks-preview-tdg1-prd.fly.dev/assets/avatars/matthew.png" alt="avatar"
+							class="mt-3 inline-block h-12 w-12 rounded-full"><svg width="98" height="48"
+							viewBox="0 0 98 48" fill="currentColor" class="mx-auto mt-3 text-text"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M79.7073 20.5972C80.0815 21.2429 80.2039 21.9774 80.2443 22.8032L80.2975 23.9039V31.6007L80.3517 32.7025C80.4603 34.502 81.7874 35.8325 83.6007 35.9457L84.6968 36V23.9039L84.7511 22.8032C84.7961 21.9867 84.9174 21.2382 85.2974 20.588C85.6846 19.921 86.2404 19.3677 86.9091 18.9835C87.5778 18.5993 88.3358 18.3978 89.107 18.3992C89.8782 18.4006 90.6355 18.6049 91.3028 18.9915C91.97 19.3781 92.5239 19.9335 92.9086 20.6018C93.2829 21.2475 93.3995 21.9959 93.4446 22.8032L93.4988 23.9005V31.6007L93.5531 32.7025C93.6663 34.5112 94.983 35.8418 96.8021 35.9457L97.8981 36V22.8032C97.8981 20.4697 96.9714 18.2317 95.3216 16.5813C93.6719 14.9309 91.4342 14.0032 89.1007 14.0023C87.8517 14.001 86.6168 14.2662 85.4786 14.7803C84.3403 15.2944 83.3248 16.0454 82.5 16.9833C81.6748 16.0458 80.6593 15.2949 79.5211 14.7807C78.3829 14.2665 77.1482 14.0007 75.8993 14.0012C74.0721 14.0012 72.3766 14.5555 70.9722 15.513C70.1152 14.5567 68.1979 14.0012 67.0972 14.0012V36L68.1979 35.9457C70.039 35.8244 71.3695 34.5297 71.4411 32.7025L71.5 31.6007V23.9039L71.5543 22.8032C71.6005 21.9728 71.716 21.2429 72.0913 20.5926C72.4789 19.9261 73.0345 19.3728 73.7027 18.9882C74.3709 18.6035 75.1283 18.4009 75.8993 18.4005C76.6709 18.4006 77.4289 18.6037 78.0973 18.9893C78.7656 19.3748 79.3209 19.9294 79.7073 20.5972ZM4.39931 35.9469L5.5 36H21.9988L21.9446 34.9028C21.7956 33.0941 20.5147 31.7728 18.7002 31.655L17.5995 31.6007H7.70139L20.8982 18.3993L20.8439 17.3032C20.7584 15.4761 19.4232 14.1559 17.5995 14.0554L16.4988 14.0058L0 14.0012L0.0542839 15.1019C0.198656 16.8932 1.498 18.2422 3.29746 18.3462L4.39931 18.4005H14.2975L1.10069 31.6018L1.15498 32.7025C1.26354 34.5159 2.57213 35.8291 4.39931 35.9457V35.9469ZM62.7788 17.2212C63.8004 18.2426 64.6107 19.4552 65.1636 20.7898C65.7165 22.1244 66.0011 23.5548 66.0011 24.9994C66.0011 26.444 65.7165 27.8744 65.1636 29.209C64.6107 30.5436 63.8004 31.7562 62.7788 32.7776C60.7148 34.8399 57.9165 35.9983 54.9988 35.9983C52.0812 35.9983 49.2829 34.8399 47.2189 32.7776C42.9236 28.4823 42.9236 21.5166 47.2189 17.2212C48.2396 16.2002 49.4513 15.3902 50.785 14.8375C52.1187 14.2848 53.5482 14.0002 54.9919 14C56.4379 13.999 57.87 14.2831 59.2061 14.836C60.5423 15.3889 61.7563 16.1999 62.7788 17.2224V17.2212ZM59.6661 20.3362C60.9033 21.5744 61.5983 23.2531 61.5983 25.0035C61.5983 26.7538 60.9033 28.4326 59.6661 29.6707C58.4279 30.908 56.7492 31.6029 54.9988 31.6029C53.2485 31.6029 51.5697 30.908 50.3316 29.6707C49.0944 28.4326 48.3994 26.7538 48.3994 25.0035C48.3994 23.2531 49.0944 21.5744 50.3316 20.3362C51.5697 19.099 53.2485 18.404 54.9988 18.404C56.7492 18.404 58.4279 19.099 59.6661 20.3362ZM31.9062 14C33.35 14.0004 34.7795 14.2851 36.1133 14.8381C37.4469 15.391 38.6587 16.2012 39.6792 17.2224C43.9757 21.5166 43.9757 28.4834 39.6792 32.7776C37.6153 34.8399 34.817 35.9983 31.8993 35.9983C28.9816 35.9983 26.1833 34.8399 24.1194 32.7776C19.824 28.4823 19.824 21.5166 24.1194 17.2212C25.14 16.2002 26.3518 15.3902 27.6855 14.8375C29.0192 14.2848 30.4487 14.0002 31.8924 14H31.9062ZM36.5666 20.3339C37.8041 21.5721 38.4994 23.2511 38.4994 25.0017C38.4994 26.7524 37.8041 28.4314 36.5666 29.6696C35.3284 30.9068 33.6497 31.6018 31.8993 31.6018C30.1489 31.6018 28.4702 30.9068 27.232 29.6696C25.9948 28.4314 25.2998 26.7527 25.2998 25.0023C25.2998 23.252 25.9948 21.5732 27.232 20.335C28.4702 19.0978 30.1489 18.4028 31.8993 18.4028C33.6497 18.4028 35.3284 19.0978 36.5666 20.335V20.3339Z">
+							</path>
+						</svg>
+						<p class="mt-1 text-xs text-text">Jeff, COO</p>
+					</div>
+					<div class="w-full p-5 text-center md:w-4/12 md:p-8">
+						<ul class="flex justify-center pb-3">
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+						</ul>
+						<p class="pl-0 pr-0 pt-0 text-center text-base text-heading">Absolutely amazed by the effectiveness of JobSound.ai! The platform is intuitive, the voice AI is incredibly human-like, and the analysis reports are spot-on. This is the future of recruitment, today.</p><img
+							src="https://saasblocks-preview-tdg1-prd.fly.dev/assets/avatars/floyd-miles.png"
+							alt="avatar" class="mt-3 inline-block h-12 w-12 rounded-full"><svg width="178" height="48"
+							viewBox="0 0 178 48" fill="currentColor" class="mx-auto mt-3 text-text"
+							xmlns="http://www.w3.org/2000/svg">
+							<g clip-path="url(#clip0_1922_41000)">
+								<path
+									d="M6.44783 22.0334C6.38324 21.9489 6.29793 21.8825 6.20015 21.8406C6.10237 21.7986 5.99543 21.7827 5.88967 21.7941C5.78391 21.8056 5.6829 21.8442 5.59641 21.9062C5.50992 21.9681 5.44087 22.0513 5.39593 22.1477L0.0657807 32.8047C0.0172238 32.9018 -0.00570226 33.0097 -0.00082064 33.1182C0.00406097 33.2267 0.0365882 33.3321 0.0936727 33.4245C0.150757 33.5169 0.230504 33.5931 0.325342 33.646C0.42018 33.6989 0.526961 33.7266 0.635547 33.7267H8.05751C8.17638 33.7294 8.29349 33.6976 8.39464 33.6351C8.49578 33.5726 8.57659 33.482 8.62727 33.3745C10.2283 30.0662 9.25801 25.0359 6.44783 22.0334Z">
+								</path>
+								<path
+									d="M10.3569 12.3404C9.02879 14.384 8.25482 16.7377 8.11094 19.1707C7.96707 21.6036 8.45824 24.0322 9.53625 26.2181L13.1145 33.3745C13.1674 33.4803 13.2487 33.5693 13.3493 33.6315C13.4499 33.6937 13.5659 33.7266 13.6842 33.7267H21.1048C21.2134 33.7266 21.3202 33.6989 21.4151 33.646C21.5099 33.5931 21.5896 33.5169 21.6467 33.4245C21.7038 33.3321 21.7363 33.2267 21.7412 33.1182C21.7461 33.0097 21.7232 32.9018 21.6746 32.8047C21.6746 32.8047 11.6914 12.8359 11.4405 12.3364C11.3909 12.2347 11.3136 12.1491 11.2176 12.0894C11.1215 12.0296 11.0106 11.9981 10.8974 11.9985C10.7843 11.999 10.6736 12.0313 10.578 12.0917C10.4824 12.1522 10.4058 12.2384 10.3569 12.3404Z">
+								</path>
+								<path
+									d="M97.3975 20.8852C97.3975 23.5241 98.6217 25.6192 103.41 26.5442C106.267 27.144 106.865 27.6051 106.865 28.5574C106.865 29.4823 106.266 30.0811 104.253 30.0811C101.821 30.0374 99.4381 29.3924 97.3159 28.2039V32.5021C98.758 33.2095 100.662 33.9985 104.199 33.9985C109.205 33.9985 111.191 31.7661 111.191 28.4484L97.3975 20.8852ZM111.191 28.4484C111.191 25.3197 109.532 23.8503 104.852 22.8441C102.268 22.2726 101.642 21.7015 101.642 20.8852C101.642 19.8523 102.567 19.4161 104.281 19.4161C106.349 19.4161 108.389 20.0419 110.321 20.9125V16.8042C108.468 15.9612 106.451 15.5429 104.417 15.58C99.7916 15.58 97.3975 17.5932 97.3975 20.8852">
+								</path>
+								<path
+									d="M161.71 15.8521V33.7267H165.519V20.0963L167.124 23.7145L172.511 33.7267H177.299V15.8521H173.49V27.3877L172.048 24.041L167.723 15.8521H161.71Z">
+								</path>
+								<path d="M137.485 15.8521H133.322V33.7267H137.485V15.8521Z"></path>
+								<path
+									d="M128.519 28.4483C128.519 25.3196 126.86 23.8502 122.18 22.8439C119.596 22.2725 118.97 21.7014 118.97 20.8851C118.97 19.8522 119.895 19.416 121.609 19.416C123.677 19.416 125.717 20.0417 127.649 20.9124V16.8041C125.797 15.9611 123.779 15.5428 121.745 15.5799C117.12 15.5799 114.726 17.5931 114.726 20.8851C114.726 23.524 115.95 25.6191 120.738 26.5441C123.595 27.1438 124.193 27.605 124.193 28.5573C124.193 29.4822 123.594 30.081 121.582 30.081C119.15 30.0372 116.766 29.3923 114.644 28.2037V32.502C116.086 33.2093 117.99 33.9984 121.527 33.9984C126.533 33.9984 128.519 31.7659 128.519 28.4483Z">
+								</path>
+								<path d="M65.0601 15.8521V33.7267H73.6159L74.963 29.8633H69.2497V15.8521H65.0601Z">
+								</path>
+								<path
+									d="M48.1572 15.8521V19.7151H52.7823V33.7267H56.972V19.7151H61.9236V15.8521H48.1572Z">
+								</path>
+								<path
+									d="M42.0818 15.8521H36.591L30.3579 33.7267H35.118L36.0016 30.7163C38.1779 31.3553 40.4919 31.3553 42.6682 30.7163L43.5518 33.7267H48.3129L42.0818 15.8521ZM39.3362 27.4929C38.5609 27.4929 37.7895 27.3819 37.0455 27.1634L39.3362 19.3629L41.627 27.1661C40.8829 27.3837 40.1115 27.4938 39.3362 27.4929Z">
+								</path>
+								<path
+									d="M88.3666 15.8521H82.8762L76.6431 33.7267H81.4041L82.2878 30.7163C84.464 31.3553 86.7781 31.3553 88.9544 30.7163L89.838 33.7267H94.599L88.3666 15.8521ZM85.6214 27.4929C84.846 27.4929 84.0746 27.3819 83.3307 27.1634L85.6214 19.3629L87.9121 27.1661C87.168 27.3837 86.3966 27.4938 85.6214 27.4929Z">
+								</path>
+								<path
+									d="M152.485 15.8521H146.994L140.761 33.7267H145.522L146.406 30.7163C148.582 31.3553 150.896 31.3553 153.073 30.7163L153.956 33.7267H158.718L152.485 15.8521ZM149.738 27.4929C148.963 27.4929 148.191 27.3819 147.447 27.1634L149.738 19.3629L152.029 27.1661C151.285 27.3837 150.513 27.4938 149.738 27.4929Z">
+								</path>
+							</g>
+							<defs>
+								<clipPath id="clip0_1922_41000">
+									<rect width="178" height="48" fill="white"></rect>
+								</clipPath>
+							</defs>
+						</svg>
+						<p class="mt-1 text-xs text-text">Cody Fisher, Founder, App.co</p>
+					</div>
+					<div class="w-full p-5 text-center md:w-4/12 md:p-8">
+						<ul class="flex justify-center pb-3">
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+							<li><svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+									xmlns="http://www.w3.org/2000/svg">
+									<path
+										d="M9.04893 3.92756C9.34828 3.00624 10.6517 3.00624 10.951 3.92756L12.0206 7.21935C12.1545 7.63138 12.5384 7.91034 12.9717 7.91034H16.4329C17.4016 7.91034 17.8044 9.14995 17.0207 9.71935L14.2205 11.7538C13.87 12.0084 13.7233 12.4598 13.8572 12.8718L14.9268 16.1636C15.2261 17.0849 14.1717 17.8511 13.3879 17.2817L10.5878 15.2472C10.2373 14.9926 9.76269 14.9926 9.4122 15.2472L6.61203 17.2817C5.82832 17.8511 4.77384 17.0849 5.07319 16.1636L6.14276 12.8718C6.27663 12.4598 6.12997 12.0084 5.77949 11.7538L2.97932 9.71935C2.1956 9.14995 2.59838 7.91034 3.5671 7.91034H7.0283C7.46153 7.91034 7.84548 7.63138 7.97936 7.21935L9.04893 3.92756Z"
+										fill="#FB923C"></path>
+								</svg></li>
+						</ul>
+						<p class="pl-0 pr-0 pt-0 text-center text-base text-heading">JobSound is more than an interviewing tool; it's our partner in uncovering the potential within each applicant. Its detailed analysis helps us make informed decisions swiftly. Can't imagine going back to traditional methods.</p><img
+							src="https://saasblocks-preview-tdg1-prd.fly.dev/assets/avatars/dianne-russell.png"
+							alt="avatar" class="mt-3 inline-block h-12 w-12 rounded-full"><svg width="80" height="48"
+							viewBox="0 0 80 48" fill="currentColor" class="mx-auto mt-3 text-text"
+							xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M79.3058 25.8169C79.3058 20.1774 76.5741 15.7274 71.3532 15.7274C66.1102 15.7274 62.938 20.1774 62.938 25.7728C62.938 32.4037 66.6829 35.7521 72.0581 35.7521C74.6796 35.7521 76.6622 35.1573 78.1602 34.3202V29.9143C76.6622 30.6633 74.9439 31.126 72.763 31.126C70.6262 31.126 68.7317 30.377 68.4893 27.7775H79.2617C79.2617 27.4911 79.3058 26.3456 79.3058 25.8169ZM68.4233 23.7241C68.4233 21.2348 69.9433 20.1994 71.3311 20.1994C72.6749 20.1994 74.1068 21.2348 74.1068 23.7241H68.4233Z">
+							</path>
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M54.4345 15.7274C52.2756 15.7274 50.8877 16.7408 50.1167 17.4457L49.8303 16.0799H44.9839V41.7661L50.4912 40.5986L50.5132 34.3643C51.3063 34.937 52.4739 35.7521 54.4124 35.7521C58.3557 35.7521 61.9465 32.5799 61.9465 25.5966C61.9244 19.2081 58.2896 15.7274 54.4345 15.7274ZM53.1127 30.9056C51.813 30.9056 51.0419 30.443 50.5132 29.8703L50.4912 21.6974C51.064 21.0585 51.857 20.6179 53.1127 20.6179C55.1174 20.6179 56.5052 22.8649 56.5052 25.7508C56.5052 28.7027 55.1394 30.9056 53.1127 30.9056Z">
+							</path>
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M37.4057 14.4277L42.935 13.2381V8.76611L37.4057 9.93367V14.4277Z"></path>
+							<path d="M42.935 16.1019H37.4057V35.3776H42.935V16.1019Z"></path>
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M31.4795 17.7321L31.1271 16.1019H26.3687V35.3776H31.8761V22.3142C33.1758 20.6179 35.3787 20.9263 36.0616 21.1686V16.1019C35.3567 15.8375 32.7793 15.3529 31.4795 17.7321Z">
+							</path>
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M20.465 11.3215L15.0899 12.467L15.0679 30.1125C15.0679 33.3729 17.5131 35.7741 20.7735 35.7741C22.5799 35.7741 23.9016 35.4436 24.6286 35.0471V30.5751C23.9237 30.8615 20.443 31.8749 20.443 28.6145V20.7941H24.6286V16.1019H20.443L20.465 11.3215Z">
+							</path>
+							<path fill-rule="evenodd" clip-rule="evenodd"
+								d="M5.57342 21.6974C5.57342 20.8383 6.27836 20.5078 7.44592 20.5078C9.12015 20.5078 11.235 21.0145 12.9092 21.9177V16.7408C11.0808 16.0138 9.27435 15.7274 7.44592 15.7274C2.97396 15.7274 0 18.0626 0 21.9618C0 28.0418 8.37115 27.0726 8.37115 29.694C8.37115 30.7074 7.48998 31.0378 6.25633 31.0378C4.4279 31.0378 2.09279 30.2888 0.242322 29.2755V34.5185C2.29105 35.3996 4.36181 35.7742 6.25633 35.7742C10.8384 35.7742 13.9886 33.5051 13.9886 29.5619C13.9666 22.9971 5.57342 24.1647 5.57342 21.6974Z">
+							</path>
+						</svg>
+						<p class="mt-1 text-xs text-text">Cecilia Wilkerson, Product Manager, Stripe</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div class="w-full bg-layer-1 p-6 text-center md:p-20">
+		<div class="mx-auto w-full max-w-6xl">
+			<span
+				class="leading-sm inline-flex items-center rounded-full border-2 border-orange-200 bg-orange-200 px-2 py-0.5 text-xs font-bold font-semibold uppercase text-orange-600 shadow-sm">
+				<!-- Heroicon name: outline/light-bulb -->
+				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+					class="mr-1 h-5 w-5">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="{2}"
+						d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+				</svg>
+				Features
+			</span>
+			<h2
+				class="mx-auto mt-4 text-center text-3xl font-semibold tracking-tight text-heading md:max-w-2xl md:text-6xl">
+				Interview Like A Boss!
+			</h2>
+			<p class="mt-6 text-xl text-text">
+				Say Goodbye To Bad Hiring Decisions With JobSound.
+			</p>
+
+			<div class="mt-12 grid grid-cols-1 gap-y-6 md:grid-cols-2 lg:grid-cols-3">
+				<div class="p-5 text-center md:p-8">
+					<div class="inline-block rounded-3xl bg-layer-2 py-4 px-4">
+						<!-- Heroicon name: outline/view-grid -->
+						<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+							class="h-8 w-8 stroke-gradient gradient-dusk">
+							<path class="svg-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="{2}"
+								d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+						</svg>
+					</div>
+					<h3 class="mt-4 text-xl font-semibold text-heading">
+						Intuitive AI Conversations
+					</h3>
+					<p class="mt-2 text-center text-lg text-text">
+						Experience state of the art AI interviews that are as conversational and spontaneous as chatting with a human interviewer.
+					</p>
+				</div>
+				<div class="p-5 text-center md:p-8">
+					<div class="inline-block rounded-3xl bg-layer-2 py-4 px-4">
+						<!-- Heroicon name: outline/wifi -->
+						<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+							class="h-8 w-8 stroke-gradient gradient-lime">
+							<path class="svg-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="{2}"
+								d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+						</svg>
+					</div>
+					<h3 class="mt-4 text-xl font-semibold text-heading">
+						Voice Profiling Precision
+					</h3>
+					<p class="mt-2 text-center text-lg text-text">
+						Our advanced voice analysis goes beyond words it analyze tone, pace, and expression to provide a nuanced profile of each candidate's verbal communication skills.
+					</p>
+				</div>
+				<div class="p-5 text-center md:p-8">
+					<div class="inline-block rounded-3xl bg-layer-2 py-4 px-4">
+						<!-- Heroicon name: outline/shield-check -->
+						<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+							class="h-8 w-8 stroke-gradient gradient-peach">
+							<path class="svg-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="{2}"
+								d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+						</svg>
+					</div>
+					<h3 class="mt-4 text-xl font-semibold text-heading">
+						Instant Analytical Insights
+					</h3>
+					<p class="mt-2 text-center text-lg text-text">
+						Right after the interview our AI compiles a detailed report spotlighting the candidate's strengths, areas to improve, and overall compatibility with the role.
+					</p>
+				</div>
+				<div class="p-5 text-center md:p-8">
+					<div class="inline-block rounded-3xl bg-layer-2 py-4 px-4">
+						<!-- Heroicon name: outline/bell -->
+						<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+							class="h-8 w-8 stroke-gradient gradient-sky">
+							<path class="svg-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="{2}"
+								d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+						</svg>
+					</div>
+					<h3 class="mt-4 text-xl font-semibold text-heading">
+						Dynamic Interviews
+					</h3>
+					<p class="mt-2 text-center text-lg text-text">
+						Tailor the interview flow with bespoke questions that adapt to candidates responses to make every interview as unique as the applicant themselves.
+					</p>
+				</div>
+				<div class="p-5 text-center md:p-8">
+					<div class="inline-block rounded-3xl bg-layer-2 py-4 px-4">
+						<!-- Heroicon name: outline/sun -->
+						<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+							class="h-8 w-8 stroke-gradient gradient-dusk">
+							<path class="svg-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="{2}"
+								d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+						</svg>
+					</div>
+					<h3 class="mt-4 text-xl font-semibold text-heading">
+						Interview Scheduling
+					</h3>
+					<p class="mt-2 text-center text-lg text-text">
+						Set up and manage interviews seamlessly. Our system aligns with candidates availability, inviting them to connect through a simple and user friendly interface.
+					</p>
+				</div>
+				<div class="p-5 text-center md:p-8">
+					<div class="inline-block rounded-3xl bg-layer-2 py-4 px-4">
+						<!-- Heroicon name: outline/sparkles -->
+						<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+							class="h-8 w-8 stroke-gradient gradient-cotton-candy">
+							<path class="svg-white" stroke-linecap="round" stroke-linejoin="round" stroke-width="{2}"
+								d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+						</svg>
+					</div>
+					<h3 class="mt-4 text-xl font-semibold text-heading">
+						Phone Interviews
+					</h3>
+					<p class="mt-2 text-center text-lg text-text">
+						Our AI reaches out directly to applicants via VOIP calls for a personal touch offering thorough interviews without the need for internet connectivity to make sure no candidate is left behind.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<section class="hero-container">
+		<h1 class="text-center text-5xl font-semibold text-heading text-contin-one">How it Works</h1>
+		<section class="px-8 py-12 md:py-18">
+			<div class="mx-auto max-w-6xl space-y-24 md:space-y-36">
+				<div class="flex flex-col items-center justify-between gap-6 lg:flex-row ">
+					<div class="max-w-md space-y-6 text-center lg:text-left"><span
+							class="inline-flex items-center rounded-full border-2 border-red-200 bg-red-200 px-2 py-1 text-sm font-semibold text-red-600 shadow-sm"><svg
+								xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+								stroke="currentColor" aria-hidden="true" class="mr-1 h-5 w-5">
+								<path stroke-linecap="round" stroke-linejoin="round"
+									d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+								</path>
+							</svg>Add Job Listing</span>
+						<h3 class="text-3xl font-semibold text-heading lg:text-4xl">Start By Writing Your Perfect Job Post</h3>
+						<p class="text-lg font-medium">Start your candidate hunt by posting a job with all the important details to draw in top talent. Our user friendly interface makes it simple to highlight your needs and grab attention.</p>
+					</div>
+					<div class="max-w-lg"><img src="./static/images/firststep.jpg" alt="" class="w-full"></div>
+				</div>
+				<div class="flex flex-col items-center justify-between gap-6 lg:flex-row-reverse">
+					<div class="max-w-md space-y-6 text-center lg:text-left"><span
+							class="inline-flex items-center rounded-full border-2 border-green-200 bg-green-200 px-2 py-1 text-sm font-semibold text-green-600 shadow-sm"><svg
+								xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+								stroke="currentColor" aria-hidden="true" class="mr-1 h-5 w-5">
+								<path stroke-linecap="round" stroke-linejoin="round"
+									d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+								</path>
+							</svg>Accept Candidates</span>
+						<h3 class="text-3xl font-semibold text-heading lg:text-4xl">Share Your Job Listing Everywhere With 1 Click</h3>
+						<p class="text-lg font-medium">Get the word out about your job opening quickly by posting it on your website with a special link or on a JobSound page made just for you.</p>
+					</div>
+					<div class="max-w-lg"><img src="./static/images/firststep.jpg" alt="" class="w-full"></div>
+				</div>
+				<div class="flex flex-col items-center justify-between gap-6 lg:flex-row ">
+					<div class="max-w-md space-y-6 text-center lg:text-left"><span
+							class="inline-flex items-center rounded-full border-2 border-orange-200 bg-orange-200 px-2 py-1 text-sm font-semibold text-orange-600 shadow-sm"><svg
+								xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+								stroke="currentColor" aria-hidden="true" class="mr-1 h-5 w-5">
+								<path stroke-linecap="round" stroke-linejoin="round"
+									d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z">
+								</path>
+							</svg>Automated Interviews</span>
+						<h3 class="text-3xl font-semibold text-heading lg:text-4xl">Automate The Screening Process With JobSound </h3>
+						<p class="text-lg font-medium">Jobsound AI will interview people and then gives you a detailed report on each candidate to make it easier for you to decide who to hire.</p>
+					</div>
+					<div class="max-w-lg"><img src="./static/images/firststep.jpg" alt="" class="w-full"></div>
+				</div>
+			</div>
+		</section>
+	</section>
+
+
+	<section class="hero-container">
+		<section class="mx-auto max-w-6xl py-24 px-5">
+			<h1 class="text-center text-5xl font-semibold text-heading">Plans &amp; Pricing</h1>
+			<div class="mt-16 text-center"><button type="button"
+					class="relative z-10 inline-flex w-48 cursor-pointer items-center justify-center rounded-l-xl border-2 border-muted-3 bg-transparent px-4 py-2.5 text-sm font-semibold text-heading shadow-sm hover:text-heading focus:z-10 focus:text-heading focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:text-text dark:focus:ring-white/80">Monthly</button><button
+					type="button"
+					class="relative -ml-0.5 inline-flex w-48 cursor-pointer items-center justify-center rounded-r-xl border-2 border-muted-3 bg-transparent px-4 py-2.5 text-sm font-semibold text-text shadow-sm hover:text-heading focus:z-10 focus:text-heading focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:text-text dark:focus:ring-white/80">Annual
+					(save 20%)</button></div>
+			<div class="mt-12 grid gap-6 lg:grid-cols-3">
+				<div class="rounded-3xl border-4 border-blue-600 bg-layer-2 p-5">
+					<div
+						class="grid h-8 w-8 place-content-center rounded-full bg-gradient-to-r from-[#a78bfa] to-[#fda4af]">
+						<div class="h-4 w-4 rounded-full bg-layer-2"></div>
+					</div>
+					<h3 class="mt-4 text-2xl font-semibold text-heading">Start</h3>
+					<p class="mt-4 h-10 text-sm font-medium">One Job Posting per Month</p>
+					<div class="mt-8">
+						<div class="text-sm font-medium">For life</div>
+						<h4 class="mt-1 text-xl font-semibold text-heading">Free</h4>
+					</div><button type="button" disabled=""
+						class="mt-6 inline-flex w-full cursor-pointer items-center justify-center rounded-xl border-2 border-secondary bg-secondary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-secondary-accent hover:bg-secondary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-secondary disabled:hover:bg-secondary disabled:hover:text-white dark:focus:ring-white/80">Current
+						Plan</button>
+					<div class="text-medium mt-6 space-y-2 text-sm text-heading">
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>1 Job Listing</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>50 Appplicants</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>10 Voice Interviews</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>10 Candidate Reports</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>1 User Seat</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>Email Notifications</div>
+						</div>
+					</div>
+				</div>
+				<div class="border-yellow-100 rounded-3xl border-4 border-layer-2 bg-layer-2 p-5">
+					<div
+						class="grid h-8 w-8 place-content-center rounded-full bg-gradient-to-r from-[#d4fc49] to-[#96e6a1]">
+						<div class="h-4 w-4 rounded-full bg-layer-2"></div>
+					</div>
+					<h3 class="mt-4 text-2xl font-semibold text-heading">Grow</h3>
+					<p class="mt-4 h-10 text-sm font-medium">3 Job Postings Per Month</p>
+					<div class="mt-8">
+						<div class="text-sm font-medium">Starts at</div>
+						<h4 class="mt-1 text-xl font-semibold text-heading">$99/mo</h4>
+					</div><button type="button"
+						class="mt-6 inline-flex w-full cursor-pointer items-center justify-center rounded-xl border-2 border-muted-3 bg-transparent px-4 py-2.5 text-sm font-semibold text-text shadow-sm hover:text-heading focus:text-heading focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:text-text dark:focus:ring-white/80">Get
+						Started<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+							stroke="currentColor" aria-hidden="true" class="ml-2 h-5 w-5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+						</svg></button>
+					<div class="text-medium mt-6 space-y-2 text-sm text-heading">
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>3 Job Listings</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>500 Applicants</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>100 Voice Interviews</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>100 Candidate Reports</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>3 User Seats</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>Email Notifications</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>SMS Notifications</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>Twilio Integration</div>
+						</div>
+					</div>
+				</div>
+				<div class="border-yellow-100 rounded-3xl border-4 border-layer-2 bg-layer-2 p-5">
+					<div class="flex items-center justify-between">
+						<div
+							class="grid h-8 w-8 place-content-center rounded-full bg-gradient-to-r from-[#ffecd2] to-[#fcb69f]">
+							<div class="h-4 w-4 rounded-full bg-layer-2"></div>
+						</div><span
+							class="inline-flex items-center rounded-md border-2 border-orange-200 bg-orange-200 px-2 py-1 text-sm font-semibold text-orange-600 shadow-sm">Popular</span>
+					</div>
+					<h3 class="mt-4 text-2xl font-semibold text-heading">Scale</h3>
+					<p class="mt-4 h-10 text-sm font-medium">10 Job Postings Per Month</p>
+					<div class="mt-8">
+						<div class="text-sm font-medium">Starts at</div>
+						<h4 class="mt-1 text-xl font-semibold text-heading">$199/mo</h4>
+					</div><button type="button"
+						class="mt-6 inline-flex w-full cursor-pointer items-center justify-center rounded-xl border-2 border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm hover:border-primary-accent hover:bg-primary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-primary disabled:hover:bg-primary disabled:hover:text-white dark:focus:ring-white/80">Get
+						Started<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+							stroke="currentColor" aria-hidden="true" class="ml-2 h-5 w-5">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+						</svg></button>
+					<div class="text-medium mt-6 space-y-2 text-sm text-heading">
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>10 Job Listings</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>5000 Applicants</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>1000 Voice Interviews</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>1000 Candidate Reports</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>10 User Seats</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>Email Notifications</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>SMS Notifications</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>Twilio Integration</div>
+						</div>
+						<div class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+								viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"
+								class="h-4 w-4 shrink-0 text-green-500">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+							</svg>
+							<div>Whitelabel Job Listings</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</section>
+
+	<div class="bg-gray-900">
+		<div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+		  <h2 class="text-2xl font-bold leading-10 tracking-tight text-white">Got Questions? We've Got Answers!</h2>
+		  <p class="mt-6 max-w-2xl text-base leading-7 text-gray-300">Stumped on something? Don't see the info you need? No worries! Drop us a line at our support email, and we'll leap into action to help you out ASAP.</p>
+		  <div class="mt-20">
+			<dl class="space-y-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:grid-cols-3 lg:gap-x-10">
+			  <div>
+				<dt class="text-base font-semibold leading-7 text-white">What is JobSound.ai?</dt>
+				<dd class="mt-2 text-base leading-7 text-gray-300">JobSound.ai is a cutting-edge platform that transforms the hiring process with AI-powered voice interviews. Simply share a URL with candidates, and they can dive into a dynamic interview experience. Our AI will chat with them, capture their responses, and even call directly to their phones if needed.</dd>
+			  </div>
+			  <div>
+				<dt class="text-base font-semibold leading-7 text-white">How does the AI voice interview work?</dt>
+				<dd class="mt-2 text-base leading-7 text-gray-300">After an employer shares an interview link, applicants will engage in a conversation with our AI, which asks predetermined questions. Their answers are recorded, and once the interview is complete, our system analyzes the responses based on various metrics to generate a comprehensive analysis report and a potential score for each applicant.</dd>
+			  </div>
+			  <div>
+				<dt class="text-base font-semibold leading-7 text-white">What kind of analysis does JobSound.ai provide?</dt>
+				<dd class="mt-2 text-base leading-7 text-gray-300">Our AI analyzes responses for clarity, relevance, confidence, and other soft skills, providing a score and insights into the applicant's strengths and weaknesses. This gives employers a deeper understanding of each candidate beyond their resume.</dd>
+			  </div>
+			  <div>
+				<dt class="text-base font-semibold leading-7 text-white">Can JobSound.ai call applicants on their phone?</dt>
+				<dd class="mt-2 text-base leading-7 text-gray-300">Yes, indeed! We offer VOIP service that allow employers to start AI interviews via phone calls, adding another layer of convenience and personal touch to the remote interview experience.
+				</dd>
+			  </div>
+			  <div>
+				<dt class="text-base font-semibold leading-7 text-white">Is the voice of the AI realistic?</dt>
+				<dd class="mt-2 text-base leading-7 text-gray-300">We pride ourselves on the realism of our AI voices. They're designed to be engaging and lifelike, making sure that candidates feel as though they're talking to a real person.</dd>
+			  </div>
+			  <div>
+				<dt class="text-base font-semibold leading-7 text-white">How secure is the data collected by JobSound.ai?</dt>
+				<dd class="mt-2 text-base leading-7 text-gray-300">We take data security seriously. All interviews and analyses are encrypted and stored securely, with access strictly controlled according to privacy laws and regulations.</dd>
+			  </div>
+	  
+			  <!-- More questions... -->
+			</dl>
+		  </div>
+		</div>
+	  </div>
+
+
+
+	
+	<section class="hero-container">
+		<footer class="px-4 pt-10 pb-18">
+			<div
+				class="mx-auto flex max-w-6xl flex-col items-center justify-between space-y-4 lg:flex-row lg:space-y-0">
+				<div class="flex flex-col items-center space-x-0 space-y-4 lg:flex-row lg:space-x-14 lg:space-y-0"><a
+						href="#">
+						<h1 class="logo">JobSound</h1>
+					</a>
+					<div
+						class="flex flex-col space-y-2 text-center text-sm font-semibold lg:flex-row lg:space-x-6 lg:space-y-0 lg:text-left">
+						<span>Copyright 2024</span><a href="#"
+							class="font-semibold text-text hover:text-heading">Jobs Directory</a><a href="#"
+							class="font-semibold text-text hover:text-heading">Terms of Service</a><a href="#"
+							class="font-semibold text-text hover:text-heading">Privacy Policy</a></div>
+				</div>
+				<div class="flex space-x-4"><a href="#"><svg viewBox="0 0 32 32" class="h-8 w-8">
+							<circle cx="16" cy="16" r="16" fill="white"></circle>
+							<g clip-path="url(#slack_color)">
+								<path
+									d="M10.4381 18.499C10.4381 19.6114 9.53905 20.5105 8.42665 20.5105C7.31425 20.5105 6.41522 19.6114 6.41522 18.499C6.41522 17.3867 7.31425 16.4876 8.42672 16.4876H10.438V18.4991L10.4381 18.499ZM11.4438 18.499C11.4438 17.3867 12.3428 16.4876 13.4552 16.4876C14.5676 16.4876 15.4667 17.3867 15.4667 18.4991V23.5276C15.4667 24.64 14.5676 25.5391 13.4552 25.5391C12.3429 25.5391 11.4438 24.64 11.4438 23.5276V18.4991V18.499Z"
+									fill="#E01E5A"></path>
+								<path
+									d="M13.4552 10.4228C12.3428 10.4228 11.4437 9.52382 11.4437 8.41142C11.4437 7.29902 12.3429 6.39999 13.4552 6.39999C14.5676 6.39999 15.4667 7.29902 15.4667 8.41142V10.4229H13.4552L13.4552 10.4228ZM13.4552 11.4438C14.5676 11.4438 15.4667 12.3428 15.4667 13.4552C15.4667 14.5676 14.5676 15.4667 13.4552 15.4667H8.41149C7.29902 15.4667 6.39999 14.5676 6.39999 13.4552C6.39999 12.3429 7.29902 11.4438 8.41142 11.4438H13.4552H13.4552Z"
+									fill="#36C5F0"></path>
+								<path
+									d="M21.5162 13.4552C21.5162 12.3428 22.4153 11.4437 23.5276 11.4437C24.64 11.4437 25.5391 12.3428 25.5391 13.4552C25.5391 14.5676 24.64 15.4667 23.5276 15.4667H21.5162V13.4552V13.4552ZM20.5105 13.4552C20.5105 14.5676 19.6114 15.4667 18.499 15.4667C17.3867 15.4667 16.4876 14.5676 16.4876 13.4552V8.41149C16.4876 7.29902 17.3867 6.39999 18.499 6.39999C19.6113 6.39999 20.5104 7.29902 20.5104 8.41142V13.4552L20.5105 13.4552Z"
+									fill="#2EB67D"></path>
+								<path
+									d="M18.499 21.5162C19.6114 21.5162 20.5105 22.4153 20.5105 23.5276C20.5105 24.64 19.6114 25.5391 18.499 25.5391C17.3867 25.5391 16.4876 24.64 16.4876 23.5276V21.5162H18.4991H18.499ZM18.499 20.5105C17.3867 20.5105 16.4876 19.6114 16.4876 18.499C16.4876 17.3867 17.3867 16.4876 18.4991 16.4876H23.5428C24.6552 16.4876 25.5543 17.3867 25.5543 18.4991C25.5543 19.6114 24.6552 20.5105 23.5428 20.5105H18.4991H18.499Z"
+									fill="#ECB22E"></path>
+							</g>
+							<defs>
+								<clipPath id="slack_color">
+									<rect width="19.2" height="19.2" fill="white"
+										transform="translate(6.39999 6.39999)"></rect>
+								</clipPath>
+							</defs>
+						</svg></a><a href="#"><svg viewBox="0 0 32 32" class="h-8 w-8">
+							<path
+								d="M0 16C0 7.16344 7.16344 0 16 0V0C24.8366 0 32 7.16344 32 16V16C32 24.8366 24.8366 32 16 32V32C7.16344 32 0 24.8366 0 16V16Z"
+								fill="#1D9BF0"></path>
+							<path
+								d="M13.072 24.44C20.168 24.44 24.048 18.56 24.048 13.464C24.048 13.296 24.048 13.128 24.04 12.968C24.792 12.424 25.448 11.744 25.968 10.968C25.28 11.272 24.536 11.48 23.752 11.576C24.552 11.096 25.16 10.344 25.448 9.44C24.704 9.88 23.88 10.2 23 10.376C22.296 9.624 21.296 9.16 20.184 9.16C18.056 9.16 16.328 10.888 16.328 13.016C16.328 13.32 16.36 13.616 16.432 13.896C13.224 13.736 10.384 12.2 8.48003 9.864C8.15203 10.432 7.96003 11.096 7.96003 11.8C7.96003 13.136 8.64003 14.32 9.68003 15.008C9.04803 14.992 8.45603 14.816 7.93603 14.528C7.93603 14.544 7.93603 14.56 7.93603 14.576C7.93603 16.448 9.26403 18 11.032 18.36C10.712 18.448 10.368 18.496 10.016 18.496C9.76803 18.496 9.52803 18.472 9.28803 18.424C9.77603 19.96 11.2 21.072 12.888 21.104C11.568 22.136 9.90403 22.752 8.09603 22.752C7.78403 22.752 7.48003 22.736 7.17603 22.696C8.86403 23.8 10.896 24.44 13.072 24.44Z"
+								fill="white"></path>
+						</svg></a></div>
+			</div>
+		</footer>
+	</section>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./static/js/main.js"></script>
+</body>
+
+</html>
