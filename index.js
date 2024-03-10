@@ -45,12 +45,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-sendEmail(
-  "Hey",
-  "abhirathdubey2804@gmail.com",
-  "This is a test email"
-  );
-
 app.get("/", async (request, response) => {
   response.send("Hello World")
   // response.sendFile(join(__dirname, "..", "frontend", "index.html"));
