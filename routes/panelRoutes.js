@@ -22,6 +22,10 @@ import callOpenAI from "../openai.js";
 import multer from "multer";
 import fs from "fs";
 
+const ngrokUrl = "https://d648-110-227-193-66.ngrok-free.app"
+const localUrl = "http://127.0.0.1:5555"
+const siteUrl = "https://jobsound.vercel.app"
+
 const generateToken = () => {
   return randomBytes(20).toString("hex");
 };
@@ -601,7 +605,7 @@ router.post(
         await sendEmail(
           `Your Interview Invitation for ${applicationData["job_title"]} at JobSound`,
           applicationData["email"],
-          `Thank you for your interest in the position titled '<strong>${applicationData["job_title"]}</strong>' with JobSound!<br><br>Please find below the link to your interview session:<br><a href="https://77bc-103-133-49-243.ngrok-free.app/panel/meeting?jobId=${applicationData["job_id"]}&applicantId=${applicationData["application_id"]}">Start Interview</a>.<br><br>Wishing you the best of luck!`
+          `Thank you for your interest in the position titled '<strong>${applicationData["job_title"]}</strong>' with JobSound!<br><br>Please find below the link to your interview session:<br><a href="${siteUrl}/panel/meeting?jobId=${applicationData["job_id"]}&applicantId=${applicationData["application_id"]}">Start Interview</a>.<br><br>Wishing you the best of luck!`
           );
         response.send({ status: true, applicant_id: applicantId});
       } else {
