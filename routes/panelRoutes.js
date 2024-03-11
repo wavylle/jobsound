@@ -92,7 +92,7 @@ router.get("/home", (request, response) => {
 
 router.get("/currentuser", (request, response) => {
   if(request.isAuthenticated()) {
-    response.send(request.user)
+    response.send(request.session)
   } else {
     response.send("User not authenticated")
   }
