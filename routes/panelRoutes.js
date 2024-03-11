@@ -81,16 +81,22 @@ function requireLogin(req, res, next) {
   }
 }
 
-router.get(
-  "/home",
-  (request, response) => {
+router.get("/home", (request, response) => {
     if(request.isAuthenticated()) {
-      response.sendFile(
-        join(__dirname, "../", "frontend", "panel", "jobsound-dash-new.html")
-        );
+      response.sendFile(join(__dirname, "../", "frontend", "panel", "jobsound-dash-new.html"));
+      } else {
+        response.send("User not authenticated")
       }
   }
 );
+
+router.get("/currentuser", (request, response) => {
+  if(request.isAuthenticated()) {
+    response.send(request.user)
+  } else {
+    response.send("User not authenticated")
+  }
+})
 
 router.get(
   "/jobs",
@@ -794,14 +800,6 @@ router.get("/teams-settings", connectEnsureLogin.ensureLoggedIn("/accounts/signi
   response.sendFile(
     join(__dirname, "../", "frontend", "panel", "teams-settings.html")
   );
-})
-
-router.get("/currentuser", (request, response) => {
-  if(request.isAuthenticated()) {
-    response.send(request.user)
-  } else {
-    response.send("User not authenticated")
-  }
 })
 
 export default router;
