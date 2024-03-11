@@ -90,7 +90,7 @@ router.get("/home", requireLogin, (request, response) => {
   }
 );
 
-router.get("/currentuser", requireLogin, (request, response) => {
+router.get("/currentuser", (request, response) => {
     response.send(request.session)
 })
 
