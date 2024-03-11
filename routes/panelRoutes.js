@@ -85,12 +85,12 @@ function requireLogin(req, res, next) {
   }
 }
 
-router.get("/home", requireLogin, (request, response) => {
+router.get("/home", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), (request, response) => {
       response.sendFile(join(__dirname, "../", "frontend", "panel", "jobsound-dash-new.html"));
   }
 );
 
-router.get("/currentuser", (request, response) => {
+router.get("/currentuser", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), (request, response) => {
     response.send(request.session)
 })
 

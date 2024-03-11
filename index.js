@@ -12,7 +12,24 @@ import passport from "passport";
 import bodyParser from "body-parser";
 import sendEmail from "./sendEmails.js";
 import dotenv from 'dotenv';
+import MongoDBSessionStore from 'connect-mongodb-session';
+import { MongoClient } from 'mongodb';
 dotenv.config();
+
+// Create a new MongoDBSessionStore
+const MongoDBStore = MongoDBSessionStore(session)
+
+// Initialize MongoDBStore with session options
+const store = new MongoDBStore({
+  uri: mongoDBURL,
+  collection: 'sessions'
+});
+
+// Catch errors in MongoDBStore
+store.on('error', function(error) {
+  console.error('MongoDBStore Error:', error);
+});
+
 
 const app = express();
 
@@ -37,19 +54,15 @@ app.use(cors()); // This will allow all origins
 //   })
 // );
 
+// Configure session middleware
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: true,
-  proxy: true,
-  name: 'MyCoolWebAppCookieName',
+  saveUninitialized: false,
+  store: store,
   cookie: {
-    secure: true, // required for cookies to work on HTTPS
-    // httpOnly: false,
-    // sameSite: 'none',
-    maxAge: 2147483647
+    maxAge: 1000 * 60 * 60 * 24 // 1 day
   }
-  // cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
