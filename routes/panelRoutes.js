@@ -74,10 +74,14 @@ router.get(
 
 // Middleware to check if user is logged in
 function requireLogin(req, res, next) {
-  if (req.session.passport.user) {
-      return next();
-  } else {
-      res.redirect('/login');
+  try {
+    if (req.session.passport.user) {
+        return next();
+    } else {
+        res.redirect('/login');
+    }
+  } catch (error) {
+    res.redirect('/login');
   }
 }
 
