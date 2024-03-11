@@ -72,9 +72,17 @@ router.get(
   }
 );
 
+// Middleware to check if user is logged in
+function requireLogin(req, res, next) {
+  if (req.session && req.session.user) {
+      return next();
+  } else {
+      res.redirect('/login');
+  }
+}
+
 router.get(
-  "/home",
-  connectEnsureLogin.ensureLoggedIn("/accounts/signin"),
+  "/home", requireLogin,
   (request, response) => {
     response.sendFile(
       join(__dirname, "../", "frontend", "panel", "jobsound-dash-new.html")
