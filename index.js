@@ -61,7 +61,7 @@ app.use(session({
   saveUninitialized: false,
   store: store,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 // 1 day
+    maxAge: 10000 // 1 day
   }
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
