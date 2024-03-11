@@ -41,7 +41,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  // proxy: true,
+  proxy: true,
   name: 'MyCoolWebAppCookieName',
   cookie: {
     secure: true, // required for cookies to work on HTTPS
