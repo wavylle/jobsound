@@ -37,14 +37,18 @@ app.use(cors()); // This will allow all origins
 //   })
 // );
 
-app.set("trust proxy", 1); // trust first proxy
-
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
+  proxy: true,
   name: 'MyCoolWebAppCookieName',
-  cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
+  cookie: {
+    secure: true, // required for cookies to work on HTTPS
+    httpOnly: false,
+    sameSite: 'none'
+  }
+  // cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
