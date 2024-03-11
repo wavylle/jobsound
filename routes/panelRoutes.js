@@ -74,28 +74,20 @@ router.get(
 
 // Middleware to check if user is logged in
 function requireLogin(req, res, next) {
-  if (req.user) {
+  if (req.session.passport.user) {
       return next();
   } else {
       res.redirect('/login');
   }
 }
 
-router.get("/home", (request, response) => {
-    if(request.isAuthenticated()) {
+router.get("/home", requireLogin, (request, response) => {
       response.sendFile(join(__dirname, "../", "frontend", "panel", "jobsound-dash-new.html"));
-      } else {
-        response.send("User not authenticated")
-      }
   }
 );
 
-router.get("/currentuser", (request, response) => {
-  if(request.isAuthenticated()) {
+router.get("/currentuser", requireLogin, (request, response) => {
     response.send(request.session)
-  } else {
-    response.send("User not authenticated")
-  }
 })
 
 router.get(
