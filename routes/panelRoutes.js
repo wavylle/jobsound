@@ -82,11 +82,13 @@ function requireLogin(req, res, next) {
 }
 
 router.get(
-  "/home", requireLogin,
+  "/home",
   (request, response) => {
-    response.sendFile(
-      join(__dirname, "../", "frontend", "panel", "jobsound-dash-new.html")
-    );
+    if(request.isAuthenticated()) {
+      response.sendFile(
+        join(__dirname, "../", "frontend", "panel", "jobsound-dash-new.html")
+        );
+      }
   }
 );
 
