@@ -45,8 +45,8 @@ app.use(session({
   name: 'MyCoolWebAppCookieName',
   cookie: {
     secure: true, // required for cookies to work on HTTPS
-    httpOnly: false,
-    sameSite: 'none',
+    // httpOnly: false,
+    // sameSite: 'none',
     maxAge: 2147483647
   }
   // cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
