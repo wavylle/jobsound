@@ -74,7 +74,7 @@ router.get(
 
 // Middleware to check if user is logged in
 function requireLogin(req, res, next) {
-  if (req.session && req.session.user) {
+  if (req.user) {
       return next();
   } else {
       res.redirect('/login');
