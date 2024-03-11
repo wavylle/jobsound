@@ -786,4 +786,12 @@ router.get("/teams-settings", connectEnsureLogin.ensureLoggedIn("/accounts/signi
   );
 })
 
+router.get("/currentuser", (request, response) => {
+  if(request.isAuthenticated()) {
+    response.send(request.user)
+  } else {
+    response.send("User not authenticated")
+  }
+})
+
 export default router;
