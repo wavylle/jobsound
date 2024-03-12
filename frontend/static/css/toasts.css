@@ -12,6 +12,7 @@
         padding: 10px;
     }
     .notifications{
+        z-index: 9999999999;
         position: fixed;
         top: 30px;
         right: 20px;

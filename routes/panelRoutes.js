@@ -786,6 +786,46 @@ router.get("/account-settings", connectEnsureLogin.ensureLoggedIn("/accounts/sig
   );
 })
 
+router.post("/edit-personal-information", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
+  console.log(request.body)
+  const filter = { _id: request.user.id };
+
+  // Define the update operation
+  const updateOperation = {
+    $set: request.body,
+  };
+
+  // Perform the update operation
+  const result = await User.findOneAndUpdate(filter, updateOperation, {
+    returnOriginal: false,
+  });
+
+  if (!result) {
+    return response.status(500).send({message: "Invalid user"})
+  }
+
+  response.status(200).send({message: "Successfully updated personal information data."})
+})
+
+router.post("/change-password", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
+  console.log(request.body)
+  const userData = await User.findOne({_id: request.user.id, password: request.body.current_password})
+  console.log(userData)
+
+  if(userData) {
+    if (request.body.new_password === request.body.confirm_password) {
+      userData.password = request.body.new_password
+      userData.save()
+    } else {
+      return response.status(500).send({message: "Passwords don't match, please try again"})
+    }
+  } else {
+    return response.status(500).send({message: "Incorrect current password"})
+  }
+
+  response.status(200).send({message: "Successfully changed password"})
+})
+
 router.get("/billing-settings", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
   response.sendFile(
     join(__dirname, "../", "frontend", "panel", "billing-settings.html")
