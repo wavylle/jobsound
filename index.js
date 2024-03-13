@@ -11,25 +11,24 @@ import session from "express-session";
 import passport from "passport";
 import bodyParser from "body-parser";
 import sendEmail from "./sendEmails.js";
-import dotenv from 'dotenv';
-import MongoDBSessionStore from 'connect-mongodb-session';
-import { MongoClient } from 'mongodb';
+import dotenv from "dotenv";
+import MongoDBSessionStore from "connect-mongodb-session";
+import { MongoClient } from "mongodb";
 dotenv.config();
 
 // Create a new MongoDBSessionStore
-const MongoDBStore = MongoDBSessionStore(session)
+const MongoDBStore = MongoDBSessionStore(session);
 
 // Initialize MongoDBStore with session options
 const store = new MongoDBStore({
   uri: mongoDBURL,
-  collection: 'sessions'
+  collection: "sessions",
 });
 
 // Catch errors in MongoDBStore
-store.on('error', function(error) {
-  console.error('MongoDBStore Error:', error);
+store.on("error", function (error) {
+  console.error("MongoDBStore Error:", error);
 });
-
 
 const app = express();
 
@@ -55,15 +54,17 @@ app.use(cors()); // This will allow all origins
 // );
 
 // Configure session middleware
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  store: store,
-  cookie: {
-    maxAge: 10000 * 60 * 60 * 24 // 1 day
-  }
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: store,
+    cookie: {
+      maxAge: 10000 * 60 * 60 * 24, // 1 day
+    },
+  })
+);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -78,13 +79,32 @@ app.use("/panel", panelRoutes);
 
 app.get("/getallusers", async (request, response) => {
   const users = await User.find();
-  response.json(users)
-})
+  response.json(users);
+});
 
 app.get("/deleteallusers", async (request, response) => {
   const users = await User.deleteMany({});
-  response.json(users)
-})
+  response.json(users);
+});
+
+// Route to log out of all sessions
+app.get("/logoutAll", async (req, res) => {
+  // Find all sessions in MongoDB
+  const sessions = await store.all();
+  console.log(sessions);
+  try {
+    // Clear all session data for the user
+    await User.updateOne({ _id: req.user.id }, { $set: { sessions: [] } });
+    res.send("Logged out of all sessions");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+app.delete("/delete-account", (req, res) => {
+  res.send("DELETE Request Called");
+});
 
 mongoose
   .connect(mongoDBURL)

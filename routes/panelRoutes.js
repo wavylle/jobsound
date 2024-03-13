@@ -826,6 +826,17 @@ router.post("/change-password", connectEnsureLogin.ensureLoggedIn("/accounts/sig
   response.status(200).send({message: "Successfully changed password"})
 })
 
+router.post("/logout-all-sessions", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
+  const userData = await User.findOne({_id: request.user.id, password: request.body.password})
+  console.log(userData)
+
+  if(userData) {
+    response.redirect("/accounts/logout")
+  } else {
+    return response.status(500).send({message: "Incorrect password"})
+  }
+})
+
 router.get("/billing-settings", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
   response.sendFile(
     join(__dirname, "../", "frontend", "panel", "billing-settings.html")
@@ -837,5 +848,46 @@ router.get("/teams-settings", connectEnsureLogin.ensureLoggedIn("/accounts/signi
     join(__dirname, "../", "frontend", "panel", "teams-settings.html")
   );
 })
+
+// Define a route for deleting the user account
+router.post('/delete-account', async (req, res) => {
+  try {
+    console.log(req.user)
+    console.log(req.body)
+    const userData = await User.findOne({_id: req.user.id, password: req.body.password})
+    console.log(userData)
+    // Retrieve the user ID from the session or request body
+    const userId = req.user.id; // Assuming you're using sessions for authentication
+
+    // Check if the user is logged in
+    if (!userId) {
+      return res.status(500).send({message: 'User not authenticated'});
+    }
+    
+    if (!userData) {
+      return res.status(500).send({message: 'Invalid password'});
+    }
+
+    // Find the user by ID and delete
+    await User.findByIdAndDelete(userId);
+    await ApplicationsDB.deleteMany({user_id: userId});
+    await JobDB.deleteMany({user_id: userId});
+
+    // Optionally, clear the session or any other user-related data
+    req.session.destroy();
+
+    // Redirect the user to a specific page or send a success message
+    res.status(200).send({message: 'Account Successfully Deleted'});
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({message: 'Internal Server Error'});
+  }
+});
+
+router.get("/goodbye", (request, response) => {
+  response.sendFile(
+    join(__dirname, "../", "frontend", "panel", "goodbye.html")
+  );
+});
 
 export default router;
