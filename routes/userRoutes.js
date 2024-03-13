@@ -158,12 +158,28 @@ router.get("/signup", (request, response) => {
   response.sendFile(join(__dirname, "../", "frontend", "accounts", "signup.html"));
 });
 
-router.get("/activation", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
-  const user = await User.findOne({ email: request.user.email });
-  
-  if (!user.isActivated) {
+router.get("/activation", async (request, response) => {
+  var userEmail = ""
+  console.log(request.isAuthenticated())
+  console.log(request.user)
+  console.log(request.session)
+  if(!request.session.signup_email) {
+    if(request.isAuthenticated()) {
+      userEmail = request.user.email
+    } else {
+      console.log("Hello")
+      return response.send("Invalid User")
+      // return response.redirect("/accounts/signup")
+    }
+  } else {
+    userEmail = request.session.signup_email
+  }
+    const user = await User.findOne({ email: userEmail });
+    console.log(request.session)
     
-    // Generate a 6-digit OTP
+    if (!user.isActivated) {
+    
+      // Generate a 6-digit OTP
     const otp = generateOTP(6);
     
     
@@ -184,7 +200,17 @@ router.get("/activation", connectEnsureLogin.ensureLoggedIn("/accounts/signin"),
 
 router.post("/activateaccount", async (request, response) => {
   const { otp } = request.body;
-  const user = await User.findOne({ email: request.user.email });
+  var userEmail = ""
+  if(!request.session.signup_email) {
+    if(request.isAuthenticated()) {
+      userEmail = request.user.email
+    } else {
+      return response.send("Invalid User")
+    }
+  } else {
+    userEmail = request.session.signup_email
+  }
+  const user = await User.findOne({ email: userEmail });
 
   if (otp == user.activationCode) {
     user.activationCode = null
@@ -302,6 +328,9 @@ router.post("/signup", async (request, response) => {
         email: request.body.email,
         password: request.body.password,
       };
+
+      request.session.signup_email = request.body.email
+      console.log(request.session)
 
       const createUser = await User.create(newUser);
 

@@ -18,7 +18,7 @@ document
       .then((response) => {
         console.log(response.data);
         // Handle successful response
-        window.location.href = "/accounts/signin";
+        window.location.href = "/accounts/activation";
       })
       .catch((error) => {
         // Handle error

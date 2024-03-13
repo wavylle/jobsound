@@ -20,7 +20,7 @@ document
         // console.log(response.data);
         if (response.data === true) {
           console.log("True")
-          window.location.href = "/accounts/activation"
+          window.location.href = "/panel/home"
         } else {
           document.querySelector(".signinform").reset()
           let type = 'error';

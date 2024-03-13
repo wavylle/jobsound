@@ -19,7 +19,7 @@ document
         console.log(response)
         console.log(response.data);
         if (response.status == 200) {
-          window.location.href = "/panel/home"
+          window.location.href = "/accounts/signin"
         } else {
           document.querySelector(".activationForm").reset()
           let type = 'error';
