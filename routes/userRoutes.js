@@ -52,7 +52,7 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: `${siteUrl}/accounts/google/callback`,
+      callbackURL: `${localUrl}/accounts/google/callback`,
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
@@ -86,17 +86,17 @@ passport.use(
     {
       clientID: LINKEDIN_KEY,
       clientSecret: LINKEDIN_SECRET,
-      callbackURL: `${siteUrl}/accounts/linkedin/callback`,
+      callbackURL: `${localUrl}/accounts/linkedin/callback`,
       scope: ["email", "profile", "openid"],
     },
     function (accessToken, refreshToken, profile, done) {
       // asynchronous verification, for effect...
-      process.nextTick(function () {
+      process.nextTick(async function () {
         // To keep the example simple, the user's LinkedIn profile is returned to
         // represent the logged-in user. In a typical application, you would want
         // to associate the LinkedIn account with a user record in your database,
         // and return that user instead.
-        User.findOne({ email: profile.email }).then((user) => {
+        await User.findOne({ email: profile.email }).then((user) => {
           if (!user) {
             user = new User({
               name: profile.givenName,
@@ -105,17 +105,24 @@ passport.use(
               isLinkedin: true,
               linkedinId: profile.id,
             });
-            user.save().then((err) => {
-              if (err) console.log(err);
-              // done(null, user)
+            user.save()
+            .then(() => {
+              // Handle success
+              return done(null, user)
+              console.log('User saved successfully');
+            })
+            .catch((err) => {
+              // Handle error
+              console.error('Error saving user:', err);
+              return done(null, user)
             });
           } else {
-            console.log("Here");
-            // done(null, user)
+            console.log("User Exists");
+            return done(null, user)
           }
         });
-        console.log(profile);
-        return done(null, profile);
+        // console.log("User Profile: ", user);
+        // return done(null, user);
       });
     }
   )
@@ -143,8 +150,16 @@ passport.use(
   )
 );
 
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.serializeUser((user, done) => {
+  done(null, user)
+})
+
+passport.deserializeUser((user, done) => {
+  done(null, user)
+})
+
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -397,7 +412,7 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/accounts/activation",
+    successRedirect: "/panel/home",
     failureRedirect: "/accounts/google/failure",
   })
 );
@@ -405,7 +420,7 @@ router.get(
 router.get(
   "/linkedin/callback",
   passport.authenticate("linkedin", {
-    successRedirect: "/accounts/activation",
+    successRedirect: "/panel/home",
     failureRedirect: "/accounts/linkedin/failure",
   })
 );
@@ -433,7 +448,6 @@ router.get("/logout", function (req, res, next) {
 
 router.get("/protected", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), (request, response) => {
   console.log(request.user);
-  console.log(request.user.id);
   response.send("Hello!");
 });
 

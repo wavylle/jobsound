@@ -62,11 +62,12 @@ router.use(express.static(join(__dirname, "../", "frontend")));
 router.get(
   "/get-user-info",
   connectEnsureLogin.ensureLoggedIn("/accounts/signin"),
-  (request, response) => {
+  async (request, response) => {
+    const user = await User.findOne({_id: request.user._id})
     let userJson = {
-      name: request.user.name,
-      company: request.user.company,
-      email: request.user.email,
+      name: user.name,
+      company: user.company,
+      email: user.email,
     };
     response.send(userJson);
   }
@@ -91,7 +92,7 @@ router.get("/home", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), (requ
 );
 
 router.get("/currentuser", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), (request, response) => {
-    response.send(request.session)
+    response.send(request.user)
 })
 
 router.get(
@@ -124,7 +125,7 @@ router.get(
   "/get_applicants_data",
   connectEnsureLogin.ensureLoggedIn("/accounts/signin"),
   async (request, response) => {
-    const applicants = await ApplicationsDB.find({ user_id: request.user.id });
+    const applicants = await ApplicationsDB.find({ user_id: request.user._id });
     // const applicants = await ApplicationsDB.find();
     response.status(200).send(applicants);
   }
@@ -247,7 +248,7 @@ router.get(
     console.log("Ref: ", refJobId);
     if (refJobId) {
       const getJobData = await JobDB.findOne({
-        user_id: request.user.id,
+        user_id: request.user._id,
         job_id: refJobId,
       });
       if (getJobData) {
@@ -372,14 +373,14 @@ router.get(
       }
 
       console.log(request.user);
-      jobData["user_id"] = request.user.id;
+      jobData["user_id"] = request.user._id;
       jobData["user_email"] = request.user.email;
       jobData["job_id"] = generateToken();
       jobData["publish_status"] = true;
 
       if (refJobId) {
         const getJobData = await JobDB.findOne({
-          user_id: request.user.id,
+          user_id: request.user._id,
           job_id: refJobId,
         });
         if (getJobData) {
@@ -437,14 +438,14 @@ router.get(
       }
 
       console.log(request.user);
-      jobData["user_id"] = request.user.id;
+      jobData["user_id"] = request.user._id;
       jobData["user_email"] = request.user.email;
       jobData["job_id"] = generateToken();
       jobData["publish_status"] = false;
 
       if (refJobId) {
         const getJobData = await JobDB.findOne({
-          user_id: request.user.id,
+          user_id: request.user._id,
           job_id: refJobId,
         });
         if (getJobData) {
@@ -496,7 +497,7 @@ router.get(
   "/get_jobs",
   connectEnsureLogin.ensureLoggedIn("/accounts/signin"),
   async (request, response) => {
-    const jobs = await JobDB.find({ user_id: request.user.id });
+    const jobs = await JobDB.find({ user_id: request.user._id });
     // const jobs = await JobDB.find();
     response.status(200).send(jobs);
   }
@@ -508,7 +509,7 @@ router.get(
   async (request, response) => {
     const { jobId } = request.query;
     const getJob = await JobDB.findOne({
-      user_id: request.user.id,
+      user_id: request.user._id,
       job_id: jobId,
     });
     console.log(getJob);
@@ -538,7 +539,7 @@ router.get("/job", async (request, response) => {
 
   if (getJobData) {
     if (request.isAuthenticated()) {
-      if (getJobData.user_id == request.user.id) {
+      if (getJobData.user_id == request.user._id) {
         // load html
         response.sendFile(
           join(__dirname, "../", "frontend", "panel", "job-page.html")
@@ -564,7 +565,7 @@ router.get("/apply", async (request, response) => {
 
   if (getJobData) {
     if (request.isAuthenticated()) {
-      if (getJobData.user_id == request.user.id) {
+      if (getJobData.user_id == request.user._id) {
         // load html
         response.sendFile(
           join(__dirname, "../", "frontend", "panel", "application-page.html")
@@ -656,7 +657,7 @@ router.get("/getallapplications", async (request, response) => {
 
 // User filtered applications data
 router.get("/getapplications", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
-  const applications = await ApplicationsDB.find({ user_id: request.user.id });
+  const applications = await ApplicationsDB.find({ user_id: request.user._id });
   response.json(applications);
 });
 
@@ -709,7 +710,7 @@ router.get(
 
     if (getApplicationData) {
       if (request.isAuthenticated()) {
-        if (getApplicationData.user_id == request.user.id) {
+        if (getApplicationData.user_id == request.user._id) {
           // load html
           response.sendFile(
             join(
@@ -788,7 +789,7 @@ router.get("/account-settings", connectEnsureLogin.ensureLoggedIn("/accounts/sig
 
 router.post("/edit-personal-information", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
   console.log(request.body)
-  const filter = { _id: request.user.id };
+  const filter = { _id: request.user._id };
 
   // Define the update operation
   const updateOperation = {
@@ -804,12 +805,14 @@ router.post("/edit-personal-information", connectEnsureLogin.ensureLoggedIn("/ac
     return response.status(500).send({message: "Invalid user"})
   }
 
+  console.log(await User.findOne({_id: request.user._id}))
+
   response.status(200).send({message: "Successfully updated personal information data."})
 })
 
 router.post("/change-password", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
   console.log(request.body)
-  const userData = await User.findOne({_id: request.user.id, password: request.body.current_password})
+  const userData = await User.findOne({_id: request.user._id, password: request.body.current_password})
   console.log(userData)
 
   if(userData) {
@@ -827,7 +830,7 @@ router.post("/change-password", connectEnsureLogin.ensureLoggedIn("/accounts/sig
 })
 
 router.post("/logout-all-sessions", connectEnsureLogin.ensureLoggedIn("/accounts/signin"), async (request, response) => {
-  const userData = await User.findOne({_id: request.user.id, password: request.body.password})
+  const userData = await User.findOne({_id: request.user._id, password: request.body.password})
   console.log(userData)
 
   if(userData) {
@@ -854,10 +857,10 @@ router.post('/delete-account', async (req, res) => {
   try {
     console.log(req.user)
     console.log(req.body)
-    const userData = await User.findOne({_id: req.user.id, password: req.body.password})
+    const userData = await User.findOne({_id: req.user._id, password: req.body.password})
     console.log(userData)
     // Retrieve the user ID from the session or request body
-    const userId = req.user.id; // Assuming you're using sessions for authentication
+    const userId = req.user._id; // Assuming you're using sessions for authentication
 
     // Check if the user is logged in
     if (!userId) {
