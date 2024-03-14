@@ -52,7 +52,7 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: `${localUrl}/accounts/google/callback`,
+      callbackURL: `${siteUrl}/accounts/google/callback`,
       passReqToCallback: true,
     },
     function (request, accessToken, refreshToken, profile, done) {
@@ -86,7 +86,7 @@ passport.use(
     {
       clientID: LINKEDIN_KEY,
       clientSecret: LINKEDIN_SECRET,
-      callbackURL: `${localUrl}/accounts/linkedin/callback`,
+      callbackURL: `${siteUrl}/accounts/linkedin/callback`,
       scope: ["email", "profile", "openid"],
     },
     function (accessToken, refreshToken, profile, done) {
