@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import { User } from "./models/userModel.js";
 import userRoutes from "./routes/userRoutes.js";
 import panelRoutes from "./routes/panelRoutes.js";
+import meetingRoutes from "./routes/meetingRoutes.js";
 import cors from "cors";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
@@ -14,6 +15,8 @@ import sendEmail from "./sendEmails.js";
 import dotenv from "dotenv";
 import MongoDBSessionStore from "connect-mongodb-session";
 import { MongoClient } from "mongodb";
+import status from "express-status-monitor";
+import { createClient } from "@deepgram/sdk";
 dotenv.config();
 
 // Create a new MongoDBSessionStore
@@ -32,6 +35,7 @@ store.on("error", function (error) {
 
 const app = express();
 
+app.use(status())
 // Middleware for parsing request body
 app.use(express.json());
 
@@ -76,6 +80,7 @@ app.get("/", async (request, response) => {
 
 app.use("/accounts", userRoutes);
 app.use("/panel", panelRoutes);
+app.use("/meeting", meetingRoutes);
 
 app.get("/getallusers", async (request, response) => {
   const users = await User.find();
