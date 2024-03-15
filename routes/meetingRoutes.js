@@ -22,6 +22,7 @@ import callOpenAI from "../openai.js";
 import multer from "multer";
 import fs from "fs";
 import { createClient } from "@deepgram/sdk";
+import WebSocket from 'ws';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

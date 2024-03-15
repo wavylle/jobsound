@@ -17,6 +17,7 @@ import MongoDBSessionStore from "connect-mongodb-session";
 import { MongoClient } from "mongodb";
 import status from "express-status-monitor";
 import { createClient } from "@deepgram/sdk";
+import WebSocket from 'ws';
 dotenv.config();
 
 // Create a new MongoDBSessionStore
@@ -109,6 +110,27 @@ app.get("/logoutAll", async (req, res) => {
 
 app.delete("/delete-account", (req, res) => {
   res.send("DELETE Request Called");
+});
+
+// Create WebSocket Server
+const wss = new WebSocket.Server({ port: 8080 });
+
+wss.on('connection', function connection(ws) {
+  console.log('A new client Connected!');
+  ws.send('Welcome New Client!');
+
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+
+    ws.send(`You said: ${message}`)
+
+    // wss.clients.forEach(function each(client) {
+    //   if (client !== ws && client.readyState === WebSocket.OPEN) {
+    //     client.send(message);
+    //   }
+    // });
+    
+  });
 });
 
 mongoose

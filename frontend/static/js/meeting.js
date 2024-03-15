@@ -1,3 +1,23 @@
+// AI Websocket
+// Create WebSocket connection.
+const web_socket = new WebSocket('ws://127.0.0.1:8080');
+console.log("Here")
+
+// Connection opened
+web_socket.addEventListener('open', function (event) {
+    console.log('Connected to WS Server')
+});
+
+// Listen for messages
+web_socket.addEventListener('message', function (event) {
+    console.log('Message from server ', event.data);
+    document.querySelector(".transcriptionsBox").textContent = event.data});
+
+const sendMessage = () => {
+    web_socket.send('Hello From Client2!');
+}
+
+
 async function getMicrophone() {
     const userMedia = await navigator.mediaDevices.getUserMedia({
       audio: true,
@@ -72,8 +92,9 @@ window.addEventListener("load", async () => {
       document.querySelector(".transcriptionsBox").textContent = ""
 
       if (transcript !== "") {
-        document.querySelector(".transcriptionsBox").textContent = transcript
+        // document.querySelector(".transcriptionsBox").textContent = transcript
         console.log(transcript);
+        web_socket.send(transcript)
       }
     });
 
