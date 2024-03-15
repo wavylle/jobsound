@@ -137,8 +137,14 @@ mongoose
   .connect(mongoDBURL)
   .then(() => {
     console.log("App connected to database");
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log("App is listening on port: ", PORT);
+    });
+
+    server.on('upgrade', (request, socket, head) => {
+      wss.handleUpgrade(request, socket, head, (ws) => {
+        wss.emit('connection', ws, request);
+      });
     });
   })
   .catch((error) => {
