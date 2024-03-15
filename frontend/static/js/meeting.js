@@ -92,7 +92,7 @@ window.addEventListener("load", async () => {
       if (transcript !== "") {
         document.querySelector(".transcriptionsBox").textContent = transcript
         console.log(transcript);
-        web_socket.send(transcript)
+        // web_socket.send(transcript)
       }
     });
 
