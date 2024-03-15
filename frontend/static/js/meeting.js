@@ -1,20 +1,20 @@
 // AI Websocket
-const web_socket = new WebSocket('wss://jobsound.vercel.app/echo');
+// const web_socket = new WebSocket('wss://jobsound.vercel.app:5555/echo');
 
-web_socket.addEventListener('open', function (event) {
-  console.log('WebSocket connected');
-});
+// web_socket.addEventListener('open', function (event) {
+//   console.log('WebSocket connected');
+// });
 
-web_socket.addEventListener('message', function (event) {
-  console.log('Message from server:', JSON.parse(event.data));
-  var socketMessage = JSON.parse(event.data)
-  if(socketMessage["status"] == "end") {
-    document.querySelector(".transcriptionsBox").textContent = "";
-  }
-  else {
-    document.querySelector(".transcriptionsBox").textContent += socketMessage["message"];
-  }
-});
+// web_socket.addEventListener('message', function (event) {
+//   console.log('Message from server:', JSON.parse(event.data));
+//   var socketMessage = JSON.parse(event.data)
+//   if(socketMessage["status"] == "end") {
+//     document.querySelector(".transcriptionsBox").textContent = "";
+//   }
+//   else {
+//     document.querySelector(".transcriptionsBox").textContent += socketMessage["message"];
+//   }
+// });
 
 async function getMicrophone() {
     const userMedia = await navigator.mediaDevices.getUserMedia({
@@ -92,7 +92,7 @@ window.addEventListener("load", async () => {
       if (transcript !== "") {
         document.querySelector(".transcriptionsBox").textContent = transcript
         console.log(transcript);
-        web_socket.send(transcript)
+        // web_socket.send(transcript)
       }
     });
 
