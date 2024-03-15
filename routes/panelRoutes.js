@@ -21,6 +21,8 @@ import { log } from "console";
 import callOpenAI from "../openai.js";
 import multer from "multer";
 import fs from "fs";
+import dotenv from "dotenv";
+dotenv.config();
 
 const ngrokUrl = "https://d648-110-227-193-66.ngrok-free.app"
 const localUrl = "http://127.0.0.1:5555"

@@ -23,13 +23,15 @@ import multer from "multer";
 import fs from "fs";
 import { createClient } from "@deepgram/sdk";
 import WebSocket from 'ws';
+import dotenv from "dotenv";
+dotenv.config();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const router = express.Router();
 router.use(express.static(join(__dirname, "../", "frontend")));
 
-const client = createClient("4225d9aafbf5ce6aab74dec2519e872b4e0090d5");
+const client = createClient(process.env.DEEPGRAM_API_KEY);
 
 const getProjectId = async () => {
   const { result, error } = await client.manage.getProjects();

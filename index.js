@@ -20,6 +20,12 @@ import { createClient } from "@deepgram/sdk";
 import WebSocket from 'ws';
 import expressWs from "express-ws"
 dotenv.config();
+import OpenAI from 'openai';
+
+const API_URL = "https://api.openai.com/v1/chat/completions";
+const API_KEY = process.env.OPENAI_API_KEY;
+
+const openai = new OpenAI({apiKey: API_KEY});
 
 // Create a new MongoDBSessionStore
 const MongoDBStore = MongoDBSessionStore(session);
@@ -40,12 +46,25 @@ expressWs(app)
 
 app.ws('/echo', (ws, req) => {
   // This callback is invoked when a WebSocket connection is established
-  ws.send('Connection Opened');
+  ws.send(JSON.stringify({status: "end", message: "Connection Opened"}));
 
   // Handle incoming messages from the client
-  ws.on('message', (message) => {
+  ws.on('message', async (message) => {
+    const stream = await openai.chat.completions.create({
+      model: 'gpt-4',
+      messages: [{ role: 'user', content: message }],
+      stream: true,
+    });
+    for await (const part of stream) {
+      ws.send(JSON.stringify({status: "process", message: part.choices[0]?.delta?.content || ''}));
+    }
+
+    setTimeout(() => {
+      ws.send(JSON.stringify({status: "end"}));
+    }, 2000)
+
     // Echo the received message back to the client
-    ws.send(`Echo: ${message}`);
+    // ws.send(`Echo: ${message}`);
   });
 
   // Handle WebSocket connection close event
