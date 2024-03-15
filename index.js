@@ -18,6 +18,7 @@ import { MongoClient } from "mongodb";
 import status from "express-status-monitor";
 import { createClient } from "@deepgram/sdk";
 import WebSocket from 'ws';
+import expressWs from "express-ws"
 dotenv.config();
 
 // Create a new MongoDBSessionStore
@@ -35,6 +36,24 @@ store.on("error", function (error) {
 });
 
 const app = express();
+expressWs(app)
+
+app.ws('/echo', (ws, req) => {
+  // This callback is invoked when a WebSocket connection is established
+  ws.send('Connection Opened');
+
+  // Handle incoming messages from the client
+  ws.on('message', (message) => {
+    // Echo the received message back to the client
+    ws.send(`Echo: ${message}`);
+  });
+
+  // Handle WebSocket connection close event
+  ws.on('close', () => {
+    console.log('WebSocket connection closed');
+    // Perform cleanup or any necessary tasks here
+  });
+});
 
 app.use(status())
 // Middleware for parsing request body
@@ -112,39 +131,12 @@ app.delete("/delete-account", (req, res) => {
   res.send("DELETE Request Called");
 });
 
-// Create WebSocket Server
-const wss = new WebSocket.Server({ port: 8080 });
-
-wss.on('connection', function connection(ws) {
-  console.log('A new client Connected!');
-  ws.send('Welcome New Client!');
-
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-
-    ws.send(`You said: ${message}`)
-
-    // wss.clients.forEach(function each(client) {
-    //   if (client !== ws && client.readyState === WebSocket.OPEN) {
-    //     client.send(message);
-    //   }
-    // });
-    
-  });
-});
-
 mongoose
   .connect(mongoDBURL)
   .then(() => {
     console.log("App connected to database");
     const server = app.listen(PORT, () => {
       console.log("App is listening on port: ", PORT);
-    });
-
-    server.on('upgrade', (request, socket, head) => {
-      wss.handleUpgrade(request, socket, head, (ws) => {
-        wss.emit('connection', ws, request);
-      });
     });
   })
   .catch((error) => {
