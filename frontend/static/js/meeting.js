@@ -1,5 +1,5 @@
 // AI Websocket
-const web_socket = new WebSocket('wss://jobsound.vercel.app:5555/echo');
+const web_socket = new WebSocket('ws://localhost:5555/echo');
 
 web_socket.addEventListener('open', function (event) {
   console.log('WebSocket connected');
