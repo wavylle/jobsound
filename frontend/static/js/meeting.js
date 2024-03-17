@@ -1,5 +1,5 @@
 // AI Websocket
-// const web_socket = new WebSocket('wss://jobsound.vercel.app:5555/echo');
+// const web_socket = new WebSocket('ws://127.0.0.1:5555/echo');
 
 // web_socket.addEventListener('open', function (event) {
 //   console.log('WebSocket connected');
@@ -15,6 +15,31 @@
 //     document.querySelector(".transcriptionsBox").textContent += socketMessage["message"];
 //   }
 // });
+// Fetch audio from /say-prompt endpoint and set it as the source for the audio element
+async function fetchAudio(prompt) {
+  try {
+    const response = await fetch(`/meeting/say-prompt?prompt=${encodeURIComponent(prompt)}`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch audio: ${response.status} ${response.statusText}`);
+    }
+    const audioBlob = await response.blob();
+    const audioUrl = URL.createObjectURL(audioBlob);
+    document.getElementById('audioPlayer').src = audioUrl;
+    document.getElementById('audioPlayer').play()
+  } catch (error) {
+    console.error('Error fetching audio:', error);
+  }
+}
+
+// Function to fetch prompt from input field and play audio
+function fetchAndPlayAudio() {
+  const prompt = document.querySelector('.transcriptionsBox').textContent;
+  if (prompt.trim() !== '') {
+    fetchAudio(prompt);
+  } else {
+    console.error('Prompt cannot be empty');
+  }
+}
 
 async function getMicrophone() {
     const userMedia = await navigator.mediaDevices.getUserMedia({
@@ -91,6 +116,7 @@ window.addEventListener("load", async () => {
 
       if (transcript !== "") {
         document.querySelector(".transcriptionsBox").textContent = transcript
+        fetchAndPlayAudio()
         console.log(transcript);
         // web_socket.send(transcript)
       }
