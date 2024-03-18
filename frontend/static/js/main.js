@@ -7,7 +7,18 @@ document.addEventListener("DOMContentLoaded", function () {
       micIcon.classList.add("fa-microphone-slash");
     } else {
       micIcon.classList.remove("fa-microphone-slash");
-      micIcon.classList.add("fa-microphone");
+      let countdown = 5;
+
+// Countdown loop
+for (let i = countdown; i > 0; i--) {
+  setTimeout(() => {
+    micIcon.textContent = i;
+    if (i === 1) {
+      micIcon.textContent = ""; // Clear text
+      micIcon.classList.add("fa-microphone"); // Add microphone icon
+    }
+  }, (countdown - i) * 1000);
+}
     }
   });
 });

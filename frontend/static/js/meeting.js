@@ -16,6 +16,7 @@
 //   }
 // });
 // Fetch audio from /say-prompt endpoint and set it as the source for the audio element
+let isMicOn = true
 async function fetchAudio(prompt) {
   try {
     const response = await fetch(`/meeting/say-prompt?prompt=${encodeURIComponent(prompt)}`);
@@ -69,25 +70,43 @@ async function openMicrophone(microphone, socket) {
     };
   }
   
-  async function closeMicrophone(microphone) {
-    microphone.stop();
-  }
+async function closeMicrophone(microphone) {
+  microphone.stop();
+}
+
+let microphone;
 
 async function start(socket) {
-  let microphone;
 
   console.log("client: waiting to open microphone");
+
+  console.log(microphone)
+  console.log(!microphone)
 
   if (!microphone) {
     // open and close the microphone
     microphone = await getMicrophone();
+    console.log("Calling openMicrophone function...")
     await openMicrophone(microphone, socket);
   } else {
-    await closeMicrophone(microphone);
-    microphone = undefined;
+    // await closeMicrophone(microphone);
+    // microphone = undefined;
   }
 }
 
+document.querySelector(".mic-on-off").onclick = async function() {
+  if(isMicOn) {
+    console.log("Stopping Mic");
+    microphone.stop()
+    isMicOn = false
+    microphone = undefined
+  } else {
+    console.log("Opening mic")
+    isMicOn = true
+    await openDeepgramSocket()
+    // microphone.start(500)
+  }
+}
 
 async function getTempApiKey() {
     const result = await fetch("/meeting/key");
@@ -96,7 +115,8 @@ async function getTempApiKey() {
     return json.key;
   }
 
-window.addEventListener("load", async () => {
+async function openDeepgramSocket() {
+  console.log("Opening deepgram socket...")
   const key = await getTempApiKey();
 
   const { createClient } = deepgram;
@@ -129,7 +149,12 @@ window.addEventListener("load", async () => {
     socket.on("Metadata", (e) => console.log(e));
 
     socket.on("close", (e) => console.log(e));
-
-    await start(socket);
+    
+    await start(socket)
   });
+
+}
+
+window.addEventListener("load", async () => {
+  await openDeepgramSocket()
 });
