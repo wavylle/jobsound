@@ -8,10 +8,17 @@
     "dev": "nodemon index.js",
     "postinstall": "patch-package"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
+  },
+  "overrides": {
+    "rollup": "npm:@rollup/wasm-node"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@adminjs/bundler": "^3.0.0",
     "@adminjs/express": "^6.1.0",
     "@adminjs/mongoose": "^4.1.0",
     "@deepgram/sdk": "^3.2.0",

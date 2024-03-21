@@ -24,6 +24,16 @@ import expressWs from "express-ws"
 import AdminJS, { App } from "adminjs";
 import AdminJSExpress from "@adminjs/express";
 import * as AdminJSMongoose from "@adminjs/mongoose";
+import { bundle } from '@adminjs/bundler';
+import { ComponentLoader } from 'adminjs';
+const componentLoader = new ComponentLoader();
+
+(async () => {
+    const files = await bundle({
+        componentLoader,
+        destinationDir: 'public', // relative to CWD
+    });
+})();
 import bcrypt from "bcrypt";
 
 dotenv.config();
@@ -49,6 +59,7 @@ store.on("error", function (error) {
 });
 
 const app = express();
+
 expressWs(app)
 
 AdminJS.registerAdapter(AdminJSMongoose)
@@ -67,6 +78,7 @@ const adminJs = new AdminJS({
     },
   ],
   rootPath: "/admin", // Path to the AdminJS dashboard.
+  assetsCDN: "https://jobsound.vercel.app"
 });
 
 // Build and use a router to handle AdminJS routes.
@@ -131,7 +143,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Serve static files from the frontend directory
 app.use(express.static(join(__dirname, "frontend")));
-
+app.use(express.static(join(__dirname, "public")));
 // Middleware for handling CORS policy
 app.use(cors()); // This will allow all origins
 
