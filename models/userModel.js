@@ -40,6 +40,10 @@ const userSchema = mongoose.Schema(
         activationCode: {
             type: String,
         },
+        isAdmin: {
+            type: Boolean,
+            default: false
+        },
     }
 )
 
