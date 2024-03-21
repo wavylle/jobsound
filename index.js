@@ -2,6 +2,8 @@ import express, { response } from "express";
 import { PORT, mongoDBURL } from "./config.js";
 import mongoose from "mongoose";
 import { User } from "./models/userModel.js";
+import { JobDB } from "./models/jobModel.js";
+import { ApplicationsDB } from "./models/applicationModel.js";
 import userRoutes from "./routes/userRoutes.js";
 import panelRoutes from "./routes/panelRoutes.js";
 import meetingRoutes from "./routes/meetingRoutes.js";
@@ -19,6 +21,11 @@ import status from "express-status-monitor";
 import { createClient } from "@deepgram/sdk";
 import WebSocket from 'ws';
 import expressWs from "express-ws"
+import AdminJS, { App } from "adminjs";
+import AdminJSExpress from "@adminjs/express";
+import * as AdminJSMongoose from "@adminjs/mongoose";
+import bcrypt from "bcrypt";
+
 dotenv.config();
 import OpenAI from 'openai';
 
@@ -43,6 +50,47 @@ store.on("error", function (error) {
 
 const app = express();
 expressWs(app)
+
+AdminJS.registerAdapter(AdminJSMongoose)
+
+// Very basic configuration of AdminJS.
+const adminJs = new AdminJS({
+  resources: [
+    {
+        resource: User,
+    },
+    {
+        resource: JobDB,
+    },
+    {
+        resource: ApplicationsDB,
+    },
+  ],
+  rootPath: "/admin", // Path to the AdminJS dashboard.
+});
+
+// Build and use a router to handle AdminJS routes.
+const router = AdminJSExpress.buildAuthenticatedRouter(
+  adminJs,
+  {
+      cookieName: "adminjs",
+      cookiePassword: "complicatedsecurepassword",
+      authenticate: async (email, password) => {
+          const user = await User.findOne({ email: email, password: password, isAdmin: true });
+          if (user) {
+            return user
+          }
+          return false;
+      },
+  },
+  null,
+  // Add configuration required by the express-session plugin.
+  {
+      resave: false, 
+      saveUninitialized: true,
+  }
+);
+app.use(adminJs.options.rootPath, router);
 
 app.ws('/echo', (ws, req) => {
   // This callback is invoked when a WebSocket connection is established
