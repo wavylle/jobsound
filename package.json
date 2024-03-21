@@ -5,28 +5,14 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js",
-    "postinstall": "patch-package"
-  },
-  "devDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.6.1"
-  },
-  "optionalDependencies": {
-    "@rollup/rollup-linux-x64-gnu": "4.6.1"
-  },
-  "overrides": {
-    "rollup": "npm:@rollup/wasm-node"
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@adminjs/bundler": "^3.0.0",
-    "@adminjs/express": "^6.1.0",
-    "@adminjs/mongoose": "^4.1.0",
     "@deepgram/sdk": "^3.2.0",
     "@elasticemail/elasticemail-client": "^4.0.23",
-    "adminjs": "^7.7.4",
     "bcrypt": "^5.1.1",
     "connect-ensure-login": "^0.1.1",
     "connect-mongodb-session": "^5.0.0",
