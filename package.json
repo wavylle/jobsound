@@ -8,6 +8,9 @@
     "dev": "nodemon index.js",
     "postinstall": "patch-package"
   },
+  "devDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
+  },
   "optionalDependencies": {
     "@rollup/rollup-linux-x64-gnu": "4.6.1"
   },
