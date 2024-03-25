@@ -86,6 +86,7 @@ router.get("/key", async (req, res) => {
 router.get('/say-prompt', async (req, res) => {
   try {
     const { prompt } = req.query;
+    console.log(prompt)
 
     if (!prompt || typeof prompt !== 'string') {
       res.status(400).send('ChatGPT prompt not provided in the request');

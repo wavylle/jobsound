@@ -207,3 +207,16 @@ window.addEventListener("load", async () => {
     console.error("Applicant ID not found in the query string.");
   }
 });
+
+// End meeting popup controls
+const popup = document.querySelector(".id-ps-popup");
+const cancelButton = document.querySelector(".cncl-popup");
+const endMeetingPopupLaunch = document.querySelector(".endMeetingPopupLaunch");
+
+endMeetingPopupLaunch.addEventListener("click", function () {
+  popup.style.display = "block";
+});
+
+cancelButton.addEventListener("click", function () {
+  popup.style.display = "none";
+});
