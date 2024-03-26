@@ -232,7 +232,7 @@ cancelButton.addEventListener("click", function () {
   popup.style.display = "none";
 });
 
-endMeetingPopupButton.addEventListener("click", function() {
+endMeetingPopupButton.addEventListener("click", async function() {
   popup.style.display = "none";
   meetingSummaryPopup.style.display = "block"
   meetingDuration = document.querySelector(".headerDuration").textContent
@@ -246,6 +246,25 @@ endMeetingPopupButton.addEventListener("click", function() {
   // set popup meeting duration
   var totalSeconds = durationToSeconds(meetingDuration);
   document.querySelector(".meetingDuration").textContent = `${totalSeconds} seconds`
+
+  // Get form data
+  const formData = new FormData();
+  const urlParams = new URLSearchParams(window.location.search);
+  formData.append("jobId", urlParams.get("jobId"))
+  formData.append("applicantId", urlParams.get("applicantId"))
+  formData.append("interviewDuration", totalSeconds)
+
+  // Convert form data to JSON object
+  const interviewData = {};
+  formData.forEach((value, key) => {
+    interviewData[key] = value;
+  });
+
+  const postData = await axios
+    .post("/meeting/endmeeting", interviewData)
+    .then((res) => {
+      console.log(res)
+    });
 })
 
 // Countdown function

@@ -617,8 +617,8 @@
                     </p>
                     <p class="mt-2 flex items-baseline gap-x-2">
                       <span
-                        class="text-4xl font-semibold tracking-tight text-white"
-                        >80%</span
+                        class="text-4xl font-semibold tracking-tight text-white fittingToTheJob"
+                        >-</span
                       >
                     </p>
                   </div>
@@ -635,8 +635,8 @@
                     </p>
                     <p class="mt-2 flex items-baseline gap-x-2">
                       <span
-                        class="text-4xl font-semibold tracking-tight text-white"
-                        >68%</span
+                        class="text-4xl font-semibold tracking-tight text-white confidence"
+                        >-</span
                       >
                     </p>
                   </div>
@@ -654,8 +654,8 @@
                     </p>
                     <p class="mt-2 flex items-baseline gap-x-2">
                       <span
-                        class="text-4xl font-semibold tracking-tight text-white"
-                        >98.5%</span
+                        class="text-4xl font-semibold tracking-tight text-white successRate"
+                        >-</span
                       >
                     </p>
                   </div>
@@ -914,6 +914,16 @@
                 document
                   .querySelector(".applicantPFP")
                   .setAttribute("src", `./static/images/profile.jpg`);
+              }
+
+
+              // Check for interview data
+              if("interview_status" in data["interview_data"]) {
+                if(data["interview_data"]["interview_status"] == true) {
+                  document.querySelector(".fittingToTheJob").textContent = `${data["interview_data"]["fitting_to_job"]}`
+                  document.querySelector(".confidence").textContent = `${data["interview_data"]["confidence"]}`
+                  document.querySelector(".successRate").textContent = `${data["interview_data"]["success_rate"]}`
+                }
               }
             }
             document.querySelector(".bodyClass").classList.remove("hidden");

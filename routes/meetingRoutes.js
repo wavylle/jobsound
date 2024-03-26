@@ -5,6 +5,7 @@ import { ObjectId } from "mongodb";
 import { User } from "../models/userModel.js";
 import { JobDB } from "../models/jobModel.js";
 import { ApplicationsDB } from "../models/applicationModel.js";
+import { InterviewDB } from "../models/interviewModel.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { request } from "http";
@@ -123,5 +124,44 @@ router.get('/say-prompt', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+router.post("/endmeeting", async (req, res) => {
+  try {
+    const jobId = req.body["jobId"]
+    const applicantId = req.body["applicantId"]
+    const interviewDuration = req.body["interviewDuration"]
+
+    const getJobData = await JobDB.findOne({ job_id: jobId })
+    const interviewData = {}
+
+    if(getJobData) {
+      const getApplicant = await ApplicationsDB.findOne({job_id: jobId, application_id: applicantId})
+
+      if (getApplicant) {
+        // main code
+        interviewData["user_id"] = getApplicant.user_id
+        interviewData["job_id"] = jobId
+        interviewData["job_title"] = getApplicant.job_title
+        interviewData["application_id"] = applicantId
+        interviewData["interview_status"] = true
+        interviewData["interview_duration"] = interviewDuration
+        interviewData["fitting_to_job"] = "80"
+        interviewData["confidence"] = "68"
+        interviewData["success_rate"] = "98.5"
+
+        const createInterview = await InterviewDB.create(interviewData);
+
+        res.send(true)
+      } else {
+        res.send(false)
+      }
+    } else {
+      res.send(false)
+    }
+  } catch (error) {
+    console.log(error)
+    res.send(false)
+  }
+})
 
 export default router;

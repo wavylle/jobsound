@@ -5,6 +5,7 @@ import { ObjectId } from "mongodb";
 import { User } from "../models/userModel.js";
 import { JobDB } from "../models/jobModel.js";
 import { ApplicationsDB } from "../models/applicationModel.js";
+import { InterviewDB } from "../models/interviewModel.js";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { request } from "http";
@@ -684,9 +685,14 @@ router.get("/getapplicantdata", async (request, response) => {
     application_id: applicationId,
   });
 
+  var interviewData = {}
   if (getApplicationData) {
+    const getInterviewData = await InterviewDB.findOne({job_id: getApplicationData.job_id, application_id: applicationId})
+    if (getInterviewData) {
+      interviewData = getInterviewData
+    }
     // Job Found, return HTML
-    response.send({ status: true, data: getApplicationData });
+    response.send({ status: true, data: getApplicationData, interview_data: interviewData });
   } else {
     response.send({
       status: false,
