@@ -363,6 +363,10 @@ div > .talking {
 .id-ps-popup {
   display: none;
 }
+
+.meetingSummaryPopup {
+  display: none;
+}
 .bg-gr {
   background: rgb(30, 58, 138);
   background: linear-gradient(

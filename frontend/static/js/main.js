@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   const micIcon = document.getElementById("micIcon");
+  const micOnOff = document.querySelector(".mic-on-off");
 
-  micIcon.addEventListener("click", function () {
+  micOnOff.addEventListener("click", function () {
     if (micIcon.classList.contains("fa-microphone")) {
       micIcon.classList.remove("fa-microphone");
       micIcon.classList.add("fa-microphone-slash");

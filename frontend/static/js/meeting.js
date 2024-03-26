@@ -189,6 +189,14 @@ window.addEventListener("load", async () => {
             data["data"]["first_name"] + " " + data["data"]["last_name"];
           document.querySelector(".appliedFor").textContent =
             data["data"]["job_title"];
+          document.querySelector(".headerJobTitle").textContent =
+            data["data"]["job_title"] + " - " + "Interview";
+
+          const currentDate = new Date();
+          const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+          const formattedDate = currentDate.toLocaleDateString('en-US', options);
+
+          document.querySelector(".headerDate").textContent = formattedDate
           if ("profileImagePath" in data["data"]) {
             document
               .querySelector(".applicantPFP")
@@ -209,9 +217,12 @@ window.addEventListener("load", async () => {
 });
 
 // End meeting popup controls
+var meetingDuration = ""
 const popup = document.querySelector(".id-ps-popup");
 const cancelButton = document.querySelector(".cncl-popup");
 const endMeetingPopupLaunch = document.querySelector(".endMeetingPopupLaunch");
+const meetingSummaryPopup = document.querySelector(".meetingSummaryPopup")
+const endMeetingPopupButton = document.querySelector(".endMeetingPopupButton")
 
 endMeetingPopupLaunch.addEventListener("click", function () {
   popup.style.display = "block";
@@ -220,3 +231,48 @@ endMeetingPopupLaunch.addEventListener("click", function () {
 cancelButton.addEventListener("click", function () {
   popup.style.display = "none";
 });
+
+endMeetingPopupButton.addEventListener("click", function() {
+  popup.style.display = "none";
+  meetingSummaryPopup.style.display = "block"
+  meetingDuration = document.querySelector(".headerDuration").textContent
+  // Turn off mic
+  if (isMicOn) {
+    console.log("Clicking...")
+    document.querySelector(".mic-on-off").click()
+  }
+  startCountdown()
+
+  // set popup meeting duration
+  var totalSeconds = durationToSeconds(meetingDuration);
+  document.querySelector(".meetingDuration").textContent = `${totalSeconds} seconds`
+})
+
+// Countdown function
+function startCountdown() {
+  var seconds = 10;
+  var countdownElement = document.getElementById('countdown');
+  var countdownInterval = setInterval(function() {
+      seconds--;
+      countdownElement.textContent = seconds;
+      if (seconds <= 0) {
+          clearInterval(countdownInterval);
+          window.location.href = "/";
+      }
+  }, 1000);
+}
+
+function durationToSeconds(duration) {
+  // Split the duration string into hours, minutes, and seconds
+  var parts = duration.split(':');
+  
+  // Convert each part to an integer
+  var hours = parseInt(parts[0], 10);
+  var minutes = parseInt(parts[1], 10);
+  var seconds = parseInt(parts[2], 10);
+  
+  // Calculate the total number of seconds
+  var totalSeconds = (hours * 3600) + (minutes * 60) + seconds;
+  
+  return totalSeconds;
+}

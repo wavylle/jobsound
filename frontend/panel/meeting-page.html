@@ -76,8 +76,8 @@
                 class="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3"
               >
                 <button
-                  type="submit"
-                  class="inline-flex w-full justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 sm:col-start-2 submitCandidateFormButton"
+                  type="button"
+                  class="inline-flex w-full justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-400 sm:col-start-2 endMeetingPopupButton"
                 >
                   End Meeting
                 </button>
@@ -88,6 +88,55 @@
                   Cancel
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div
+      class="relative z-[99999999] meetingSummaryPopup"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"
+      ></div>
+      <form class="endMeetingForm" autocomplete="off">
+      <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+        <div
+        class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+        >
+        <div
+              class="ring-1 ring-inset ring-gray-300 relative transform overflow-hidden rounded-lg bg-gray-900 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6"
+            >
+              <div>
+                <div class="">
+                  <div class="">
+                    <div class="mx-auto w-full max-w-2xl">
+                      <span class="text-2xl font-semibold tracking-tight text-white">Interview successfully concludes</span>
+
+                      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+                        <img src="../static/images/check.png" alt="">
+                      </div>
+
+                      <div class="mt-4">
+                        <span class="font-semibold tracking-tight text-white">Interview Duration: <span style="color: #20cf94;" class="meetingDuration">00:05:23</span></span>
+                      </div>
+                      <div class="mt-4">
+                        <label
+                          for="profile"
+                          class="block text-sm font-medium text-white" style="line-height: 2rem;"
+                          >Your interview has been successfully completed. We'll notify you via email with any further information or outcomes.<br>
+                          <strong>🎉&nbsp; Thank you for your time! Redirecting you in <span id="countdown">10</span> seconds...</strong>
+                          </label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -134,16 +183,15 @@
         class="border-b border-gray-700 flex justify-between items-center pb-6 pt-6 px-20"
       >
         <div class="-mb-px flex flex-col">
-          <p class="text-xs font-medium tracking-tight text-white sm:text-md">
+          <p class="text-xs font-medium tracking-tight text-white sm:text-md headerDate">
             Tuesday, November 29,2024
           </p>
-          <h1 class="text-2xl font-bold tracking-tight text-white sm:text-2xl">
-            Backend Developer Interview
+          <h1 class="text-2xl font-bold tracking-tight text-white sm:text-2xl headerJobTitle">
           </h1>
         </div>
         <div>
           <p
-            class="text-xs font-medium tracking-tight text-white sm:text-md text-count"
+            class="text-xs font-medium tracking-tight text-white sm:text-md text-count headerDuration"
           >
             00:00:00
           </p>
