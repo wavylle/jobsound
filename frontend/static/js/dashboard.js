@@ -1,4 +1,6 @@
 var applicantsGraphData = { "": 0 };
+var interviewsGraphData = { "": 0 };
+var totalInterviewsCount = 0
 function fetchApplicantsData() {
   fetch("/panel/getapplications")
     .then((res) => res.json())
@@ -90,6 +92,42 @@ function fetchApplicantsData() {
     });
 }
 
+function fetchInterviewsData() {
+  fetch("/panel/getapplications")
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      for (let i = 0; i < data.length; i++) {
+        if("interview_status" in data[i]) {
+          if(data[i]["interview_status"] == true) {
+            totalInterviewsCount += 1
+            var dateVal = new Date(data[i]["createdAt"]).toLocaleDateString(
+              "en-US",
+              {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          }
+        );
+        if (!interviewsGraphData[dateVal]) {
+          interviewsGraphData[dateVal] = 1;
+        } else {
+          interviewsGraphData[dateVal] = interviewsGraphData[dateVal] + 1;
+        }
+        }
+      }
+      }
+
+      var slicedData = data.slice(-10).reverse()
+
+      loadInterviewsChart(
+        Object.keys(interviewsGraphData),
+        Object.values(interviewsGraphData)
+      );
+      document.querySelector(".totalInterviewsCount").textContent = totalInterviewsCount;
+    });
+}
+
 function loadApplicantsChart(xAxisArray, yAxisArray) {
   const options = {
     chart: {
@@ -170,4 +208,85 @@ function loadApplicantsChart(xAxisArray, yAxisArray) {
   }
 }
 
+function loadInterviewsChart(xAxisArray, yAxisArray) {
+  const options = {
+    chart: {
+      height: 250,
+      maxWidth: "100%",
+      type: "area",
+      fontFamily: "Inter, sans-serif",
+      dropShadow: {
+        enabled: false,
+      },
+      toolbar: {
+        show: false,
+      },
+    },
+    tooltip: {
+      enabled: true,
+      x: {
+        show: false,
+      },
+    },
+    fill: {
+      type: "gradient",
+      gradient: {
+        opacityFrom: 0.55,
+        opacityTo: 0,
+        shade: "#1C64F2",
+        gradientToColors: ["#1C64F2"],
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    stroke: {
+      width: 6,
+    },
+    grid: {
+      show: false,
+      strokeDashArray: 4,
+      padding: {
+        left: 2,
+        right: 2,
+        top: 0,
+      },
+    },
+    series: [
+      {
+        name: "Interviews",
+        data: yAxisArray,
+        color: "#1A56DB",
+      },
+    ],
+    xaxis: {
+      categories: xAxisArray,
+      labels: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+      axisTicks: {
+        show: false,
+      },
+    },
+    yaxis: {
+      show: false,
+    },
+  };
+
+  if (
+    document.getElementById("interviews-chart") &&
+    typeof ApexCharts !== "undefined"
+  ) {
+    const chart = new ApexCharts(
+      document.getElementById("interviews-chart"),
+      options
+    );
+    chart.render();
+  }
+}
+
 fetchApplicantsData();
+fetchInterviewsData()
