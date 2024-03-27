@@ -1,6 +1,9 @@
 var applicantsGraphData = { "": 0 };
 var interviewsGraphData = { "": 0 };
 var totalInterviewsCount = 0
+var totalInterviewStatusTrue = 0
+var totalInterviewStatusFalse = 0
+
 function fetchApplicantsData() {
   fetch("/panel/getapplications")
     .then((res) => res.json())
@@ -101,6 +104,7 @@ function fetchInterviewsData() {
         if("interview_status" in data[i]) {
           if(data[i]["interview_status"] == true) {
             totalInterviewsCount += 1
+            totalInterviewStatusTrue += 1
             var dateVal = new Date(data[i]["createdAt"]).toLocaleDateString(
               "en-US",
               {
@@ -114,9 +118,19 @@ function fetchInterviewsData() {
         } else {
           interviewsGraphData[dateVal] = interviewsGraphData[dateVal] + 1;
         }
+        } else {
+          totalInterviewStatusFalse += 1
         }
+      } else {
+        totalInterviewStatusFalse += 1
       }
       }
+
+      const donutchart = new ApexCharts(
+        document.getElementById("donut-chart"),
+        getChartOptions()
+      );
+      donutchart.render();
 
       var slicedData = data.slice(-10).reverse()
 
@@ -290,3 +304,97 @@ function loadInterviewsChart(xAxisArray, yAxisArray) {
 
 fetchApplicantsData();
 fetchInterviewsData()
+
+//
+const getChartOptions = () => {
+  return {
+    series: [totalInterviewStatusTrue, totalInterviewStatusFalse],
+    colors: ["#16BDCA", "#1C64F2", "#FDBA8C", "#E74694"],
+    chart: {
+      height: 250,
+      width: "100%",
+      type: "donut",
+    },
+    stroke: {
+      colors: ["transparent"],
+      lineCap: "",
+    },
+    plotOptions: {
+      pie: {
+        donut: {
+          labels: {
+            show: true,
+            name: {
+              show: true,
+              fontFamily: "Inter, sans-serif",
+              offsetY: 20,
+            },
+            total: {
+              showAlways: true,
+              show: true,
+              label: "Completed",
+              fontFamily: "Inter, sans-serif",
+              formatter: function (w) {
+                const sum = w.globals.seriesTotals.reduce((a, b) => {
+                  return a + b;
+                }, 0);
+                const perc = (totalInterviewStatusTrue / sum) * 100
+                return perc.toFixed(2) + "%";
+              },
+            },
+            value: {
+              show: true,
+              fontFamily: "Inter, sans-serif",
+              offsetY: -20,
+              color: ["white"],
+              fontWeight: 600,
+              fontSize: "30px",
+              formatter: function (value) {
+                return value + "";
+              },
+            },
+          },
+          size: "80%",
+        },
+      },
+    },
+    grid: {
+      padding: {
+        top: -2,
+      },
+    },
+    labels: [
+      "Completed",
+      "Pending",
+      // "Clicked without joining the meeting ",
+      // "Accepted",
+    ],
+    dataLabels: {
+      enabled: false,
+    },
+    legend: {
+      position: "bottom",
+      fontFamily: "Inter, sans-serif",
+    },
+    yaxis: {
+      labels: {
+        formatter: function (value) {
+          return value + "";
+        },
+      },
+    },
+    xaxis: {
+      labels: {
+        formatter: function (value) {
+          return value + "";
+        },
+      },
+      axisTicks: {
+        show: false,
+      },
+      axisBorder: {
+        show: false,
+      },
+    },
+  };
+};
