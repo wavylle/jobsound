@@ -352,7 +352,7 @@ if (
   });
 }
 
-function createRadialBarChart(elementId, value) {
+function createRadialBarChart(element, value) {
   var options = {
     series: [value],
     chart: {
@@ -395,18 +395,19 @@ function createRadialBarChart(elementId, value) {
     labels: [value + "%"],
   };
 
-  var chart = new ApexCharts(document.querySelector(elementId), options);
+  var chart = new ApexCharts(element, options);
   chart.render();
 }
 
-createRadialBarChart("#chart", 70);
-createRadialBarChart("#chart2", 60);
-createRadialBarChart("#chart3", 0);
-createRadialBarChart("#chart4", 90);
-createRadialBarChart("#chart5", 80);
-createRadialBarChart("#chart6", 40);
-createRadialBarChart("#chart7", 90);
-createRadialBarChart("#chart8", 80);
+
+// createRadialBarChart("#chart", 70);
+// createRadialBarChart("#chart2", 60);
+// createRadialBarChart("#chart3", 0);
+// createRadialBarChart("#chart4", 90);
+// createRadialBarChart("#chart5", 80);
+// createRadialBarChart("#chart6", 40);
+// createRadialBarChart("#chart7", 90);
+// createRadialBarChart("#chart8", 80);
 
 window.addEventListener("load", function () {
   document

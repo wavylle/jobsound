@@ -556,10 +556,11 @@
 									<td class="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
 										<div class="donut-chartin-wrap">
 										<!-- Donut Chart -->
-										<div id="chart"></div>
+										<div id="${data[i]["interview_status"] ? "chart" : "nochart"}"></div>
 									</div>
 								</div>
 									</td>
+									<span class="hidden ${data[i]["interview_status"] ? "fittingToJobScore" : "nodata"}">${data[i]["interview_status"] ? data[i]["fitting_to_job"] : "-"}</span>
 
 									<td class="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8">
 									<div class="flex items-center justify-end gap-x-2 sm:justify-start">
@@ -571,7 +572,7 @@
 									</div>
 									</td>
 									<td class="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8 text-gray-400">
-										25s
+										${data[i]["interview_status"] ? String(data[i]["interview_duration"]) + "s" : "-"}
 									</td>
 									<td class="py-4 pl-4 pr-8 sm:pl-6 lg:pl-8 text-gray-400">
 										<div class="flex items-center gap-x-4">
@@ -594,7 +595,9 @@
 								document.getElementById("search-field").onkeyup = function() {
 									searchFunction();
 								};
-								createRadialBarChart("#chart", 70);
+								for(let y = 0; y < document.querySelectorAll("#chart").length; y++) {
+									createRadialBarChart(document.querySelectorAll("#chart")[y], Number(document.querySelectorAll(".fittingToJobScore")[y].textContent))
+								}
 					}
 				})
 			}

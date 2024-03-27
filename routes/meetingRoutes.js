@@ -151,6 +151,17 @@ router.post("/endmeeting", async (req, res) => {
 
         const createInterview = await InterviewDB.create(interviewData);
 
+        // update application db
+        for (const [key, value] of Object.entries(interviewData)) {
+          console.log(key)
+          if(key in getApplicant) {
+            console.log("Key Present");
+            getApplicant[key] = value
+          }
+        }
+        await getApplicant.save();
+
+
         res.send(true)
       } else {
         res.send(false)

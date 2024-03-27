@@ -54,6 +54,18 @@ const newApplicationSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  interview_duration: {
+    type: String,
+  },
+  fitting_to_job: {
+    type: String
+  },
+  confidence: {
+    type: String
+  },
+  success_rate: {
+    type: String
+  },
   createdAt: {
     type: Number,
     default: Date.now(),
