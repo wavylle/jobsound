@@ -316,6 +316,8 @@ router.post("/forgot-password", async (req, res) => {
   user.resetPasswordToken = token;
   await user.save();
 
+  console.log(`Email sent to: ${user.email}`);
+
   // Step 3: Send Reset Password Email
   await sendEmail(
     "Reset Password",
