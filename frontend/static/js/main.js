@@ -427,6 +427,7 @@ function initializeQuestionSection() {
   }
 
   function addQuestion() {
+    console.log("Called Add Question");
     const newQuestionDiv = document.createElement("div");
     newQuestionDiv.className = "flex items-end";
 
@@ -502,4 +503,4 @@ function initializeQuestionSection() {
 }
 
 // Call the function when the page is fully loaded
-window.addEventListener("load", initializeQuestionSection);
+// window.addEventListener("load", initializeQuestionSection);
