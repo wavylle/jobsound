@@ -87,10 +87,12 @@ function fetchApplicantsData() {
       console.log(Object.keys(applicantsGraphData));
       console.log(Object.values(applicantsGraphData));
 
-      loadApplicantsChart(
-        Object.keys(applicantsGraphData),
-        Object.values(applicantsGraphData)
-      );
+      if(!data.length == 0) {
+        loadApplicantsChart(
+          Object.keys(applicantsGraphData),
+          Object.values(applicantsGraphData)
+          );
+        }
       document.querySelector(".totalApplicantsCount").textContent = data.length;
     });
 }
@@ -130,14 +132,17 @@ function fetchInterviewsData() {
         document.getElementById("donut-chart"),
         getChartOptions()
       );
-      donutchart.render();
-
+      
       var slicedData = data.slice(-10).reverse()
+      
+      if(!totalInterviewsCount == 0) {
+        donutchart.render();
+          loadInterviewsChart(
+            Object.keys(interviewsGraphData),
+            Object.values(interviewsGraphData)
+          );
+        }
 
-      loadInterviewsChart(
-        Object.keys(interviewsGraphData),
-        Object.values(interviewsGraphData)
-      );
       document.querySelector(".totalInterviewsCount").textContent = totalInterviewsCount;
     });
 }
