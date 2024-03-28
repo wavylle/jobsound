@@ -62,6 +62,7 @@ passport.use(
             name: profile.given_name,
             email: profile.email,
             password: profile.id,
+            company: "",
             isGoogle: true,
             googleId: profile.id,
           });
@@ -102,6 +103,7 @@ passport.use(
               name: profile.givenName,
               email: profile.email,
               password: profile.id,
+              company: "",
               isLinkedin: true,
               linkedinId: profile.id,
             });
