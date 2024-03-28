@@ -901,4 +901,14 @@ router.get("/goodbye", (request, response) => {
   );
 });
 
+router.get("/emailtest", async (request, response) => {
+  await sendEmail(
+    `This is a test email`,
+    "abhirathdubey2804@gmail.com",
+    `This is a test email`
+    );
+
+  response.send("Email sent!")
+})
+
 export default router;
