@@ -17,6 +17,8 @@
 // });
 // Fetch audio from /say-prompt endpoint and set it as the source for the audio element
 let isMicOn = true;
+let audioChunks = [];
+
 async function fetchAudio(prompt) {
   try {
     const response = await fetch(
@@ -27,12 +29,19 @@ async function fetchAudio(prompt) {
         `Failed to fetch audio: ${response.status} ${response.statusText}`
       );
     }
-    const audioBlob = await response.blob();
+    // Fetching the audio data as an ArrayBuffer
+    const arrayBuffer = await response.arrayBuffer();
+
+    // Creating a new Blob with the desired MIME type
+    const audioBlob = new Blob([arrayBuffer], { type: 'audio/webm;codecs=opus' });
     const audioUrl = URL.createObjectURL(audioBlob);
     document.getElementById("audioPlayer").src = audioUrl;
     document.getElementById("audioPlayer").play();
     document.querySelector(".candidateWindow").classList.remove("talking");
     document.querySelector(".interviewerWindow").classList.add("talking");
+
+    // Store the interviewer's audio in audioChunks
+    audioChunks.push(audioBlob); // Ensure consistent handling with the candidate's audio
   } catch (error) {
     console.error("Error fetching audio:", error);
   }
@@ -71,6 +80,7 @@ async function openMicrophone(microphone, socket) {
 
   microphone.ondataavailable = (e) => {
     const data = e.data;
+    audioChunks.push(data)
     console.log(data);
     console.log("client: sent data to websocket");
     socket.send(data);
@@ -242,6 +252,54 @@ endMeetingPopupButton.addEventListener("click", async function() {
     document.querySelector(".mic-on-off").click()
   }
   startCountdown()
+
+  console.log(audioChunks)
+
+  // // Convert audioChunks into a Blob
+  // let audioRecordingBlob = new Blob(audioChunks, { type: 'audio/wav' });
+
+  // // Create a URL for the Blob
+  // let audioRecordingUrl = URL.createObjectURL(audioRecordingBlob);
+
+  // // Play the audio
+  // let audioRecordingPlayer = document.getElementById('audioRecording');
+  // audioRecordingPlayer.src = audioRecordingUrl;
+
+
+  // const audioFormData = new FormData();
+  // audioChunks.forEach((chunk, index) => {
+  //   audioFormData.append(`audio${index}`, chunk);
+  // });
+  // const audioChunksData = {}
+  // audioFormData.forEach((value, key) => {
+  //   audioChunksData[key] = value;
+  // });
+
+  // const postChunksData = await axios
+  // .post("/meeting/saveaudiorecording", audioChunksData)
+  // .then((res) => {
+  //   console.log(res)
+  // })
+
+//   try {
+//     const formData = new FormData();
+//     audioChunks.forEach((chunk, index) => {
+//         formData.append(`audio${index}`, chunk);
+//     });
+
+//     const response = await fetch('/meeting/saveaudiorecording', {
+//         method: 'POST',
+//         body: formData
+//     });
+
+//     if (!response.ok) {
+//         throw new Error('Failed to upload audio data');
+//     }
+
+//     console.log('Audio data uploaded successfully');
+// } catch (error) {
+//     console.error('Error uploading audio data:', error);
+// }
 
   // set popup meeting duration
   var totalSeconds = durationToSeconds(meetingDuration);

@@ -30,6 +30,10 @@ import EventEmitter from 'events';
 import { streamGptText } from './streamGptText.js';
 dotenv.config();
 
+const generateToken = () => {
+  return randomBytes(20).toString("hex");
+};
+
 // Set the global maximum number of listeners
 EventEmitter.defaultMaxListeners = 100;
 
@@ -174,5 +178,6 @@ router.post("/endmeeting", async (req, res) => {
     res.send(false)
   }
 })
+
 
 export default router;

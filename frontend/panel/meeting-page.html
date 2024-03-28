@@ -32,7 +32,7 @@
 
     <link rel="stylesheet" href="https://jobsound.ai/css/mainfront.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@deepgram/sdk@v3.0.0"></script>
   </head>
@@ -132,6 +132,7 @@
                           <strong>🎉&nbsp; Thank you for your time! Redirecting you in <span id="countdown">10</span> seconds...</strong>
                           </label
                         >
+                        <audio controls id="audioRecording" style="display: none;">
                       </div>
                     </div>
                   </div>
