@@ -1,4 +1,5 @@
 var applicantsGraphData = { "": 0 };
+var totalApplicantsCount = 0;
 var interviewsGraphData = { "": 0 };
 var totalInterviewsCount = 0
 var totalInterviewStatusTrue = 0
@@ -94,6 +95,7 @@ function fetchApplicantsData() {
           );
         }
       document.querySelector(".totalApplicantsCount").textContent = data.length;
+      totalApplicantsCount = data.length
     });
 }
 
@@ -135,8 +137,11 @@ function fetchInterviewsData() {
       
       var slicedData = data.slice(-10).reverse()
       
-      if(!totalInterviewsCount == 0) {
+      if(!totalApplicantsCount == 0) {
         donutchart.render();
+      }
+
+      if(!totalInterviewsCount == 0) {
           loadInterviewsChart(
             Object.keys(interviewsGraphData),
             Object.values(interviewsGraphData)
